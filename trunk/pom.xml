@@ -93,7 +93,7 @@
 		<maven.build.timestamp.format>yyyyMMdd'T'HHmmss</maven.build.timestamp.format>
 		<!-- Specify the JBoss AS directory to be the JBOSS_HOME environment  
 		 variable -->
-		<jboss.home>C:\\unzip_program\\jboss-as-7.1.1.Final.INTCON</jboss.home>
+		<jboss.home>C:\\unzip_program\\jboss-as-7.1.1.Final\\jboss-as-7.1.1.Final</jboss.home>
 		<jboss.version>7.1.1.Final</jboss.version>
 		
 		<jboss-as-maven-plugin>7.4.FINAL</jboss-as-maven-plugin>

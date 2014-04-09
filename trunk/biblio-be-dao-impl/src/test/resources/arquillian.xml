@@ -32,7 +32,7 @@
    <container qualifier="jboss" default="true">
         <!-- By default, arquillian will use the JBOSS_HOME environment variable.  Alternatively, the configuration below can be uncommented. -->
         <configuration> 
-			<property name="jbossHome">C:\\unzip_program\\jboss-as-7.1.1.Final.INTCON</property>
+			<property name="jbossHome">C:\\unzip_program\\jboss-as-7.1.1.Final\\jboss-as-7.1.1.Final</property>
         </configuration>
    </container>
 
