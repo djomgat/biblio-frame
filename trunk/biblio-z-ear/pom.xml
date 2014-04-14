@@ -54,13 +54,6 @@
 			<version>${project.version}</version>
 			<type>jar</type>			
 		</dependency>
-	
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>biblio-be-dao-impl</artifactId>
-			<version>${project.version}</version>
-			<type>ejb</type>			
-		</dependency>
 		
 		<dependency>
 			<groupId>${project.groupId}</groupId>
@@ -71,7 +64,7 @@
 		
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>biblio-be-svc-impl</artifactId>
+			<artifactId>biblio-be-svc-dao-impl</artifactId>
 			<version>${project.version}</version>
 			<type>ejb</type>			
 		</dependency>

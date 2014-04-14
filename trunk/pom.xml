@@ -37,9 +37,8 @@
 		<module>frame-be</module>
         <module>frame-fe</module>
 		<module>biblio-aa-entity</module>
-		<module>biblio-be-svc-impl</module>
+		<module>biblio-be-svc-dao-impl</module>
 		<module>biblio-be-svc-contract</module>
-		<module>biblio-be-dao-impl</module>
 		<module>biblio-be-dao-contract</module>
 		<module>biblio-fe-web</module>
 		<module>biblio-fe-core</module>
@@ -102,24 +101,7 @@
     <dependencyManagement>
         <dependencies>
 
-            <!-- Define the version of the EJB jar so that we don't need 
-                to repeat ourselves in every module -->
-            <dependency>
-                <groupId>com.mastertheboss</groupId>
-                <artifactId>as7example3-ejb</artifactId>
-                <version>${project.version}</version>
-                <type>ejb</type>
-            </dependency>
-            
-            <!-- Define the version of the WAR so that we don't need to repeat 
-                ourselves in every module -->
-            <dependency>
-                <groupId>com.mastertheboss</groupId>
-                <artifactId>as7example3-web</artifactId>
-                <version>${project.version}</version>
-                <type>war</type>
-                <scope>compile</scope>
-            </dependency>
+           
 
             <!-- JBoss distributes a complete set of Java EE 6 APIs including 
                 a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or 
