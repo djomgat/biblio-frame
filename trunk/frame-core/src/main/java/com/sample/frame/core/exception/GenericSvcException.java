@@ -45,4 +45,14 @@ public class GenericSvcException extends GenericException {
 	public GenericSvcException(String message, Throwable cause) {
 		super(message, cause);
 	}
+	
+
+	
+	public GenericSvcException(String p$catalogFileName,String p$messageId, Object[] p$params){
+		super( p$catalogFileName, p$messageId, p$params);		
+	}
+	
+	public GenericSvcException(String p$catalogFileName, String p$messageId, Object[] p$params, Throwable p$cause){
+		super( p$catalogFileName, p$messageId, p$params, p$cause);		
+	}
 }

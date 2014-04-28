@@ -41,4 +41,12 @@ public class GenericDaoException extends GenericException {
 	public GenericDaoException(String message, Throwable cause) {
 		super(message, cause);
 	}
+	
+	public GenericDaoException(String p$catalogFileName,String p$messageId, Object[] p$params){
+		super( p$catalogFileName, p$messageId, p$params);		
+	}
+	
+	public GenericDaoException(String p$catalogFileName, String p$messageId, Object[] p$params, Throwable p$cause){
+		super( p$catalogFileName, p$messageId, p$params, p$cause);		
+	}
 }
