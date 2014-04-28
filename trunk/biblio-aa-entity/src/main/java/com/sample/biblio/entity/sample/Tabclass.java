@@ -24,9 +24,7 @@ public class Tabclass extends GenericEntity  {
 
 	private String name;
 
-	//bi-directional many-to-one association to Tabuser
-	@OneToMany(mappedBy="tabclass")
-	private List<Tabuser> tabusers;
+
 
 	public Tabclass() {
 	}
@@ -55,26 +53,7 @@ public class Tabclass extends GenericEntity  {
 		this.name = name;
 	}
 
-	public List<Tabuser> getTabusers() {
-		return this.tabusers;
-	}
 
-	public void setTabusers(List<Tabuser> tabusers) {
-		this.tabusers = tabusers;
-	}
-
-	public Tabuser addTabuser(Tabuser tabuser) {
-		getTabusers().add(tabuser);
-		tabuser.setTabclass(this);
-
-		return tabuser;
-	}
-
-	public Tabuser removeTabuser(Tabuser tabuser) {
-		getTabusers().remove(tabuser);
-		tabuser.setTabclass(null);
-
-		return tabuser;
-	}
+	
 
 }
