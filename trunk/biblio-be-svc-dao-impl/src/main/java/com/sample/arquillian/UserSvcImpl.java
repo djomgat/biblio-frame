@@ -15,8 +15,7 @@ public class UserSvcImpl extends GenericSvcImpl<Tabuser, String> implements
 	IUserDao dao;
 
 	@Override
-	protected IGenericDao<Tabuser, String> getGenericDao() {
-		
+	protected IGenericDao<Tabuser, String> getGenericDao() {		
 		return dao;
 	}
 
