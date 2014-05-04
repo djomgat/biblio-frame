@@ -15,7 +15,7 @@ import com.sample.frame.core.exception.GenericDaoException;
  * @param <T>
  * @param <PK>
  */
-public interface IGenericDao<U extends GenericEntity, PK extends Serializable> {
+public interface IGenericDao<U extends GenericEntity, PK extends Serializable> extends IFrameBaseDao{
 
     /**
      * insert an entity

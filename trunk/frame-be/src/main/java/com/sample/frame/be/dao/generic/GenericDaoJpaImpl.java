@@ -10,6 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 
 import com.sample.frame.core.entity.GenericEntity;
 import com.sample.frame.core.exception.GenericDaoException;
+import com.sample.frame.core.logging.FrameBaseLogger;
 
 /**
  * 
@@ -24,6 +25,8 @@ public abstract class GenericDaoJpaImpl<U extends GenericEntity, PK extends Seri
 	protected abstract EntityManager getEntityManager();
 	
 	protected abstract Class<U> getEntityClass();
+	
+	protected abstract FrameBaseLogger getLogger();
 	
 
 
@@ -81,8 +84,8 @@ public abstract class GenericDaoJpaImpl<U extends GenericEntity, PK extends Seri
 
 	@Override
 	public int runUpdateQuery(String p$query) throws GenericDaoException {
-		// TODO Auto-generated method stub
-		return 0;
+		return getEntityManager().createNativeQuery(p$query).executeUpdate();
+		
 	}
 
 }

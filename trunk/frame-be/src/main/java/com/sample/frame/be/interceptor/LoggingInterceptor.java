@@ -23,12 +23,17 @@ public class LoggingInterceptor implements Serializable {
 	@AroundInvoke
 	public Object logInvocation(InvocationContext ctx) throws Exception {
 		logger.debug("LoggingInterceptor - before EJB method invoke: "
+				+ ctx.getMethod().getDeclaringClass().getName() + "." 
 				+ ctx.getMethod().getName());
 
-		Object result = ctx.proceed();
-
+		
+			Object result = ctx.proceed();
+		
+		
 		logger.debug("LoggingInterceptor - after EJB method invoke: "
+				+ ctx.getMethod().getDeclaringClass().getName() + "." 
 				+ ctx.getMethod().getName());
+		
 		return result;
 	}
 }
