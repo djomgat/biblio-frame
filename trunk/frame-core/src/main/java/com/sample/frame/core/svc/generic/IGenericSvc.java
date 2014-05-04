@@ -6,7 +6,7 @@ import java.util.List;
 import com.sample.frame.core.entity.GenericEntity;
 import com.sample.frame.core.exception.GenericException;
 
-public interface IGenericSvc<U extends GenericEntity, PK extends Serializable> {
+public interface IGenericSvc<U extends GenericEntity, PK extends Serializable> extends IFrameBaseSvc {
 
 	<T extends U>T creer(T p$entite) throws GenericException;
 
