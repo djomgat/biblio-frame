@@ -11,6 +11,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,16 +21,30 @@ import com.sample.arquillian.IUserSvcLocal;
 import com.sample.arquillian.IUserSvcRemote;
 import com.sample.arquillian.UserDaoImpl;
 import com.sample.arquillian.UserSvcImpl;
+import com.sample.arquillian.exceptions.BiblioDaoExceptionForTestTransact;
+import com.sample.arquillian.interceptors.BiblioExceptionInterceptor;
 import com.sample.arquillian.svc.test.resource.SvcTestResources;
+import com.sample.biblio.constant.be.BiblioBeConstant;
+import com.sample.biblio.constant.be.BiblioDaoMessageKey;
+import com.sample.biblio.constant.be.BiblioSvcMessageKey;
 import com.sample.biblio.entity.sample.Tabclass;
 import com.sample.biblio.entity.sample.Tabuser;
+import com.sample.biblio.exceptions.BiblioDaoException;
+import com.sample.biblio.exceptions.BiblioSvcException;
 import com.sample.frame.be.dao.generic.GenericDaoJpaImpl;
+import com.sample.frame.be.dao.generic.IFrameBaseDao;
 import com.sample.frame.be.dao.generic.IGenericDao;
+import com.sample.frame.be.interceptor.AuthorizationInterceptor;
+import com.sample.frame.be.interceptor.LoggingInterceptor;
+import com.sample.frame.be.interceptor.TransactionInterceptor;
 import com.sample.frame.be.svc.generic.GenericSvcImpl;
 import com.sample.frame.core.entity.GenericEntity;
 import com.sample.frame.core.exception.GenericDaoException;
 import com.sample.frame.core.exception.GenericException;
 import com.sample.frame.core.exception.GenericSvcException;
+import com.sample.frame.core.logging.EnumLoggingMode;
+import com.sample.frame.core.logging.FrameBaseLogger;
+import com.sample.frame.core.svc.generic.IFrameBaseSvc;
 import com.sample.frame.core.svc.generic.IGenericSvc;
 import com.sample.frame.core.utils.FrameTools;
 
@@ -39,12 +54,18 @@ public class UserSvcTest {
 	@Deployment
 	public static Archive<?> creerTestArchive() {
 		return ShrinkWrap
-				.create(WebArchive.class, "test.war")
+				.create(WebArchive.class, "testUserSvc.war")
 				.addClasses(
+						IFrameBaseDao.class, IFrameBaseSvc.class, FrameBaseLogger.class,EnumLoggingMode.class,
 						IGenericDao.class, GenericDaoJpaImpl.class, 
 						IGenericSvc.class, GenericSvcImpl.class,  
 						GenericEntity.class,
 						GenericDaoException.class, GenericSvcException.class,GenericException.class,
+						BiblioDaoException.class, BiblioSvcException.class, BiblioBeConstant.class,
+						BiblioDaoMessageKey.class, BiblioSvcMessageKey.class,
+						BiblioDaoExceptionForTestTransact.class,
+						BiblioExceptionInterceptor.class, TransactionInterceptor.class,
+						LoggingInterceptor.class, AuthorizationInterceptor.class,
 						UserDaoImpl.class, IUserDao.class, UserSvcImpl.class,
 						IUserSvc.class, IUserSvcLocal.class, IUserSvcRemote.class,						
 						Tabuser.class, Tabclass.class, SvcTestResources.class, FrameTools.class)
@@ -58,6 +79,14 @@ public class UserSvcTest {
 	@Inject
 	IUserSvcLocal component;
 	
+	@Inject
+	IUserDao componentDao;
+	
+	@Before
+	public void setup() throws GenericDaoException {
+		String v$query = "delete from tabuser where codeUser like '%SVC%'";
+		componentDao.runUpdateQuery(v$query);		
+	}
 	
 	@Test
 	public void testcreer() throws GenericException {

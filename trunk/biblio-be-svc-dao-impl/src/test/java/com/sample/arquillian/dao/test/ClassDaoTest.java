@@ -11,20 +11,37 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.sample.arquillian.ClassDaoImpl;
 import com.sample.arquillian.IClassDao;
+import com.sample.arquillian.IUserDao;
+import com.sample.arquillian.UserDaoImpl;
 import com.sample.arquillian.dao.test.resource.DaoTestResources;
+import com.sample.arquillian.exceptions.BiblioDaoExceptionForTestTransact;
+import com.sample.arquillian.interceptors.BiblioExceptionInterceptor;
+import com.sample.biblio.constant.be.BiblioBeConstant;
+import com.sample.biblio.constant.be.BiblioDaoMessageKey;
+import com.sample.biblio.constant.be.BiblioSvcMessageKey;
 import com.sample.biblio.entity.sample.Tabclass;
 import com.sample.biblio.entity.sample.Tabuser;
+import com.sample.biblio.exceptions.BiblioDaoException;
+import com.sample.biblio.exceptions.BiblioSvcException;
 import com.sample.frame.be.dao.generic.GenericDaoJpaImpl;
+import com.sample.frame.be.dao.generic.IFrameBaseDao;
 import com.sample.frame.be.dao.generic.IGenericDao;
+import com.sample.frame.be.interceptor.AuthorizationInterceptor;
+import com.sample.frame.be.interceptor.LoggingInterceptor;
+import com.sample.frame.be.interceptor.TransactionInterceptor;
 import com.sample.frame.core.entity.GenericEntity;
 import com.sample.frame.core.exception.GenericDaoException;
 import com.sample.frame.core.exception.GenericException;
 import com.sample.frame.core.exception.GenericSvcException;
+import com.sample.frame.core.logging.EnumLoggingMode;
+import com.sample.frame.core.logging.FrameBaseLogger;
+import com.sample.frame.core.svc.generic.IFrameBaseSvc;
 import com.sample.frame.core.utils.FrameTools;
 
 @RunWith(Arquillian.class)
@@ -35,10 +52,17 @@ public class ClassDaoTest {
 		return ShrinkWrap
 				.create(WebArchive.class, "testClassDao.war")
 				.addClasses(
+						IFrameBaseDao.class, IFrameBaseSvc.class,FrameBaseLogger.class,EnumLoggingMode.class,
 						IGenericDao.class, 
 						GenericDaoJpaImpl.class,  GenericEntity.class,
 						GenericDaoException.class, GenericSvcException.class,GenericException.class,
+						BiblioDaoException.class, BiblioSvcException.class, BiblioBeConstant.class,
+						BiblioDaoMessageKey.class, BiblioSvcMessageKey.class,
+						BiblioDaoExceptionForTestTransact.class,
+						BiblioExceptionInterceptor.class, TransactionInterceptor.class,
+						LoggingInterceptor.class, AuthorizationInterceptor.class,
 						ClassDaoImpl.class, IClassDao.class,
+						UserDaoImpl.class, IUserDao.class,
 						Tabuser.class, Tabclass.class, DaoTestResources.class, FrameTools.class						
 						)
 				.addAsResource("META-INF/test-persistence.xml",
@@ -47,9 +71,16 @@ public class ClassDaoTest {
 				// Deploy our test datasource
 				.addAsWebInfResource("test-ds.xml", "test-ds.xml");
 	}
+	
 
 	@Inject
 	IClassDao component;
+	
+	@Before
+	public void setup() throws GenericDaoException {
+		String v$query = "delete from tabclass where codeClass like '%DAO%'";
+		component.runUpdateQuery(v$query);		
+	}
 	
 	
 	@Test
@@ -124,14 +155,13 @@ public class ClassDaoTest {
 		// Vérification du nombre de class trouvé
 		Assert.assertEquals(6, v$resultList.size());
 		
-		
-		
 	}
+	
 	
 	private Tabclass getEntity(String p$distinger){
 		Tabclass v$class = new Tabclass();
-		v$class.setCodeClass("C"+p$distinger + this.getClass().getSimpleName());
-		v$class.setName("LN " + p$distinger + this.getClass().getSimpleName());
+		v$class.setCodeClass("CDAO"+p$distinger + this.getClass().getSimpleName());
+		v$class.setName("LNDAO " + p$distinger + this.getClass().getSimpleName());
 		v$class.setCapacity(p$distinger.length());
 		
 		return v$class;
