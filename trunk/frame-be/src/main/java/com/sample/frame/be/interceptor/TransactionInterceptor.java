@@ -5,6 +5,7 @@ import javax.ejb.SessionContext;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
 
+import com.sample.frame.core.exception.GenericException;
 import com.sample.frame.core.exception.GenericSvcException;
 
 /**
@@ -21,7 +22,7 @@ public class TransactionInterceptor {
         Object result = null;
         try {
              result = context.proceed();
-        } catch (GenericSvcException sdr) {
+        } catch (GenericException sdr) {
              session.setRollbackOnly();  
              throw sdr;
         }
