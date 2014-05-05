@@ -13,6 +13,7 @@ import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -76,7 +77,7 @@ public class ClassSvcTest {
 						UserDaoImpl.class, IUserDao.class,
 						IClassSvc.class, IClassSvcLocal.class, IClassSvcRemote.class,	
 						Tabuser.class, Tabclass.class, SvcTestResources.class, FrameTools.class,
-						FrameRessourceLocator.class						
+						FrameRessourceLocator.class	, TestClassConstants.class				
 						)
 				.addAsResource("META-INF/test-persistence.xml",
 						"META-INF/persistence.xml")
@@ -100,8 +101,10 @@ public class ClassSvcTest {
 	 
 	@Before
 	public void setup() throws GenericDaoException {
-		String v$query = "delete from tabclass where codeClass like '%SVC%'";
-		componentDao.runUpdateQuery(v$query);		
+		if(TestClassConstants.runSetup){
+			String v$query = "delete from tabclass where codeClass like '%SVC%'";
+			componentDao.runUpdateQuery(v$query);
+		}
 	}
 	
 	
@@ -179,27 +182,46 @@ public class ClassSvcTest {
 	}
 	
 	@Test
-	public void testCreationPourTestRollbackTransac() throws GenericException{
-		Tabclass v$tabClass = getEntityTabClass("RollBackTransac");
+	public void testCreationPourTestRollbackTransac1() throws GenericException{
+		Tabclass v$tabClass = getEntityTabClass("RollBackTransac1");
 		String v$codeClass = v$tabClass.getCodeClass();
 		List<Tabuser> v$listUser = new ArrayList<Tabuser>();
-		v$listUser.add(getEntityTabUser("RollBackTransac01"));
-		v$listUser.add(getEntityTabUser("RollBackTransac02"));
-		v$listUser.add(getEntityTabUser("RollBackTransac03"));
-		v$listUser.add(getEntityTabUser("RollBackTransac04"));
+		v$listUser.add(getEntityTabUser("RollBackTransac101"));
+		v$listUser.add(getEntityTabUser("RollBackTransac102"));
+		v$listUser.add(getEntityTabUser("RollBackTransac103"));
+		v$listUser.add(getEntityTabUser("RollBackTransac104"));
+		
+		exception.expect(BiblioDaoExceptionForTestTransact.class);
+		Tabclass v$tabClassResult = component.creationPourTestRollbackTransac(v$tabClass, v$listUser);
+	}
+	
+	@Test
+	public void testCreationPourTestRollbackTransac2() throws GenericException{
+		Tabclass v$tabClass = getEntityTabClass("RollBackTransac2");
+		String v$codeClass = v$tabClass.getCodeClass();
+		List<Tabuser> v$listUser = new ArrayList<Tabuser>();
+		v$listUser.add(getEntityTabUser("RollBackTransac201"));
+		v$listUser.add(getEntityTabUser("RollBackTransac202"));
+		v$listUser.add(getEntityTabUser("RollBackTransac203"));
+		v$listUser.add(getEntityTabUser("RollBackTransac204"));
 		
 		try {
-		
-			exception.expect(BiblioDaoExceptionForTestTransact.class);
 			Tabclass v$tabClassResult = component.creationPourTestRollbackTransac(v$tabClass, v$listUser);
 			Assert.fail("Il devrait avoir une exception avant, cette instruction de devrait pas etre exécuté");
-		} catch (Exception e) {
-			Assert.assertTrue("Doit Etre de type BiblioDaoExceptionForTestTransact", BiblioDaoExceptionForTestTransact.class.isInstance(e));
+		} catch (BiblioDaoExceptionForTestTransact e) {
+			// s'assurer que la classe de code v$codeClass n'existe plus en base
+			Tabclass v$tabClassResult2 = component.rechercher(v$codeClass);
+			Assert.assertNull("Doit être null, car n'existe pas en base",v$tabClassResult2);
+			
+		} catch (Exception e){
+			Assert.fail("L'exception doit etre de type BiblioDaoExceptionForTestTransact  et non " + e.getClass().getSimpleName());
 		}
 		
+			
 		// s'assurer que la classe de code v$codeClass n'existe plus en base
-		Tabclass v$tabClassResult = component.rechercher(v$codeClass);
-		Assert.assertNull("Doit etre null",v$tabClassResult);
+		Tabclass v$tabClassResult2 = component.rechercher(v$codeClass);
+		Assert.assertNull("Doit être null, car n'existe pas en base",v$tabClassResult2);
+
 	}
 	
 	@Test
@@ -213,38 +235,59 @@ public class ClassSvcTest {
 		v$listUser.add(getEntityTabUser("CommitTransac03"));
 		v$listUser.add(getEntityTabUser("CommitTransac04"));
 		
-		exception.expect(BiblioDaoExceptionForTestTransact.class);
+		
 		Tabclass v$tabClassResult = component.creationPourTestCommitTransac(v$tabClass, v$listUser);
 			
 		// s'assurer que la classe de code v$codeClass n'existe plus en base
 		Tabclass v$tabClassResult2 = component.rechercher(v$codeClass);
-		Assert.assertNotNull("Doit pas etre null",v$tabClassResult2);
+		if(v$tabClassResult2 != null)
+		Assert.assertEquals("Doit etre Egale", v$codeClass, v$tabClassResult2.getCodeClass());
+		
 		
 	}
 	
 	@Test
-	public void testCreationPourTestExceptionInterceptor() throws GenericException{
+	public void testCreationPourTestExceptionInterceptor1() throws Exception{
 		
-		Tabclass v$tabClass = getEntityTabClass("ExceptionInterceptor");
+		Tabclass v$tabClass = getEntityTabClass("ExceptionInterceptor1");
 		String v$codeClass = v$tabClass.getCodeClass();
 		List<Tabuser> v$listUser = new ArrayList<Tabuser>();
-		v$listUser.add(getEntityTabUser("ExceptionInterceptor01"));
-		v$listUser.add(getEntityTabUser("ExceptionInterceptor02"));
-		v$listUser.add(getEntityTabUser("ExceptionInterceptor03"));
-		v$listUser.add(getEntityTabUser("ExceptionInterceptor04"));
+		v$listUser.add(getEntityTabUser("ExceptionInterceptor101"));
+		v$listUser.add(getEntityTabUser("ExceptionInterceptor102"));
+		v$listUser.add(getEntityTabUser("ExceptionInterceptor103"));
+		v$listUser.add(getEntityTabUser("ExceptionInterceptor104"));
 		
-		try {
+		exception.expect(BiblioSvcException.class);
+		Tabclass v$tabClassResult = component.creationPourTestExceptionInterceptor(v$tabClass, v$listUser);
+		Assert.fail("Il devrait avoir une exception avant, cette instruction de devrait pas etre exécuté");
 		
-			exception.expect(BiblioSvcException.class);
+	}
+	
+	@Test
+	public void testCreationPourTestExceptionInterceptor2() throws GenericException{
+		
+		Tabclass v$tabClass = getEntityTabClass("ExceptionInterceptor2");
+		String v$codeClass = v$tabClass.getCodeClass();
+		List<Tabuser> v$listUser = new ArrayList<Tabuser>();
+		v$listUser.add(getEntityTabUser("ExceptionInterceptor201"));
+		v$listUser.add(getEntityTabUser("ExceptionInterceptor202"));
+		v$listUser.add(getEntityTabUser("ExceptionInterceptor203"));
+		v$listUser.add(getEntityTabUser("ExceptionInterceptor204"));
+		
+		try {			
 			Tabclass v$tabClassResult = component.creationPourTestExceptionInterceptor(v$tabClass, v$listUser);
 			Assert.fail("Il devrait avoir une exception avant, cette instruction de devrait pas etre exécuté");
+		} catch(BiblioSvcException e){
+			// s'assurer que la classe de code v$codeClass n'existe plus en base
+			Tabclass v$tabClassResult2 = component.rechercher(v$codeClass);
+			Assert.assertNull("Doit etre null",v$tabClassResult2);			
 		} catch (Exception e) {
-			Assert.assertEquals("Doit Etre de type BiblioDaoExceptionForTestTransact", BiblioSvcException.class, e.getClass());
+			Assert.assertEquals("Doit Etre de type BiblioSvcException", BiblioSvcException.class, e.getClass());
 		}
 		
 		// s'assurer que la classe de code v$codeClass n'existe plus en base
-		Tabclass v$tabClassResult = component.rechercher(v$codeClass);
-		Assert.assertNull("Doit etre null",v$tabClassResult);
+		Tabclass v$tabClassResult2 = component.rechercher(v$codeClass);
+		Assert.assertNull("Doit etre null",v$tabClassResult2);
 		
 	}
 	

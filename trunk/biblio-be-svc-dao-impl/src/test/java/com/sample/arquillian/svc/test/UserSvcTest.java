@@ -68,7 +68,8 @@ public class UserSvcTest {
 						LoggingInterceptor.class, AuthorizationInterceptor.class,
 						UserDaoImpl.class, IUserDao.class, UserSvcImpl.class,
 						IUserSvc.class, IUserSvcLocal.class, IUserSvcRemote.class,						
-						Tabuser.class, Tabclass.class, SvcTestResources.class, FrameTools.class)
+						Tabuser.class, Tabclass.class, SvcTestResources.class,
+						FrameTools.class	, TestClassConstants.class)
 				.addAsResource("META-INF/test-persistence.xml",
 						"META-INF/persistence.xml")
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
@@ -84,8 +85,10 @@ public class UserSvcTest {
 	
 	@Before
 	public void setup() throws GenericDaoException {
+		if(TestClassConstants.runSetup){
 		String v$query = "delete from tabuser where codeUser like '%SVC%'";
 		componentDao.runUpdateQuery(v$query);		
+		}
 	}
 	
 	@Test

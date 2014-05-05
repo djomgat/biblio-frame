@@ -1,6 +1,8 @@
 package com.sample.arquillian;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 
@@ -12,7 +14,8 @@ import com.sample.frame.be.interceptor.TransactionInterceptor;
 import com.sample.frame.be.svc.generic.GenericSvcImpl;
 import com.sample.frame.core.logging.FrameBaseLogger;
 
-@Stateless
+@Stateless(name = "UserSvc", mappedName = "UserSvc")
+@TransactionManagement(TransactionManagementType.CONTAINER)
 @Interceptors({TransactionInterceptor.class,LoggingInterceptor.class,AuthorizationInterceptor.class})
 public class UserSvcImpl extends GenericSvcImpl<Tabuser, String> implements
 		IUserSvcLocal, IUserSvcRemote {

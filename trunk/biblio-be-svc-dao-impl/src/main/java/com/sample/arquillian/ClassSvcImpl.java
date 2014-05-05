@@ -3,6 +3,8 @@ package com.sample.arquillian;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 
@@ -17,7 +19,8 @@ import com.sample.frame.be.svc.generic.GenericSvcImpl;
 import com.sample.frame.core.exception.GenericDaoException;
 import com.sample.frame.core.logging.FrameBaseLogger;
 
-@Stateless
+@Stateless(name = "ClassSvc", mappedName = "ClassSvc")
+@TransactionManagement(TransactionManagementType.CONTAINER)
 @Interceptors({TransactionInterceptor.class,LoggingInterceptor.class,AuthorizationInterceptor.class,BiblioExceptionInterceptor.class})
 public class ClassSvcImpl extends GenericSvcImpl<Tabclass, String> implements
 		IClassSvcLocal, IClassSvcRemote {

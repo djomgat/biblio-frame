@@ -20,6 +20,7 @@ import com.sample.arquillian.UserDaoImpl;
 import com.sample.arquillian.dao.test.resource.DaoTestResources;
 import com.sample.arquillian.exceptions.BiblioDaoExceptionForTestTransact;
 import com.sample.arquillian.interceptors.BiblioExceptionInterceptor;
+import com.sample.arquillian.svc.test.TestClassConstants;
 import com.sample.biblio.constant.be.BiblioBeConstant;
 import com.sample.biblio.constant.be.BiblioDaoMessageKey;
 import com.sample.biblio.constant.be.BiblioSvcMessageKey;
@@ -60,7 +61,9 @@ public class UserDaoTest {
 						BiblioExceptionInterceptor.class, TransactionInterceptor.class,
 						LoggingInterceptor.class, AuthorizationInterceptor.class,
 						BiblioDaoException.class, BiblioSvcException.class, BiblioBeConstant.class,
-						BiblioDaoMessageKey.class, BiblioSvcMessageKey.class)
+						BiblioDaoMessageKey.class, BiblioSvcMessageKey.class
+						
+						, TestClassConstants.class)
 				.addAsResource("META-INF/test-persistence.xml",
 						"META-INF/persistence.xml")
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
@@ -73,8 +76,10 @@ public class UserDaoTest {
 	
 	@Before
 	public void setup() throws GenericDaoException {
+		if(TestClassConstants.runSetup){
 		String v$query = "delete from tabuser where codeUser like '%DAO%'";
-		component.runUpdateQuery(v$query);		
+		component.runUpdateQuery(v$query);
+		}
 	}
 	
 	
