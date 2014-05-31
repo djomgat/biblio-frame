@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui">
+	
+<f:view contentType="text/html">
+<h:head>
+	<title> Login Template (by PDT) </title>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+	<style type="text/css">
+	
+		html {
+			height: 100%;
+		}
+		body {
+			background: url(images/macback.png);			
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			font-family: geneva, arial, helvetica, sans-serif;
+			font-size:80%;
+		}		
+		#layout-table {
+			height: 100%;
+			width: 100%;
+			border-collapse: collapse;
+			/*text-align: center;*/
+		}				
+		#layout-td {
+			height: 100%;
+			padding: 0;
+			vertical-align: middle;
+		}
+		
+		div#message-container{
+			width: 600px;
+			margin: 0 auto;
+			text-align : center;
+		}
+								
+		div#login-container{
+			width: 400px;
+			margin: 0 auto;
+			/*border:1px dotted black;*/	/*border : width style color*/
+			/*text-align : center */
+		}
+		
+		div#locale-container{
+			width: 400px;
+			margin: 0 auto;
+			text-align : center;
+		}	
+		
+		.align-l{
+			text-align : left;
+		}	
+		
+		.align-r{
+			text-align : right;
+		}
+		
+		.align-c{
+			text-align : center;
+		}		
+		      
+	</style>
+</h:head>
+
+<h:body>
+
+	<table id="layout-table" >
+		<tr>
+			<td id="layout-td" >
+			<h:form id="login-form" >
+							
+				<div id="message-container" >
+					<p:messages  />			
+				</div>
+				
+											
+				<div id="login-container" >
+																									
+					<p:panel id="login-panel" header="#{msg['view.login.panel.header.label']}"  >
+					
+						<p:focus />
+						
+						<ui:param name="bean" value="#{loginController}" />
+						
+						<h:panelGrid border="0" width="100%"  >
+						
+							
+							<h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r" >
+								<p:outputLabel for="userlogin" value="#{msg['label.compte']}" />
+								<h:outputLink  value="javascript:void(0)" onclick="dlg.show()"> #{msg['view.login.label.compte-oublie']} </h:outputLink>  									
+							</h:panelGrid>						
+							<h:panelGroup>
+								<p:inputText id="userlogin" value="#{bean.userLogin}" required="true" style="width:100%" />
+								<p:watermark for="userlogin" value="#{msg['view.login.watermark.compte']}" />							
+							</h:panelGroup>
+							<p:message for="userlogin" />
+													
+							<br/>
+														
+							<h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r"  >
+								<p:outputLabel for="userpassword" value="#{msg['label.mot-de-passe']}" />
+								<h:outputLink  value="javascript:void(0)" onclick="dlg.show()">#{msg['view.login.label.mot-de-passe-oublie']}</h:outputLink>  																	
+							</h:panelGrid>													
+							<h:panelGroup>
+								<p:password id="userpassword" 	value="#{bean.userPassword}"  	required="true" feedback="true" style="width:100%" />
+								<p:watermark for="userpassword" value="#{msg['view.login.watermark.mot-de-passe']}"  />							
+							</h:panelGroup>
+							<p:message for="userpassword" />
+													
+							<p:separator  />
+
+							<h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r"  >
+								<p:commandButton value="#{msg['view.login.buton.login.label']}" action="#{bean.login}" update="login-form" />
+								<h:outputLink  value="javascript:void(0)" onclick="dlg.show()"> #{msg['view.login.label.pas-de-compte']} </h:outputLink>  																									
+							</h:panelGrid>													
+																											
+						</h:panelGrid>
+						
+						<p:dialog  widgetVar="dlg" header="#{msg['label.aide']}" width="400"  resizable="false" showEffect="clip" hideEffect="clip"   >
+						  ...
+						</p:dialog>						
+															
+					</p:panel>
+										
+				</div>
+
+				<div id="locale-container" >
+					<p:commandLink value="#{msg['locale.francais']}" action="#{localeController.changeLocale('fr')}" immediate="true"  update="@all" style="margin-right:20px;" />
+					<p:commandLink action="#{localeController.changeLocale}" immediate="true" update="@all"  >
+						<f:setPropertyActionListener target="#{localeController.locale}" value="en" />
+						#{msg['locale.anglais']}
+					</p:commandLink>									
+				</div>
+			
+			</h:form>						
+			</td>
+		</tr>
+	</table>
+			
+</h:body>
+
+</f:view>
+
+</html>
+
+	

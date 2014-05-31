@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:param name="dataManager" value="#{viewController.viewHelper.dataManager}" />
+		
+	<ui:insert name="dataTable">	
+
+    		<p:dataTable id="dataTable" widgetVar="dataTableWV" var="data" value="#{dataManager.data}" rowKey="#{data.id}"    
+    		 	paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+               rows="15" rowsPerPageTemplate="15,30,45,60,75,90" 
+               sortMode="multiple" filteredValue="#{dataManager.filteredDatas}"
+               selectionMode="single" selection="#{dataManager.selectedData}"  
+               resizableColumns="true" draggableColumns="true" > 
+	   		   
+	         <f:facet name="header">  		         			
+	         
+	         	<h:panelGrid columns="3"  columnClasses="align-l,align-c,align-r" width="100%" >
+
+		             <p:outputPanel>  
+		             	 <h:outputText value="Liste des donnees (#{dataManager.size} / #{dataManager.totalSize})"  />
+		             </p:outputPanel>				             		        			
+		         	
+		             <p:outputPanel>  
+		                 <p:inputText id="globalFilter" onkeyup="dataTableWV.filter()" style="width:160px;" />
+		                 <p:watermark for="globalFilter" value="Rechercher dans le tableau" />  
+		             </p:outputPanel>				             		        			
+	
+		             <p:outputPanel>  
+		             	 <p:selectOneMenu value="#{dataManager.paginationPage}"  >
+		             	 	<f:selectItems value="#{dataManager.paginationPageList}" />
+							<f:selectItem itemLabel="91 - 180" itemValue="2" />	
+							<f:selectItem itemLabel="181 - 270" itemValue="3" />	
+		             	 	<p:ajax listener="#{viewController.paginate}" update="dataTable" />								             	 									             	 	
+		             	 </p:selectOneMenu>
+		             </p:outputPanel>				             		        			
+	         			         	
+	         	</h:panelGrid>
+	                  			
+         	</f:facet>  
+
+			<ui:insert name="dataTableEvents" >
+				<p:ajax event="rowSelect"  />
+			</ui:insert>	
+
+			<ui:insert name="actionsColumns" /> 
+			
+			<ui:insert name="specificColumns"> 
+			
+		         <p:column sortBy="#{data.id}" filterBy="#{data.id}" filterMatchMode="contains" >  
+			        <f:facet name="header">  
+			             <h:outputText value="Id" />  
+			         </f:facet>		         		             
+		             <h:outputText value="#{data.id}" />   		               
+		         </p:column>  
+							
+			</ui:insert>
+
+			<ui:insert name="tecColumns" /> 
+										
+			<ui:insert name="commonColumns" /> 
+											  		   		         		         		   
+	     </p:dataTable>		
+	
+	</ui:insert>	
+	
+	
+	<ui:insert name="contextMenu"> 
+	     <p:contextMenu for="dataTable">  
+	     	 <p:menuitem value="Ajouter" 	action="#{viewController.create}"	icon="ui-icon-document" />  
+	     	 <p:menuitem value="Copier" 	action="#{viewController.copy}"		icon="ui-icon-copy"     />  	     	     	 	     
+	         <p:menuitem value="Consulter" 	action="#{viewController.display}"	icon="ui-icon-zoomin"  /> 
+	     	 <p:menuitem value="Modifier" 	action="#{viewController.modify}"	icon="ui-icon-pencil" />  	
+	     	 <p:menuitem value="Selectionner" 	action="#{viewController.select}"	icon="ui-icon-newwin" />  	     	          	     	      	          
+	         <p:menuitem value="Supprimer" 	action="#{viewController.delete}" 	icon="ui-icon-close" onclick="if(! confirm('Etes vous certain de vouloir effectuer cette operation ?','Confirmation')) return false;"	/>  
+	     	 <p:menuitem value="..." url="#"	 />  	     	          	     	      	          	  
+	     </p:contextMenu>
+	</ui:insert>	
+	
+	<ui:insert name="dialogDisplayData"> 
+	
+	</ui:insert>	
+	
+</ui:composition>

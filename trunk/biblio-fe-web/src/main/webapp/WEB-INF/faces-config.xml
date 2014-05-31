@@ -26,5 +26,25 @@
 
    <!-- Write your navigation rules here. You are encouraged to use CDI for 
       creating @Named managed beans. -->
+      
+       <navigation-rule>
+  <from-view-id>*</from-view-id>
+  <navigation-case>
+   <from-outcome>home</from-outcome>
+   <to-view-id>/ui/home.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <application>
+  <locale-config>
+   <default-locale>fr</default-locale>
+   <supported-locale>fr</supported-locale>
+   <supported-locale>en</supported-locale>
+  </locale-config>
+  <resource-bundle>
+   <base-name>com.sample.biblio.fe.web.resources.messages</base-name>
+   <var>msg</var>
+  </resource-bundle>
+ </application>
 
 </faces-config>

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+
+<h:head>
+	<f:facet name="first">
+    	<meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <title>Default CRUDE Layout Template (by lek@ms) </title>
+    </f:facet>
+			
+	<link type="text/css" rel="stylesheet" href="#{request.contextPath}/default-template/css/default.css" />
+								
+	<style type="text/css">
+	
+	</style>
+	
+	<ui:insert name="head" />
+			 
+</h:head>
+
+<h:body>
+	
+	<ui:insert name="body_content_before_layout" />
+	
+	<h:form id="form">
+	
+	<p:layout id="layout_full" fullPage="true"  >
+	
+	    <p:layoutUnit id="unit_north" position="north" >
+	    	<ui:insert name="unit_north_content" >
+	    		<h:outputText value="North Unit Content" />
+	    	</ui:insert>	    	
+	    </p:layoutUnit>
+	
+	    <p:layoutUnit id="unit_south" position="south" >
+	    	<ui:insert name="unit_south_content" >
+	    		<h:outputText value="South Unit Content" />
+	    	</ui:insert>		 
+		</p:layoutUnit>
+	
+	    <p:layoutUnit id="unit_west" position="west" resizable="true" collapsible="true" header="Navigateur !!" minSize="260" maxSize="350" >
+	    	<ui:insert name="unit_west_content" >
+	    		<h:outputText value="West Unit Content" />
+	    	</ui:insert>		 	        
+	    </p:layoutUnit>
+	
+	    <p:layoutUnit id="unit_east" position="east" rendered="#{(empty(unit_east_show)) ? true : unit_east_show }" >
+	    	<ui:insert name="unit_east_content" >
+	    		<h:outputText value="East Unit Content" />
+	    	</ui:insert>		 	        	        
+	    </p:layoutUnit>
+	
+		
+	    <p:layoutUnit id="unit_center" position="center" >
+	
+	        <p:layout>
+	
+	            <p:layoutUnit id="unit_center_north_content" position="north" rendered="#{(empty(unit_center_north_show)) ? true : unit_center_north_show }" >
+			    	<ui:insert name="unit_center_north_content" >
+	                	<h:outputText value="Middle top unit content." />
+			    	</ui:insert>		 	        	        	                
+	            </p:layoutUnit>
+	
+	            <p:layoutUnit position="south" rendered="#{(empty(unit_center_south_show)) ? true : unit_center_south_show }" >
+			    	<ui:insert name="unit_center_south_content" >
+	                	<h:outputText value="Middle south unit content." />
+			    	</ui:insert>		 	        	        	                	            
+	            </p:layoutUnit>
+	
+	            <p:layoutUnit position="west" rendered="#{(empty(unit_center_west_show)) ? true : unit_center_west_show }" >
+			    	<ui:insert name="unit_center_west_content" >
+	                	<h:outputText value="Middle left unit content." />
+			    	</ui:insert>		 	        	        	                	            	                
+	            </p:layoutUnit>
+	
+	            <p:layoutUnit position="east" collapsible="true" header="Actions !!" minSize="200" rendered="#{(empty(unit_center_east_show)) ? true : unit_center_east_show }"  >
+			    	<ui:insert name="unit_center_east_content" >
+	                	<h:outputText value="Middle right unit content." />
+			    	</ui:insert>		 	        	        	                	            	                	                
+	            </p:layoutUnit>
+	
+	            <p:layoutUnit position="center">
+	            
+			    	<ui:insert name="unit_center_center_content" >
+	                	<h:outputText value="Middle center unit content." />
+			    	</ui:insert>
+			    				    				    			 	        	        	                	            	                	                	                
+	            </p:layoutUnit>
+	
+	        </p:layout>
+	
+	    </p:layoutUnit>
+	    		
+	</p:layout>
+	
+	</h:form>
+	
+	<ui:insert name="body_content_after_layout" />
+		
+</h:body>
+
+</f:view>
+        
+ </html>

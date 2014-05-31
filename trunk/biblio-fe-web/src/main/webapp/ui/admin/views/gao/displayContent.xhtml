@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" >
+	
+	
+	<h:panelGrid width="100%" >
+			
+		<h:panelGrid width="100%" columns="2" >
+		
+			<h:panelGrid width="100%" columns="2" >
+
+				<p:outputLabel value="Code"  />
+				<p:inputText value="#{gaoController.viewHelper.entityToDisplay.wrappedEntity.CGao}" readonly="true" />
+	
+				<p:outputLabel value="Libelle"  />
+				<p:inputText value="#{gaoController.viewHelper.entityToDisplay.wrappedEntity.LGao}" readonly="true" style="width:80%" />
+																		
+			</h:panelGrid>
+	
+			<h:panelGrid width="100%" columns="2" >
+
+				<h:panelGroup rendered="false" >
+					<p:outputLabel value="Code"  />
+					<p:inputText value="#{wrapped.CGao}" readonly="true" />
+		
+					<p:outputLabel value="Libelle"  />
+					<p:inputText value="#{wrapped.LGao}" readonly="true" style="width:80%" />								
+				</h:panelGroup>
+										
+			</h:panelGrid>
+						
+		</h:panelGrid>
+			
+	</h:panelGrid>
+	
+</ui:composition>

@@ -1,0 +1,100 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/masterLayout.xhtml">
+	
+	
+	<ui:param name="viewHelper" value="#{viewController.viewHelper}" />
+	<ui:param name="templateDir" value="default-template" />
+	
+	
+	<ui:param name="unit_east_show" value="false" />	
+	<ui:param name="unit_center_west_show" value="false" />
+	<ui:param name="unit_center_south_show" value="false" />
+
+	<ui:define name="body_content_before_layout">
+		<ui:insert name="body_content_before_layout" />
+		
+		<ui:remove>
+			<ui:include src="../include/preferencePanel.xhtml" />	
+		</ui:remove>
+			
+		<ui:include src="../include/notificationBar.xhtml" />
+		<ui:include src="../include/growl.xhtml" />
+	</ui:define>
+		
+	<ui:define name="body_content_after_layout">
+		<ui:insert name="body_content_after_layout" />
+		<ui:include src="../include/progressStatus.xhtml" />		
+	</ui:define>
+	
+	<ui:define name="unit_north_content">
+		<ui:include src="../include/header.xhtml" />
+	</ui:define>
+	
+	<ui:define name="unit_south_content">
+		<ui:include src="../include/footer.xhtml" />	
+	</ui:define>
+	
+	<ui:define name="unit_west_content">
+		     	           		     		
+	    <table  style="width:100%; height:100%;" cellspacing="0" cellpadding="0"   >
+
+	    	<tr>
+	    		<td align="center" >
+	    			<ui:include src="../include/logo.xhtml" />						
+	    		</td>
+	    	</tr>
+	    	    
+	    	<tr>
+	    		<td valign="top" >
+	    			<ui:include src="../include/leftMenu.xhtml" />							    		 
+	    		</td>
+	    	</tr>
+	    	
+	    	<tr>
+	    		<td valign="bottom" > 
+	    			<ui:include src="../include/galleriaPub1.xhtml" />						
+	    		</td>
+	    	</tr>
+	    
+	    </table>  		
+	      		
+	</ui:define>	
+	
+	<ui:define name="unit_center_north_content">
+		<ui:include src="../include/viewHeader.xhtml" />		
+	</ui:define>
+	
+	<ui:define name="unit_center_east_content">
+		
+		<ui:insert name="unit_center_east_content_1">
+			Groupe actions 1
+			<p:separator />
+		</ui:insert>
+
+		<ui:insert name="unit_center_east_content_2">
+			Groupe actions 2
+			<p:separator />			
+		</ui:insert>
+
+		<ui:insert name="unit_center_east_content_3">
+			Groupe actions 3
+			<p:separator />			
+		</ui:insert>
+
+		<ui:insert name="unit_center_east_content_4">
+			Groupe actions 4
+			<p:separator />			
+		</ui:insert>
+
+		<ui:insert name="unit_center_east_content_5">
+			Groupe actions 5
+			<p:separator />			
+		</ui:insert>
+			
+	</ui:define>
+
+</ui:composition>
