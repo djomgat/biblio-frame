@@ -70,6 +70,19 @@
             <artifactId>hibernate-jpa-2.0-api</artifactId>
             <scope>provided</scope>
         </dependency>
+        
+            <!-- Import the JSF API, we use provided scope as the API is included in JBoss AS 7 -->
+      <dependency>
+         <groupId>org.jboss.spec.javax.faces</groupId>
+         <artifactId>jboss-jsf-api_2.1_spec</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      
+       <dependency>
+         <groupId>org.jboss.spec.javax.el</groupId>
+         <artifactId>jboss-el-api_2.2_spec</artifactId>
+         <scope>provided</scope>
+      </dependency>
 
         <!-- JSR-303 (Bean Validation) Implementation -->
         <!-- Provides portable constraints such as @Email -->
