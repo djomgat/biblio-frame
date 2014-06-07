@@ -3,47 +3,38 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	template="/default-template/templates/listViewTemplate.xhtml">
+	template="/default-template/templates/listViewTemplate.xhtml">	
 	
-	
-	<ui:param name="viewController" value="#{gaoController}" />
-	
-	<ui:define name="currentViewTitle" > Groupes Acces Objets (GAO) </ui:define>					
-	
+	<ui:param name="viewController" value="#{gaoController}" />	
+	<ui:define name="currentViewTitle" > Groupes Acces Objets (GAO) </ui:define>
 	<ui:define name="currentViewMenu">
 		<ui:include src="../gao/menu.xhtml" />
 	</ui:define>
 	
 	<ui:define name="standardFilter">
-
        	<h:panelGrid columns="4" width="100%" >
-       		
        		<h:outputLabel value="Code" />
        		<h:inputText id="code" value="#{criteria.wrappedEntity.CGao}"  />
 
        		<h:outputLabel value="Libelle" />
        		<h:inputText id="libelle" value="#{criteria.wrappedEntity.LGao}" />
-       		       		       					         	
        	</h:panelGrid>
-	
 	</ui:define>
 	
 	<ui:define name="specificColumns">
-	
-         <p:column sortBy="#{data.id}" filterBy="#{data.id}" filterMatchMode="contains" >  
+            <p:column sortBy="#{data.id}" filterBy="#{data.id}" filterMatchMode="contains" >  
 	        <f:facet name="header">  
 	             <h:outputText value="Code" />  
-	         </f:facet>		         		             
-             <h:outputText value="#{data.id}" />   		               
-         </p:column>  
+	        </f:facet>		         		             
+                <h:outputText value="#{data.id}" />   		               
+            </p:column>  
 
-         <p:column sortBy="#{data.wrappedEntity.LGao}" filterBy="#{data.wrappedEntity.LGao}" filterMatchMode="contains" >  
+            <p:column sortBy="#{data.wrappedEntity.LGao}" filterBy="#{data.wrappedEntity.LGao}" filterMatchMode="contains" >  
 	        <f:facet name="header">  
 	             <h:outputText value="Libelle" />  
-	         </f:facet>		         		             
-             <h:outputText value="#{data.wrappedEntity.LGao}" />   		               
-         </p:column>  
-	
+	        </f:facet>		         		             
+                <h:outputText value="#{data.wrappedEntity.LGao}" />   		               
+            </p:column>  	
 	</ui:define>
 
 	<ui:define name="actionsColumns">
@@ -56,12 +47,10 @@
 	
 	</ui:define>
 	
-	<ui:define name="dialogDisplayData"> 
-	
-		<p:dialog id="dialogDisplayData" header="Consultation" widgetVar="dialogDisplayDataWV" width="600"  >  
-			<ui:include src="../gao/displayContent.xhtml" />	
-		</p:dialog>
-				
+	<ui:define name="dialogDisplayData">	
+            <p:dialog id="dialogDisplayData" header="Consultation" widgetVar="dialogDisplayDataWV" width="600"  >  
+		<ui:include src="../gao/displayContent.xhtml" />	
+            </p:dialog>
 	</ui:define>	
 	
 </ui:composition>

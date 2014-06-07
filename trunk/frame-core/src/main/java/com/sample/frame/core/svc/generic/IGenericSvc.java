@@ -19,5 +19,4 @@ public interface IGenericSvc<U extends GenericEntity, PK extends Serializable> e
 	<T extends U>List<T> rechercherParCritere(final T p$critere) throws GenericException;
 
 	<T extends U>List<T> rechercherTout() throws GenericException;;
-
 }

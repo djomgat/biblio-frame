@@ -13,21 +13,21 @@ public class LocaleMessages {
 	
 
    /**
-    * M�thode d'obtention d'un message (param�tr�) configur� dans un fichier d'internationalisation
+    * M�thode d'obtention d'un message (paramétré) configuré dans un fichier d'internationalisation
     * 
-    * @param bundle1 	1er   Fichier de configuration de messages
-    * @param bundle2	2i�me Fichier de configuration de messages
+    * @param bundle1 	1er Fichier de configuration de messages
+    * @param bundle2	2ième Fichier de configuration de messages
     * @param resourceId	Identifiant du message
-    * @param locale		Locale � utiliser
-    * @param loader		ClassLoader
-    * @param params		Param�tres du message
+    * @param locale	Locale à utiliser
+    * @param loader	ClassLoader
+    * @param params	Paramètres du message
     * 
-    * @return			Message internationalis�
+    * @return		Message internationalisé
     */
    public static String getString(String bundle1, String bundle2, String resourceId, Locale locale, ClassLoader loader, Object... params) {
       
-	   // Ressource � retrouver
-	  String resource = null;
+    // Ressource � retrouver
+      String resource = null;
 	  
 	  // Fichier de config
       ResourceBundle bundle;
@@ -83,7 +83,7 @@ public class LocaleMessages {
    
    
    /**
-    * Retourne un template pour les messages non trouv�s via leur identifiant
+    * Retourne un template pour les messages non trouvés via leur identifiant
     * 
     * @param resourceId Identifiant du message
     * 

@@ -6,18 +6,12 @@
 	template="/default-template/templates/displayViewTemplate.xhtml">
 	
 	<ui:param name="viewController" value="#{gaoController}" />
-	
 	<ui:define name="currentViewTitle" > Groupes Acces Objets (GAO) </ui:define>					
-
 	<ui:define name="currentViewMenu">
 		<ui:include src="../gao/menu.xhtml" />
 	</ui:define>
-	
 	<ui:define name="currentViewDefaultContent" >  
-	
 		<ui:include src="../gao/displayContent.xhtml" />	
-
-	</ui:define>					
-	
+	</ui:define>
 
 </ui:composition>

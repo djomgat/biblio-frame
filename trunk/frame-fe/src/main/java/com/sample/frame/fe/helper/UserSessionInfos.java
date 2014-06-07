@@ -41,21 +41,18 @@ public class UserSessionInfos implements Serializable {
 	private String ipAdress;
 
 	/**
-	 * Navigateur utilis� (dans le cas des applications web)
+	 * Navigateur utilisé (dans le cas des applications web)
 	 */
 	private String browser;
-
 	
 	/**
-	 * Constructeur paar d�faut
+	 * Constructeur paar défaut
 	 */
 	public UserSessionInfos(){ 	}
-	
 	
 	public UserSessionInfos(String login){
 		this.setLogin(login);
 	}
-
 	
 	/**
 	 * @return the sessionId

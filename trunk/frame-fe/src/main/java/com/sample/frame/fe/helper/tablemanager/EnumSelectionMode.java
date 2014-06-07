@@ -3,10 +3,9 @@
  */
 package com.sample.frame.fe.helper.tablemanager;
 
-
 /**
- * Enum�ration des modes de s�lection
- * Exemple : Dans un tableau : s�lection multiple ou simple
+ * Enumération des modes de sélection dans un tableau
+ * Exemple : Dans un tableau : sélection multiple ou simple
  * 
  *
  */
@@ -26,8 +25,7 @@ public enum EnumSelectionMode {
 	 * Valeur 
 	 */
 	private final String value; 
-	
-	
+		
 	private EnumSelectionMode(String value){
 		this.value = value;
 	}

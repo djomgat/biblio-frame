@@ -4,7 +4,6 @@
 package com.sample.frame.core.exception;
 
 import java.util.MissingResourceException;
-
 import com.sample.frame.core.utils.FrameRessourceLocator;
 
 /**

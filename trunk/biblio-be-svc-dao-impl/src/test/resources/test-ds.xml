@@ -18,43 +18,26 @@
 	<!-- The datasource is bound into JNDI at this location. We reference this 
 		in META-INF/test-persistence.xml -->
 
-	<datasource jndi-name="java:jboss/datasources/MySqlDS"
-		pool-name="MySqlDS">
-
-		<connection-url>jdbc:mysql://localhost:3306/arquillian33
-		</connection-url>
-
-		<driver>mysql-connector-java-5.1.23.jar</driver>
-
-		<pool>
-
-			<min-pool-size>10</min-pool-size>
-
-			<max-pool-size>100</max-pool-size>
-
-			<prefill>true</prefill>
-
-		</pool>
-
-		<security>
-
-			<user-name>root</user-name>
-
-			<password>citech</password>
-
-		</security>
-
-
-	</datasource>
-
-	<drivers>
-
-		<driver name="com.mysql" module="com.mysql">
-			<xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource
-			</xa-datasource-class>
-		</driver>
-
-	</drivers>
+    <datasource jndi-name="java:jboss/datasources/MySqlDS" pool-name="MySqlDS">
+	<connection-url>jdbc:mysql://localhost:3306/arquillian</connection-url>
+            <driver>mysql-connector-java-5.1.23.jar</driver>
+            <pool>
+		<min-pool-size>10</min-pool-size>
+		<max-pool-size>100</max-pool-size>
+		<prefill>true</prefill>
+            </pool>
+            <security>
+                <user-name>root</user-name>
+                <password>M@nager</password>
+            </security>
+    </datasource>
+    <drivers>
+	<driver name="com.mysql" module="com.mysql">
+            <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource
+	    </xa-datasource-class>
+	</driver>
+    </drivers>  
+</datasources>        
 
 
 

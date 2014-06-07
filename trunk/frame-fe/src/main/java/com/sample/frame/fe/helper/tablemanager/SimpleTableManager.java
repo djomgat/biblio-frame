@@ -5,38 +5,32 @@ package com.sample.frame.fe.helper.tablemanager;
 
 import java.util.Collection;
 
-
-
-
-
 /**
- * Classe basique de gestion des tables / tableaux de donn�es 
+ * Classe basique de gestion des tables / tableaux de données 
  * 
  *
  */
 public class SimpleTableManager<E> extends AbstractListTableManager<E> {
-	
 	
 /******************************************************************************************************************************************************************************
  * 
  * Constructor 
  * 
  ******************************************************************************************************************************************************************************/
-
 	/**
-	 * Constructeur par d�faut
+	 * Constructeur par défaut
 	 */
 	public SimpleTableManager(){
 		super();
 	}
 	
 	/**
-	 * Constructeur param�tr�
+	 * Constructeur paramétré
 	 * 
-	 * @param data Donn�es
+	 * @param data Données
 	 */
 	public SimpleTableManager(Collection<E> data){		
 		super(data);
 	}
-
+        
 }

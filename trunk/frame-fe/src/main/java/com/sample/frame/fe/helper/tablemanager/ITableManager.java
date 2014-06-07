@@ -19,16 +19,14 @@ public interface ITableManager<E> {
 	 * 
 	 * @return
 	 */
-	public List<E> getData();
-	
+	public List<E> getData();	
 	
 	/**
 	 * 
-	 * @param entity
+	 * @param e entity
 	 * @return
 	 */
-	public boolean contains(E e);
-	
+	public boolean contains(E e);	
 	
 	/**
 	 * 
@@ -60,19 +58,17 @@ public interface ITableManager<E> {
 
 		
 	/**
-	 * Retourne le nombre de donn�es / d'entit�s manag�es
+	 * Retourne le nombre de données / d'entités managées
 	 * 
 	 * @return
 	 */
 	public int getSize();
-
 	
 	/**
 	 * 
 	 * @param e
 	 */
 	public void setSelectedData(E e);
-
 	
 	/**
 	 * 
@@ -92,30 +88,26 @@ public interface ITableManager<E> {
 	 * @return
 	 */
 	public List<E> getSelectedDatas();
-	
-	
+		
 	/**
 	 * 
 	 * @return
 	 */
 	public E getFirst();
-	
-	
+		
 	/**
 	 * 
 	 * @return
 	 */
 	public E getLast();
-	
-	
+		
 	/**
 	 * 
 	 * @param e
 	 * @return
 	 */
 	public E getNext(E e);
-	
-	
+		
 	/**
 	 * 
 	 * @param e
@@ -128,7 +120,6 @@ public interface ITableManager<E> {
 	 * @param totalSize
 	 */
 	public void setPaginationInfos(long totalSize);
-
 	
 	/**
 	 * 
@@ -136,15 +127,13 @@ public interface ITableManager<E> {
 	 * @param pasPagination
 	 */
 	public void setPaginationInfos(long totalSize, int pasPagination);
-
 	
 	/**
 	 * 
 	 * @param paginationStep
 	 */
 	public void setPaginationStep(int paginationStep);
-	
-	
+		
 	/**
 	 * 
 	 * @return
@@ -168,8 +157,7 @@ public interface ITableManager<E> {
 	 * @param totalSize
 	 */
 	public void setTotalSize(long totalSize);
-	
-	
+		
 	/**
 	 * 
 	 * @return
@@ -181,22 +169,19 @@ public interface ITableManager<E> {
 	 * @return
 	 */
 	public long getOffset();
-	
-	
+		
 	/**
 	 * 
 	 * @param selectionMode
 	 */
 	public void setSelectionMode(String selectionMode);
-	
-	
+		
 	/**
 	 * 
 	 * @return selectionMode
 	 */
 	public String getSelectionMode();
-	
-	
+		
 	/**
 	 * 
 	 * @return
@@ -209,8 +194,7 @@ public interface ITableManager<E> {
 	 * @return
 	 */
 	public int getIndexOf(E e);
-	
-	
+		
 	/**
 	 * 
 	 */

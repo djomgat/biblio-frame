@@ -6,18 +6,12 @@ package com.sample.frame.fe.helper.tablemanager;
 import java.util.Collection;
 import java.util.List;
 
-
-
-
-
-
 /**
- * Classe de gestion des tables / tableaux de donn�es sp�cialis�e pour PrimeFaces
+ * Classe de gestion des tables / tableaux de données spécialisée pour PrimeFaces
  * 
  */
 public class PrimeFacesTableManager<E> extends AbstractListTableManager<E> {
 	
-
 /******************************************************************************************************************************************************************************
  * 
  * Properties 
@@ -28,15 +22,12 @@ public class PrimeFacesTableManager<E> extends AbstractListTableManager<E> {
 	 * Liste des donn�es filtr�es
 	 */
 	protected List<E> filteredDatas;
-	
-	
-	
+		
 /******************************************************************************************************************************************************************************
  * 
  * Constructor 
  * 
  ******************************************************************************************************************************************************************************/
-
 	/**
 	 * Constructeur par d�faut
 	 */
@@ -52,7 +43,6 @@ public class PrimeFacesTableManager<E> extends AbstractListTableManager<E> {
 	public PrimeFacesTableManager(Collection<E> data){		
 		super(data);
 	}
-
 	
 	
 /******************************************************************************************************************************************************************************
@@ -60,8 +50,6 @@ public class PrimeFacesTableManager<E> extends AbstractListTableManager<E> {
  * Getter & Setter & Overriden Methods 
  * 
  ******************************************************************************************************************************************************************************/
-
-	
 	/**
 	 * @return the filteredDatas
 	 */

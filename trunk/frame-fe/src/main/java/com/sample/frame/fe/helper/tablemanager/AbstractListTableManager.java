@@ -10,9 +10,8 @@ import java.util.List;
 import javax.faces.model.SelectItem;
 
 
-
 /**
- * Classe abstraite de gestion des tables / tableaux de donn�es 
+ * Classe abstraite de gestion des tables / tableaux de données 
  * 
  */
 public  class AbstractListTableManager<E> implements ITableManager<E> {
@@ -23,9 +22,8 @@ public  class AbstractListTableManager<E> implements ITableManager<E> {
  * 
  ******************************************************************************************************************************************************************************/
 
-
 	/**
-	 * Liste des donn�es
+	 * Liste des données
 	 */
 	protected List<E> data = new ArrayList<E>();
 		
@@ -35,12 +33,12 @@ public  class AbstractListTableManager<E> implements ITableManager<E> {
 	protected List<E> selectedDatas = new ArrayList<E>();
 
 	/**
-	 * Donn�e s�lectionn�
+	 * Donnée sélectionnée
 	 */
 	protected E selectedData;
 	
 	/**
-	 * Mode de s�lection (simple ou multiple)
+	 * Mode de sélection (simple ou multiple)
 	 */
 	protected String selectionMode = EnumSelectionMode.SINGLE.getValue();
 	
@@ -50,7 +48,7 @@ public  class AbstractListTableManager<E> implements ITableManager<E> {
 	protected int paginationStep = 100;
 	
 	/**
-	 * N� de Page de la pagination
+	 * N° de Page de la pagination
 	 */
 	protected int paginationPage = 1;
 
@@ -64,14 +62,13 @@ public  class AbstractListTableManager<E> implements ITableManager<E> {
 	 * Nombre total des donn�es sans pagination
 	 */
 	protected long totalSize;
-
 	
 /******************************************************************************************************************************************************************************
  * 
  * Constructor 
  * 
  ******************************************************************************************************************************************************************************/
-		
+	
 	/**
 	 * Constructeur par d�faut
 	 */
@@ -80,15 +77,13 @@ public  class AbstractListTableManager<E> implements ITableManager<E> {
 	}
 	
 	/**
-	 * Constructeur param�tr�
+	 * Constructeur paramétré
 	 * 
-	 * @param data Donn�es
+	 * @param data Données
 	 */
 	public AbstractListTableManager(Collection<E> data){		
 		this.setData(data);
-	}
-
-	
+	}	
 	
 /******************************************************************************************************************************************************************************
  * 
@@ -96,24 +91,21 @@ public  class AbstractListTableManager<E> implements ITableManager<E> {
  * 
  ******************************************************************************************************************************************************************************/
 		
-		
 	@Override
 	public void setData(Collection<E> data) {	
 		
 		data = (data == null)?  new ArrayList<E>() : data;		
 		this.data = new ArrayList<E>(data);	
 	}
-
 	
 	@Override
 	public List<E> getData() {
 		return this.data;
 	}
 
-
 	@Override
 	public boolean contains(E e) {
-		
+
 		// Index 
 		int index = this.getIndexOf(e);
 		
@@ -151,18 +143,15 @@ public  class AbstractListTableManager<E> implements ITableManager<E> {
 		return this.selectedData;
 	}
 	
-	
 	@Override
 	public void setSelectedDatas(Collection<E> data){
 		this.selectedDatas = new ArrayList<E>(data);
 	}
 
-	
 	@Override
 	public List<E> getSelectedDatas() {
 		return this.selectedDatas;
 	}
-	
 	
 	@Override
 	public E getFirst() {
@@ -330,7 +319,6 @@ public  class AbstractListTableManager<E> implements ITableManager<E> {
 		this.paginationPageList = paginationPageList;
 	}
 	
-	
 	/**
 	 * Contruction de la liste de pagination <br/>
 	 * La premi�re page commence � 1
@@ -369,17 +357,14 @@ public  class AbstractListTableManager<E> implements ITableManager<E> {
 		long lastPage = pages - 1;
 		
 		if(lastPage >= 0 ){
-			
-			// D�finition de la plage
+			// Définition de la plage
 			plage = "" + ((lastPage *paginationStep) + 1) + " - " + totalSize;
 			
-			// Cr�ation de l'item
+			// Création de l'item
 			item = new SelectItem("" + (lastPage+1) , plage);		
 			paginationList.add(item);
 		}
-		
 		return paginationList;
 	}
-	
-	
+
 }

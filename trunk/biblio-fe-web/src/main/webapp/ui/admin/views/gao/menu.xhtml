@@ -2,14 +2,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui" >
-	
+	xmlns:p="http://primefaces.org/ui" >	
 
-	<p:submenu label="GAO"  >  
-	
-		<p:column> 			 
-			<p:submenu label="Actions de base">  
-				<p:menuitem value="Ajouter" 	action="#{viewController.create}"	icon="ui-icon-document"  />  				
+	<p:submenu label="GAO"  >	
+            <p:column> 			 
+		<p:submenu label="Actions de base">  
+			<p:menuitem value="Ajouter" action="#{viewController.create}" icon="ui-icon-document"  />  				
 				<p:menuitem value="Copier" 		action="#{viewController.copy}"		icon="ui-icon-copy"  />
 				<p:menuitem value="Consulter" 	action="#{viewController.display}"	icon="ui-icon-zoomin"  />
 				<p:menuitem value="Modifier" 	action="#{viewController.modify}"	icon="ui-icon-pencil"  />

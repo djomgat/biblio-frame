@@ -101,8 +101,6 @@
     <dependencyManagement>
         <dependencies>
 
-           
-
             <!-- JBoss distributes a complete set of Java EE 6 APIs including 
                 a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or 
                 a collection) of artifacts. We use this here so that we always get the correct 

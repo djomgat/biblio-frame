@@ -1,41 +1,33 @@
 package com.sample.frame.fe.exception;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 /**
  * Classe de base des exceptions niveau front-end. Classe parente de toutes les exceptions front-end
  *
  */
 public class FrontEndException extends Exception{
 	
-
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 	
-
-	public FrontEndException(){}
+    public FrontEndException(){}
     
     /**
-	 * @param msg : message d'exception
-	 */    
+    * @param msg : message d'exception
+    */    
     public FrontEndException(String msg){
         super(msg);
     }
      
     /**
-	 * @param th  : cause
-	 */
+    * @param th  : cause
+    */
     public FrontEndException(Throwable th){
         super(th);
     }    
     
-	/**
-	 * @param msg : message d'exception
-	 * @param th  : cause
-	 */
+    /**
+    * @param msg : message d'exception
+    * @param th  : cause
+    */
     public FrontEndException(String msg, Throwable th){
         super(msg,th);
     }

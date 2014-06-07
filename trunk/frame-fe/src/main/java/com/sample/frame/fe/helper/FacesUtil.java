@@ -7,63 +7,58 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-
 /**
- * Ensemble de m�thodes utilitaires pour JSF <br>
- * Toutes les m�thodes d�finies dans cette classe sont des m�thodes statiques 
+ * Ensemble de méthodes utilitaires pour JSF <br>
+ * Toutes les méthodes définies dans cette classe sont des méthodes statiques 
  *  
  *
  */
 public class FacesUtil {
-
 	
 	/**
-	 * R�cup�ration d'un param�tre dans le Scope Request 
+	 * Récupération d'un paramètre dans le Scope Request 
 	 * 
 	 * @param name	Nom du param�tre 
-	 * @return		Le param�tre concern� ou <code>null</code> s'il n'existe pas
+	 * @return	Le param�tre concern� ou <code>null</code> s'il n'existe pas
 	 */
 	 public static String getRequestParameter(String name) {
 		 return (String) FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get(name);
 	 }
-
 	 
 	 /**
-	  * R�cuperation d'un objet dans l'Ent�te de la requete 
+	  * Récupération d'un objet dans l'Entête de la requête 
 	  * 
-	  * @param key	Cl� identifiant l'objet
-	  * @return		L'objet concern� ou <code>null</code> s'il n'existe pas
+	  * @param key	Clé identifiant l'objet.
+	  * @return	L'objet concern� ou <code>null</code> s'il n'existe pas.
 	  */
 	  public static Object getHeaderMapValue(String key) {
 	        return FacesContext.getCurrentInstance().getExternalContext().getRequestHeaderMap().get(key);
 	    }	 
-	 
 
 	  /**
-	  * Recup�ration du Scope Session 
+	  * Recupération du Scope Session 
 	  * 
-	  * @return		Le Map contenant les donn�es de niveau session
+	  * @return	Le Map contenant les donn�es de niveau session
 	  */
 	 public static Map<String,Object> getSessionMap() {
 	        return FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 	    }	  
 	  
 	 /**
-	  * Recup�ration d'un objet  dans le scope Session 
+	  * Recupération d'un objet dans le scope Session 
 	  * 
-	  * @param key	Cl� identifiant l'objet 
-	  * @return		L'objet concern� ou <code>null</code> s'il n'existe pas
+	  * @param key	Clé identifiant l'objet 
+	  * @return	L'objet concern� ou <code>null</code> s'il n'existe pas
 	  */
 	 public static Object getSessionMapValue(String key) {
 	        return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(key);
 	    }
-	   
-	  
+	   	  
 	 /**
 	  * Injection d'un objet dans le scope Session
 	  * 
-	  * @param key		Cl� identifiant l'objet 
-	  * @param value	Valeur associ�e � la cl�
+	  * @param key		Clé identifiant l'objet.
+	  * @param value	Valeur associée à la clé.
 	  */
 	 public static void setSessionMapValue(String key, Object value) {
 	        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(key, value);
@@ -92,33 +87,31 @@ public class FacesUtil {
 	 /**
 	  * Injection d'un objet dans le scope Application 
 	  * 
-	  * @param key		Cl� identifiant l'objet 
-	  * @param value	Valeur associ�e � la cl� 
+	  * @param key      Clé identifiant l'objet 
+	  * @param value    Valeur associée à la clé 
 	  */
 	 public static void setApplicationMapValue(String key, Object value) {
 	        FacesContext.getCurrentInstance().getExternalContext().getApplicationMap().put(key, value);
 	    }
-	 	  
-	 
+	 	  	 
 	/**
-	 * Recup�ration d'un param�tre dans un objet �v�nement <code>ActionEvent</code>
+	 * Récupération d'un paramètre dans un objet évènement <code>ActionEvent</code>
 	 * 
-	 * @param event	Ev�nement 
-	 * @param name	Nom du param�tre
-	 * @return		L'attribut associ�
+	 * @param event	Evènement 
+	 * @param name	Nom du paramètre
+	 * @return	L'attribut associé
 	 */
 	 public static Object getActionAttribute(ActionEvent event, String name) {
 		 return event.getComponent().getAttributes().get(name);
 	 }
-	  
-	  
+	  	  
 	/**
-	 * Recherche et retourne une instance d'un bean manag� � partir de son nom<br>
-	 * Si ce dernier n'existe pas, il sera cr��
+	 * Recherche et retourne une instance d'un bean managé à partir de son nom<br>
+	 * Si ce dernier n'existe pas, il sera créé
 	 * 
-	 * @param beanName	Nom du bean manag�
-	 * @param beanClass	Classe du bean manag�
-	 * @return			Instance du bean manag� typ�
+	 * @param beanName	Nom du bean managé
+	 * @param beanClass	Classe du bean managé
+	 * @return		Instance du bean managé typé
 	 */
 	public static <T> T findManagedBean(String beanName, Class<T> beanClass){
 		
@@ -126,29 +119,24 @@ public class FacesUtil {
 		
 		return beanClass.cast(context.getApplication().evaluateExpressionGet(context, "#{" + beanName + "}", beanClass));
 	}
-	
-	
+		
 	/**
-	 * Recherche et retourne une instance d'un bean manag� � partir de son nom<br>
-	 * Si ce dernier n'existe pas, il sera cr��
+	 * Recherche et retourne une instance d'un bean managé à partir de son nom<br>
+	 * Si ce dernier n'existe pas, il sera créé.
 	 * 
-	 * @param beanName	Nom du bean manag�
-	 * @return			Instance du bean manag� non typ�
+	 * @param beanName	Nom du bean managé
+	 * @return		Instance du bean managé non typé.
 	 */	
 	public static Object findManagedBean(String beanName){
-		
 		FacesContext context = FacesContext.getCurrentInstance();
-		
 		return context.getApplication().evaluateExpressionGet(context, "#{" + beanName + "}", Object.class);
 	}
-	
-	
-	
+		
 	/***
-	 * Recherche du nom ou de la cl� d'une instance d'un bean manag� 
+	 * Recherche du nom ou de la clé d'une instance d'un bean managé 
 	 * 
 	 * @param bean	Nom du bean 
-	 * @return		Le nom du bean ou <code>null</code> s'il n'existe pas
+	 * @return	Le nom du bean ou <code>null</code> s'il n'existe pas
 	 */
 	public static String findManagedBeanName(Object bean) {
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
@@ -197,66 +185,62 @@ public class FacesUtil {
 	  * 
 	  * 
 	  * @param id		Id du composant graphique affichant le message 
-	  * @param summary	Ent�te du message 
-	  * @param detail	D�tails du message 
-	  * @param severity	S�v�rit� du message
+	  * @param summary	Entête du message 
+	  * @param detail	Détails du message 
+	  * @param severity	Sévérité du message
 	  */
 	public static void addMessage(String id,String summary,String detail,FacesMessage.Severity severity){
        
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-       FacesMessage facesMessage = new FacesMessage();
-       facesMessage.setSeverity(severity);
-       facesMessage.setSummary(summary);
-       facesMessage.setDetail(detail);
-       facesContext.addMessage(id, facesMessage);
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            FacesMessage facesMessage = new FacesMessage();
+            facesMessage.setSeverity(severity);
+            facesMessage.setSummary(summary);
+            facesMessage.setDetail(detail);
+            facesContext.addMessage(id, facesMessage);
 	}		
 	
 	/**
-	 * Ajout d'un message de s�v�rit� INFO
+	 * Ajout d'un message de sévérité INFO
 	 * 
 	 * @param id		Id du composant graphique affichant le message  
-	 * @param summary	Ent�te du message 
-	 * @param detail	D�tails du message 
+	 * @param summary	Entéte du message 
+	 * @param detail	Détails du message 
 	 */
 	public static void addInfoMessage(String id, String summary,String detail){
-        
-        addMessage(id, summary, detail, FacesMessage.SEVERITY_INFO);
+                addMessage(id, summary, detail, FacesMessage.SEVERITY_INFO);
 	}	
 	
 	/**
-	 * Ajout d'un message de s�v�rit� WARNING
+	 * Ajout d'un message de sévérité WARNING
 	 * 
 	 * @param id		Id du composant graphique affichant le message  
-	 * @param summary	Ent�te du message 
-	 * @param detail	D�tails du message 
+	 * @param summary	Entêtte du message 
+	 * @param detail	Détails du message 
 	 */
 	public static void addWarnMessage(String id, String summary,String detail){
-        
-        addMessage(id, summary, detail, FacesMessage.SEVERITY_WARN);
+                addMessage(id, summary, detail, FacesMessage.SEVERITY_WARN);
 	}
 	
 	/***
-	 * Ajout d'un message de s�v�rit� ERROR
+	 * Ajout d'un message de sévérité ERROR
 	 * 
 	 * @param id		Id du composant graphique affichant le message 
-	 * @param summary	Ent�te du message 
-	 * @param detail	D�tails du message 
+	 * @param summary	Entête du message 
+	 * @param detail	Détails du message 
 	 */
 	public static void addErrorMessage(String id, String summary,String detail){
-        
-        addMessage(id, summary, detail, FacesMessage.SEVERITY_ERROR);
+                addMessage(id, summary, detail, FacesMessage.SEVERITY_ERROR);
 	}	
 
 	/**
-	 * Ajout d'un message de s�v�rit� FATAL
+	 * Ajout d'un message de sévérité FATAL
 	 * 
 	 * @param id		Id du composant graphique affichant le message 
-	 * @param summary	Ent�te du message 
-	 * @param detail	D�tails du message 
+	 * @param summary	Entête du message 
+	 * @param detail	Détails du message 
 	 */
 	public static void addFatalMessage(String id, String summary,String detail){
-        
-        addMessage(id, summary, detail, FacesMessage.SEVERITY_FATAL);
+                addMessage(id, summary, detail, FacesMessage.SEVERITY_FATAL);
 	}
 		
 }

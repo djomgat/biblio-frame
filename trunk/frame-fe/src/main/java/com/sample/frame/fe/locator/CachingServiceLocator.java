@@ -1,6 +1,5 @@
 package com.sample.frame.fe.locator;
 
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,8 +13,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import com.sample.frame.fe.exception.ServiceLocatorException;
-
-
 
 /**
  * Classe de localisation des services et ressources
@@ -172,4 +169,3 @@ public class CachingServiceLocator implements IServiceLocator {
 	}
   
 }
-
