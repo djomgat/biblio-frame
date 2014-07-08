@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="displayClass::#ui#biblio#views#crude#displayClass.xhtml"
+    NAME="output" PATH="/ui/biblio/views/crude/displayClass.xhtml"
+    TARGET="rules:#ui#biblio#views#crude#displayClass.xhtml"
+    TITLE="displayClass" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="editClass::#ui#biblio#views#crude#editClass.xhtml"
+    NAME="output1" PATH="/ui/biblio/views/crude/editClass.xhtml"
+    TARGET="rules:#ui#biblio#views#crude#editClass.xhtml"
+    TITLE="editClass" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listClass::#ui#biblio#views#crude#listClass.xhtml"
+    NAME="output2" PATH="/ui/biblio/views/crude/listClass.xhtml"
+    TARGET="rules:#ui#biblio#views#crude#listClass.xhtml"
+    TITLE="listClass" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="displayUser::#ui#biblio#views#crude#displayUser.xhtml"
+    NAME="output3" PATH="/ui/biblio/views/crude/displayUser.xhtml"
+    TARGET="rules:#ui#biblio#views#crude#displayUser.xhtml"
+    TITLE="displayUser" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="editUser::#ui#biblio#views#crude#editUser.xhtml" NAME="output4"
+    PATH="/ui/biblio/views/crude/editUser.xhtml"
+    TARGET="rules:#ui#biblio#views#crude#editUser.xhtml"
+    TITLE="editUser" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listUser::#ui#biblio#views#crude#listUser.xhtml" NAME="output5"
+    PATH="/ui/biblio/views/crude/listUser.xhtml"
+    TARGET="rules:#ui#biblio#views#crude#listUser.xhtml"
+    TITLE="listUser" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ui#biblio#views#crude#editUser.xhtml"
+  PATH="/ui/biblio/views/crude/editUser.xhtml" SHAPE="304,641,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ui#biblio#views#crude#listClass.xhtml"
+  PATH="/ui/biblio/views/crude/listClass.xhtml" SHAPE="304,417,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ui#biblio#views#crude#listUser.xhtml"
+  PATH="/ui/biblio/views/crude/listUser.xhtml" SHAPE="304,753,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ui#biblio#views#crude#displayClass.xhtml"
+  PATH="/ui/biblio/views/crude/displayClass.xhtml" SHAPE="304,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ui#biblio#views#crude#editClass.xhtml"
+  PATH="/ui/biblio/views/crude/editClass.xhtml" SHAPE="304,305,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ui#biblio#views#crude#displayUser.xhtml"
+  PATH="/ui/biblio/views/crude/displayUser.xhtml" SHAPE="304,529,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>
