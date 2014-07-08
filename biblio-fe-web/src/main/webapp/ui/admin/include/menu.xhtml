@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" >
+	
+	<p:submenu label="Administration" >  
+		<p:column> 			 
+			<p:submenu label="Securite" >  
+				<p:menuitem value="Assignataires" action="#{asgController.navigateToLocalHomeView}"  />  							
+				<p:menuitem value="Droits" url="#" disabled="true" />  				
+				<p:menuitem value="GAO" action="#{gaoController.navigateToLocalHomeView}"  />  
+				<p:menuitem value="Perimetres d'action" url="#" disabled="true" />  				
+				<p:menuitem value="Permissions" url="#" disabled="true" />  					
+				<p:menuitem value="Roles" action="#{rolController.navigateToLocalHomeView}"  /> 
+				<p:menuitem value="Utilisateurs" url="#" disabled="true" />  					
+			</p:submenu>    
+		</p:column>  
+	
+		<p:column>  		
+			<p:submenu label="Configuration">  
+				<p:menuitem value="Calendrier Systeme" url="#" disabled="true" /> 
+				<p:menuitem value="Etats generiques" url="#" disabled="true" /> 
+				<p:menuitem value="Enumerations" url="#" disabled="true" /> 
+				<p:menuitem value="Parametres des etats" url="#" disabled="true" /> 
+				<p:menuitem value="Types d'enumeration" url="#" disabled="true" /> 
+				<p:menuitem value="Types de pieces" url="#" disabled="true" />  
+			</p:submenu>  
+		
+			<p:submenu label="Consoles">  
+				<p:menuitem value="Orchestration" url="#" disabled="true" />  
+				<p:menuitem value="Regles metiers" url="#" disabled="true" />  
+			</p:submenu>  
+		</p:column>  
+	</p:submenu>	
+
+</ui:composition>

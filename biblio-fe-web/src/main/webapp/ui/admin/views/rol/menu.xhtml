@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" >
+	
+
+	<p:submenu label="Roles"  >  
+	
+		<p:column> 			 
+			<p:submenu label="Actions de base">  
+				<p:menuitem value="Ajouter" 	action="#{viewController.create}"	icon="ui-icon-document"  />  				
+				<p:menuitem value="Copier" 		action="#{viewController.copy}"		icon="ui-icon-copy"  />
+				<p:menuitem value="Consulter" 	action="#{viewController.display}"	icon="ui-icon-zoomin"  />
+				<p:menuitem value="Modifier" 	action="#{viewController.modify}"	icon="ui-icon-pencil"  />
+				<p:menuitem value="Selectionner" action="#{viewController.select}"	icon="ui-icon-newwin"  />					
+				<p:menuitem value="Supprimer" 	action="#{viewController.delete}" 	icon="ui-icon-close" onclick="if(! confirm('Etes vous certain de vouloir effectuer cette operation ?','Confirmation')) return false;"  />					
+				<p:menuitem value="..." url="#"  />
+			</p:submenu> 											   
+		</p:column>  
+	
+		<p:column rendered="false" > 
+			<p:submenu label="Actions specifiques">  
+				<p:menuitem value="Annuler" url="#"  /> 
+				<p:menuitem value="Rejeter" url="#" /> 
+				<p:menuitem value="Valider" url="#" /> 
+				<p:menuitem value="..." url="#" />		
+			</p:submenu>				  				  					  				  
+		</p:column> 
+
+		<p:column rendered="false" > 
+			<p:submenu label="Navigations">  
+				<p:menuitem value="Action 3.1" url="#" /> 
+				<p:menuitem value="Action 3.2" url="#" />
+				<p:menuitem value="..." url="#" /> 					 
+			</p:submenu>				  				  					  				  
+		</p:column> 
+		 
+	</p:submenu>
+	
+</ui:composition>

@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/default-template/templates/listViewTemplate.xhtml">
+
+	<ui:param name="viewController" value="#{classCrudeController}" />
+	
+	<ui:define name="currentViewTitle" > Classes </ui:define>					
+
+
+ 	<ui:define name="standardFilter">
+
+       	<h:panelGrid columns="2" width="100%" >
+       		
+        	<h:panelGrid columns="2" width="100%" >
+       		
+	       		<h:outputLabel value="Code" />
+	       		<h:inputText id="code" value="#{criteria.wrappedEntity.codeClass}"  />
+	
+	       		<h:outputLabel value="Libelle" />
+	       		<h:inputText id="libelle" value="#{criteria.wrappedEntity.name}" />
+ 
+        	</h:panelGrid>
+        	
+       		<h:panelGrid columns="2" width="100%" >
+       		       		
+        	</h:panelGrid>
+              		       		       					         	
+       	</h:panelGrid>
+	
+	</ui:define>
+
+	<ui:define name="specificColumns">
+	
+         <p:column sortBy="#{data.wrappedEntity.codeClass}" filterBy="#{data.wrappedEntity.codeClass}" filterMatchMode="contains" >  
+	        <f:facet name="header">  
+	             <h:outputText value="Code" />  
+	         </f:facet>		         		             
+             <h:outputText value="#{data.wrappedEntity.codeClass}" />   		               
+         </p:column>  
+
+         <p:column sortBy="#{data.wrappedEntity.name}" filterBy="#{data.wrappedEntity.name}" filterMatchMode="contains" >  
+	        <f:facet name="header">  
+	             <h:outputText value="Libelle" />  
+	         </f:facet>		         		             
+             <h:outputText value="#{data.wrappedEntity.name}" />   		               
+         </p:column> 
+         
+         <p:column sortBy="#{data.wrappedEntity.capacity}" filterBy="#{data.wrappedEntity.capacity}" filterMatchMode="contains" >  
+	        <f:facet name="header">  
+	             <h:outputText value="Capacity" />  
+	         </f:facet>		         		             
+             <h:outputText value="#{data.wrappedEntity.capacity}" />   		               
+         </p:column>  
+	
+	</ui:define>
+	
+
+</ui:composition>
