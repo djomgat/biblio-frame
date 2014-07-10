@@ -18,13 +18,13 @@
 	<!-- The datasource is bound into JNDI at this location. We reference this 
 		in META-INF/test-persistence.xml -->
 
-	<datasource jndi-name="java:jboss/datasources/MySqlDS"
-		pool-name="MySqlDS">
+	<datasource jndi-name="java:jboss/datasources/biblioTestDS"
+		pool-name="biblioTestDS">
 
 		<connection-url>jdbc:mysql://localhost:3306/arquillian33
 		</connection-url>
 
-		<driver>mysql-connector-java-5.1.23.jar</driver>
+		<driver>mysql</driver>
 
 		<pool>
 
