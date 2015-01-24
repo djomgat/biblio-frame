@@ -5,43 +5,34 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/default-template/templates/editionViewTemplate.xhtml">
 
-	<ui:param name="viewController" value="#{classCrudeController}" />
-	
-	<ui:define name="currentViewTitle" > Roles </ui:define>					
-
-	<ui:define name="currentViewDefaultContent" >  
-	
+	<ui:param name="viewController" value="#{classCrudeController}" />	
+	<ui:define name="currentViewTitle" > Roles </ui:define>		
+	<ui:define name="currentViewDefaultContent" >  	
+            <h:panelGrid width="100%" columns="2" >		
 		<h:panelGrid width="100%" columns="2" >
-		
-			<h:panelGrid width="100%" columns="2" >
-			
-				<p:outputLabel value="Code" for="code" />
-				<h:panelGroup>
-					<p:inputText id="code" value="#{wrapped.codeClass}" required="true" disabled="#{viewHelper.editionModeIsModification}"  />
-					<p:message  for="code" />
-				</h:panelGroup>
+                    <p:outputLabel value="Code" for="code" />
+                    <h:panelGroup>
+			<p:inputText id="code" value="#{wrapped.codeClass}" required="true" disabled="#{viewHelper.editionModeIsModification}"  />
+			<p:message  for="code" />
+                    </h:panelGroup>
 						
-				<p:outputLabel value="Libelle" for="libelle" />
-				<h:panelGroup>
-					<p:inputText id="libelle" value="#{wrapped.name}" required="true" style="width:80%" />
-					<p:message  for="libelle" />
-				</h:panelGroup>
-																
-			</h:panelGrid>
+                    <p:outputLabel value="Libelle" for="libelle" />
+                    <h:panelGroup>
+			<p:inputText id="libelle" value="#{wrapped.name}" required="true" style="width:80%" />
+			<p:message  for="libelle" />
+                    </h:panelGroup>
+		</h:panelGrid>
 	
-			<h:panelGrid width="100%" columns="2" >
-				
-				<p:outputLabel value="Capacity" for="Capacity" />
-				<h:panelGroup>
-					<p:inputText id="Capacity" value="#{wrapped.capacity}" required="true" style="width:80%" />
-					<p:message  for="Capacity" />
-				</h:panelGroup>				
-																		
-			</h:panelGrid>
-						
+                <h:panelGrid width="100%" columns="2" >
+			<p:outputLabel value="Capacity" for="Capacity" />
+			<h:panelGroup>
+				<p:inputText id="Capacity" value="#{wrapped.capacity}" required="true" style="width:80%" />
+				<p:message  for="Capacity" />
+			</h:panelGroup>				
+		</h:panelGrid>
+					
 		</h:panelGrid>
 	
 	</ui:define>					
 	
-
 </ui:composition>

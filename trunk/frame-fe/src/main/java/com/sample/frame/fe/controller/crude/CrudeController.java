@@ -138,8 +138,8 @@ public abstract class CrudeController<E extends CrudeBusinessEntityWrapper<?>> e
 	
 		
 	/**
-	 * TODO : S'assurer s'il n'est pas necessaire de sp�cialiser cette m�thode par IHM en lieu d'un g�n�rique
-	 * Encapsule la logique de suppression d'une entit� quelque soit la vue
+	 * TODO : S'assurer s'il n'est pas necessaire de spécialiser cette méthode par IHM en lieu d'un g�n�rique
+	 * Encapsule la logique de suppression d'une entité quelque soit la vue
 	 * 
 	 * @param entity Entit� � supprimer
 	 * @param displayMessage Si <code> True </code> affiche le message d'information
@@ -150,10 +150,10 @@ public abstract class CrudeController<E extends CrudeBusinessEntityWrapper<?>> e
 	@SuppressWarnings("unchecked")
 	protected String delete_(E entity, boolean displayMessage) throws FrontEndException{
 		
-		// Suppression de l'entit� en BD
+		// Suppression de l'entité en BD
 		E result = this.be_delete(entity);
 		
-		// La suppression a effectu� une mise � jour de la donn�e - TODO : Penser � tenir compte du contexte pour optimisation
+		// La suppression a effectue une mise à jour de la donnée - TODO : Penser à tenir compte du contexte pour optimisation
 		if(result != null){
 			
 			// MAJ de l'entit� parmi les donn�es de la vue liste au cas ou

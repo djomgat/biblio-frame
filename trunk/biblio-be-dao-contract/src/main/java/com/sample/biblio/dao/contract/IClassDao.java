@@ -1,8 +1,8 @@
-package com.sample.arquillian;
+package com.sample.biblio.dao.contract;
 
 import javax.ejb.Local;
 
-import com.sample.biblio.entity.sample.Tabclass;
+import com.sample.biblio.entity.Tabclass;
 import com.sample.frame.be.dao.generic.IGenericDao;
 
 @Local

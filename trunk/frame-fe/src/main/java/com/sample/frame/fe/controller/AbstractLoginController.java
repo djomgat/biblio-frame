@@ -13,8 +13,6 @@ import com.sample.frame.fe.helper.CoreConstants;
 import com.sample.frame.fe.helper.FacesUtil;
 
 
-
-
 /**
  * Classe de base en charge de l'authentification d'un utilisateur <br>
  * Pourrait �tre utilis�e et red�finie par les developpeurs afin d'y impl�menter le m�canisme d'authentification propre � leur application

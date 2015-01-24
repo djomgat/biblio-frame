@@ -1,4 +1,4 @@
-package com.sample.arquillian.exceptions;
+package com.sample.biblio.exceptions;
 
 import com.sample.biblio.exceptions.BiblioDaoException;
 

@@ -37,8 +37,7 @@ public class BiblioDaoException extends GenericDaoException {
 	 */
 	public BiblioDaoException(String p$message, Throwable p$cause) {
 		super(p$message, p$cause);
-	}
-	
+	}	
 	
 	public BiblioDaoException(String p$catalogFileName,String p$messageId, Object[] p$params){
 		super(p$catalogFileName, p$messageId, p$params);		
@@ -46,7 +45,6 @@ public class BiblioDaoException extends GenericDaoException {
 	
 	public BiblioDaoException(String p$catalogFileName, String p$messageId, Object[] p$params, Throwable p$cause){
 		super(p$catalogFileName, p$messageId, p$params, p$cause);		
-	}
-	
+	}	
 
 }

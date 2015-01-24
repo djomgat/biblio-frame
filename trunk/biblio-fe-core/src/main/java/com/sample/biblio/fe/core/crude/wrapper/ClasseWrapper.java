@@ -2,19 +2,17 @@ package com.sample.biblio.fe.core.crude.wrapper;
 
 import java.io.Serializable;
 
-import com.sample.biblio.entity.sample.Tabclass;
+import com.sample.biblio.entity.Tabclass;
 import com.sample.frame.fe.controller.crude.CrudeBusinessEntityWrapper;
 
 public class ClasseWrapper  extends CrudeBusinessEntityWrapper<Tabclass> {
-
 	
 	public ClasseWrapper(Tabclass wrappedEntity) {
 		super(wrappedEntity);
 	}
 
 	@Override
-	public CrudeBusinessEntityWrapper<Tabclass> getNewInstance() {
-		
+	public CrudeBusinessEntityWrapper<Tabclass> getNewInstance() {		
 		return new ClasseWrapper(new Tabclass());
 	}
 
@@ -24,8 +22,7 @@ public class ClasseWrapper  extends CrudeBusinessEntityWrapper<Tabclass> {
 	}
 
 	@Override
-	public String getShortCutName() {
-		
+	public String getShortCutName() {		
 		return "Class";
 	}
 
