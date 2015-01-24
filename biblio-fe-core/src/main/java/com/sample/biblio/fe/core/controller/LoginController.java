@@ -8,9 +8,13 @@ import javax.faces.bean.RequestScoped;
 
 import com.sample.frame.fe.controller.AbstractLoginController;
 import com.sample.frame.fe.exception.FrontEndException;
+import javax.faces.context.FacesContext;
+import javax.faces.application.FacesMessage;
+//import javax.servlet.http.HttpSession;
+
 
 /**
- * Contr�leur en charge de l'authentification
+ * Contrôleur en charge de l'authentification
  * 
  */
 @ManagedBean
@@ -19,9 +23,8 @@ public class LoginController extends AbstractLoginController {
 
 	private static final long serialVersionUID = 1L;
 
-	
 	/**
-	 * Constructeur par d�faut
+	 * Constructeur par défaut
 	 */
 	public LoginController() {
 		
@@ -33,23 +36,25 @@ public class LoginController extends AbstractLoginController {
 
 		System.out.println("LoginController.be_login : login = " + login + " & password = " + password);
 
-		// R�gle de navigation
+		// Règle de navigation
 		String navigationRule = null;
 		
 		if(login != null && login.equals(password)) {			
 			navigationRule = "home";
-		} 
-		
-		else {
+		} else {
 			this.addErrorMessage("Echec de l'authentification", "login ou mot de passe incorrects");
-		} 
-			
+		} 			
 		return navigationRule;
 	}
 
 	@Override
 	protected void be_logout() throws FrontEndException{
 		// TODO Auto-generated method stub
+		//HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+	    //session.invalidate();
+	    //return "/index?faces-redirect=true";
+
 	}
 
 }

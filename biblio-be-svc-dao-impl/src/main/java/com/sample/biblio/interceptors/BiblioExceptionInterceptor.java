@@ -1,4 +1,4 @@
-package com.sample.arquillian.interceptors;
+package com.sample.biblio.interceptors;
 
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;

@@ -1,4 +1,4 @@
-package com.sample.arquillian;
+package com.sample.biblio.svc.contract;
 
 import javax.ejb.Local;
 

@@ -1,19 +1,16 @@
 package com.sample.biblio.fe.core.crude.controller;
 
-import javax.ejb.EJB;
+//import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Inject;
-
-import com.sample.arquillian.IClassSvc;
-import com.sample.arquillian.IClassSvcLocal;
-import com.sample.arquillian.IClassSvcRemote;
-import com.sample.biblio.entity.sample.Tabclass;
+import com.sample.biblio.svc.contract.IClassSvc;
+import com.sample.biblio.svc.contract.IClassSvcRemote;
+import com.sample.biblio.entity.Tabclass;
 import com.sample.biblio.fe.core.crude.viewhelper.ClassCrudeViewhelper;
 import com.sample.biblio.fe.core.crude.wrapper.ClasseWrapper;
 import com.sample.frame.core.svc.generic.IGenericSvc;
 import com.sample.frame.core.utils.JndiHelper;
-import com.sample.frame.fe.exception.ServiceLocatorException;
+//import com.sample.frame.fe.exception.ServiceLocatorException;
 import com.sample.frame.fe.locator.SingleCachingServiceLocator;
 
 @ManagedBean
@@ -49,7 +46,4 @@ public class ClassCrudeController extends BiblioBaseCrudeController<Tabclass, Cl
 		
 	}
 	
-	
-	
-
 }

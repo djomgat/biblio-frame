@@ -1,17 +1,20 @@
-package com.sample.arquillian;
+package com.sample.biblio.svc.impl;
 
+import com.sample.biblio.svc.contract.IClassSvcRemote;
+import com.sample.biblio.svc.contract.IClassSvcLocal;
+import com.sample.biblio.dao.contract.IUserDao;
+import com.sample.biblio.dao.contract.IClassDao;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.interceptor.Interceptors;
 
-import com.sample.arquillian.interceptors.BiblioExceptionInterceptor;
-import com.sample.biblio.entity.sample.Tabclass;
-import com.sample.biblio.entity.sample.Tabuser;
+import com.sample.biblio.interceptors.BiblioExceptionInterceptor;
+import com.sample.biblio.entity.Tabclass;
+import com.sample.biblio.entity.Tabuser;
 import com.sample.frame.be.dao.generic.IGenericDao;
 import com.sample.frame.be.interceptor.AuthorizationInterceptor;
 import com.sample.frame.be.interceptor.LoggingInterceptor;
@@ -71,15 +74,9 @@ public class ClassSvcImpl extends GenericSvcImpl<Tabclass, String> implements
 		return v$class;
 	}
 	
-	
-
 	@Override
-	protected FrameBaseLogger getLogger() {
-		
+	protected FrameBaseLogger getLogger() {		
 		return logger;
 	}
-	
-	
-	
 
 }

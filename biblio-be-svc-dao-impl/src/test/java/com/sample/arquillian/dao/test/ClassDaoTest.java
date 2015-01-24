@@ -15,19 +15,19 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.sample.arquillian.ClassDaoImpl;
-import com.sample.arquillian.IClassDao;
-import com.sample.arquillian.IUserDao;
-import com.sample.arquillian.UserDaoImpl;
+import com.sample.biblio.dao.impl.ClassDaoImpl;
+import com.sample.biblio.dao.contract.IClassDao;
+import com.sample.biblio.dao.contract.IUserDao;
+import com.sample.biblio.dao.impl.UserDaoImpl;
 import com.sample.arquillian.dao.test.resource.DaoTestResources;
-import com.sample.arquillian.exceptions.BiblioDaoExceptionForTestTransact;
-import com.sample.arquillian.interceptors.BiblioExceptionInterceptor;
+import com.sample.biblio.exceptions.BiblioDaoExceptionForTestTransact;
+import com.sample.biblio.interceptors.BiblioExceptionInterceptor;
 import com.sample.arquillian.svc.test.TestClassConstants;
 import com.sample.biblio.constant.be.BiblioBeConstant;
 import com.sample.biblio.constant.be.BiblioDaoMessageKey;
 import com.sample.biblio.constant.be.BiblioSvcMessageKey;
-import com.sample.biblio.entity.sample.Tabclass;
-import com.sample.biblio.entity.sample.Tabuser;
+import com.sample.biblio.entity.Tabclass;
+import com.sample.biblio.entity.Tabuser;
 import com.sample.biblio.exceptions.BiblioDaoException;
 import com.sample.biblio.exceptions.BiblioSvcException;
 import com.sample.frame.be.dao.generic.GenericDaoJpaImpl;
@@ -48,31 +48,29 @@ import com.sample.frame.core.utils.FrameTools;
 @RunWith(Arquillian.class)
 public class ClassDaoTest {
 	
-	@Deployment
-	public static Archive<?> createTestArchive() {
-		return ShrinkWrap
-				.create(WebArchive.class, "testClassDao.war")
-				.addClasses(
-						IFrameBaseDao.class, IFrameBaseSvc.class,FrameBaseLogger.class,EnumLoggingMode.class,
-						IGenericDao.class, 
-						GenericDaoJpaImpl.class,  GenericEntity.class,
-						GenericDaoException.class, GenericSvcException.class,GenericException.class,
-						BiblioDaoException.class, BiblioSvcException.class, BiblioBeConstant.class,
-						BiblioDaoMessageKey.class, BiblioSvcMessageKey.class,
-						BiblioDaoExceptionForTestTransact.class,
-						BiblioExceptionInterceptor.class, TransactionInterceptor.class,
-						LoggingInterceptor.class, AuthorizationInterceptor.class,
-						ClassDaoImpl.class, IClassDao.class,
-						UserDaoImpl.class, IUserDao.class,
-						Tabuser.class, Tabclass.class, DaoTestResources.class, FrameTools.class	
-						
-						, TestClassConstants.class
-						)
-				.addAsResource("META-INF/test-persistence.xml",
-						"META-INF/persistence.xml")
-				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-				// Deploy our test datasource
-				.addAsWebInfResource("test-ds.xml", "test-ds.xml");
+    @Deployment
+    public static Archive<?> createTestArchive() {
+	return ShrinkWrap
+            .create(WebArchive.class, "testClassDao.war")
+            .addClasses(
+			IFrameBaseDao.class, IFrameBaseSvc.class,FrameBaseLogger.class,EnumLoggingMode.class,
+			IGenericDao.class, 
+                        GenericDaoJpaImpl.class,  GenericEntity.class,
+			GenericDaoException.class, GenericSvcException.class,GenericException.class,
+			BiblioDaoException.class, BiblioSvcException.class, BiblioBeConstant.class,
+			BiblioDaoMessageKey.class, BiblioSvcMessageKey.class,
+			BiblioDaoExceptionForTestTransact.class,
+			BiblioExceptionInterceptor.class, TransactionInterceptor.class,
+			LoggingInterceptor.class, AuthorizationInterceptor.class,
+			ClassDaoImpl.class, IClassDao.class,
+			UserDaoImpl.class, IUserDao.class,
+			Tabuser.class, Tabclass.class, DaoTestResources.class, FrameTools.class,	
+			TestClassConstants.class
+		)
+		.addAsResource("META-INF/persistence.xml","META-INF/persistence.xml")
+		.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+		// Deploy our test datasource
+		.addAsWebInfResource("test-ds.xml", "test-ds.xml");
 	}
 	
 
@@ -102,36 +100,28 @@ public class ClassDaoTest {
 		
 		v$result.setName(v$strName);
 		
-		
 		v$result = component.update(v$result);
 		Assert.assertTrue("Verification Name [" + v$strName + "]", v$strName.contains(v$result.getName()));
-		
-	
+			
 	}
 
 	@Test
 	public void testFindOne() throws GenericDaoException {
-		Tabclass v$result = component.create(getEntity("FindOne"));
-		
-		String v$strCode = v$result.getCodeClass();
-		
-		Tabclass v$resultFindOne = component.retrieve(v$strCode);
-		
-		Assert.assertTrue("Verification Code [" + v$strCode + "]", v$strCode.contains(v$resultFindOne.getCodeClass()));		
-		
+		Tabclass v$result = component.create(getEntity("FindOne"));		
+		String v$strCode = v$result.getCodeClass();		
+		Tabclass v$resultFindOne = component.retrieve(v$strCode);		
+		Assert.assertTrue("Verification Code [" + v$strCode + "]", v$strCode.contains(v$resultFindOne.getCodeClass()));			
 	}
 
 	@Test
 	public void testFindAll() throws GenericDaoException {
-		// création des class a selectionner
+		// création des class à selectionner
 		component.create(getEntity("FindAll1"));
 		component.create(getEntity("FindAll2"));
 		component.create(getEntity("FindAll3"));
 		component.create(getEntity("FindAll4"));
 		component.create(getEntity("FindAll5"));
-		component.create(getEntity("FindAll6"));
-		
-		
+		component.create(getEntity("FindAll6"));	
 		
 		// Recherche des class ayant un cde avec FindBC
 		List<Tabclass> v$resultList = component.findAll();
@@ -160,8 +150,7 @@ public class ClassDaoTest {
 		// Vérification du nombre de class trouvé
 		Assert.assertEquals(6, v$resultList.size());
 		
-	}
-	
+	}	
 	
 	private Tabclass getEntity(String p$distinger){
 		Tabclass v$class = new Tabclass();

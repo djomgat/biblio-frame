@@ -1,6 +1,6 @@
-package com.sample.arquillian;
+package com.sample.biblio.svc.contract;
 
-import com.sample.biblio.entity.sample.Tabuser;
+import com.sample.biblio.entity.Tabuser;
 import com.sample.frame.core.svc.generic.IGenericSvc;
 
 

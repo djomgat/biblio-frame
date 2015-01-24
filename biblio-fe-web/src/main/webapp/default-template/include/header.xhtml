@@ -9,17 +9,16 @@
 		<p:submenu icon="appleIcon">
 			<p:column>
 				<p:submenu style="margin:0; padding:0; height:0; width:0">
-
 					<p:menuitem value="Home" url="#" icon="ui-icon ui-icon-home" />
 					<p:separator />
 					<p:menuitem value="Logout" url="#" icon="ui-icon ui-icon-power" />
+					<p:separator />
+					<p:menuitem value="myLogout"  action="#{loginController.logout()}" />
 				</p:submenu>
 			</p:column>
 		</p:submenu>
 		
-		<ui:include src="/ui/biblio/include/menu.xhtml" />
-
-		
+		<ui:include src="/ui/biblio/include/menu.xhtml" />		
 
 	</p:megaMenu>
 

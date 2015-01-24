@@ -14,17 +14,14 @@ import com.sample.frame.fe.exception.ServiceLocatorException;
 public abstract class BiblioBaseCrudeController<T extends GenericEntity, E extends CrudeBusinessEntityWrapper<T>> extends CrudeController<E> {
 
 	public abstract IGenericSvc<T, String>  getCurrentSvc();
-	
-	
+		
 	@Override
 	protected Object getBusinessService() throws ServiceLocatorException {
-		
 		return getCurrentSvc();
 	}
 
 	@Override
 	protected E be_persist(E entity) throws FrontEndException {
-		
 		try{
 			entity.setWrappedEntity(getCurrentSvc().creer(entity.getWrappedEntity()));
 			return entity;
@@ -40,14 +37,12 @@ public abstract class BiblioBaseCrudeController<T extends GenericEntity, E exten
 	@Override
 	protected E be_update(E entity) throws FrontEndException {
 		try{
-			entity.setWrappedEntity(getCurrentSvc().modifier(entity.getWrappedEntity()));
-			return entity;
+                    entity.setWrappedEntity(getCurrentSvc().modifier(entity.getWrappedEntity()));
+                    return entity;
 		}catch(GenericException e){
 			e.printStackTrace();
-		}finally{
-			
-		}
-		
+		}finally{			
+		}		
 		return entity;
 	}
 

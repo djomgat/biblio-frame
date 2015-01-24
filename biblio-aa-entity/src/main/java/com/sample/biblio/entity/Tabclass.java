@@ -1,12 +1,10 @@
-package com.sample.biblio.entity.sample;
+package com.sample.biblio.entity;
 
-import javax.enterprise.inject.Typed;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import com.sample.frame.core.entity.GenericEntity;
-
 
 /**
  * The persistent class for the tabclass database table.
@@ -25,8 +23,6 @@ public class Tabclass extends GenericEntity  {
 
 	@Column(name="name")
 	private String name;
-
-
 
 	public Tabclass() {
 	}
@@ -53,9 +49,6 @@ public class Tabclass extends GenericEntity  {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-
-	
+	}	
 
 }

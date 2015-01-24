@@ -121,7 +121,7 @@
 			<plugin>
 				<groupId>org.jboss.as.plugins</groupId>
 				<artifactId>jboss-as-maven-plugin</artifactId>
-				<version>${jboss.version}</version>
+				<!--   <version>${version.jboss.maven.plugin}</version>  -->
 			</plugin>
         </plugins>
     </build>

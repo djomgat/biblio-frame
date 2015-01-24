@@ -1,12 +1,15 @@
-package com.sample.arquillian;
+package com.sample.biblio.svc.impl;
 
+import com.sample.biblio.svc.contract.IUserSvcLocal;
+import com.sample.biblio.svc.contract.IUserSvcRemote;
+import com.sample.biblio.dao.contract.IUserDao;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 
-import com.sample.biblio.entity.sample.Tabuser;
+import com.sample.biblio.entity.Tabuser;
 import com.sample.frame.be.dao.generic.IGenericDao;
 import com.sample.frame.be.interceptor.AuthorizationInterceptor;
 import com.sample.frame.be.interceptor.LoggingInterceptor;

@@ -1,4 +1,4 @@
-package com.sample.biblio.entity.sample;
+package com.sample.biblio.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,7 +6,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.sample.frame.core.entity.GenericEntity;
-
 
 /**
  * The persistent class for the tabuser database table.
