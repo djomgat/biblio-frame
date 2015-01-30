@@ -2,7 +2,7 @@ package com.sample.biblio.fe.core.crude.wrapper;
 
 import java.io.Serializable;
 
-import com.sample.biblio.entity.Tabclass;
+import com.sample.biblio.model.Tabclass;
 import com.sample.frame.fe.controller.crude.CrudeBusinessEntityWrapper;
 
 public class ClasseWrapper  extends CrudeBusinessEntityWrapper<Tabclass> {

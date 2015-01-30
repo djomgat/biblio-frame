@@ -1,9 +1,9 @@
-package com.sample.biblio.svc.contract;
+package com.sample.biblio.svc.api;
 
 import java.util.List;
 
-import com.sample.biblio.entity.Tabclass;
-import com.sample.biblio.entity.Tabuser;
+import com.sample.biblio.model.Tabclass;
+import com.sample.biblio.model.Tabuser;
 import com.sample.frame.core.exception.GenericDaoException;
 import com.sample.frame.core.svc.generic.IGenericSvc;
 

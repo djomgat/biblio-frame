@@ -1,8 +1,8 @@
-package com.sample.biblio.dao.contract;
+package com.sample.biblio.dao.api;
 
 import javax.ejb.Local;
 
-import com.sample.biblio.entity.Tabuser;
+import com.sample.biblio.model.Tabuser;
 import com.sample.frame.be.dao.generic.IGenericDao;
 import com.sample.frame.core.exception.GenericDaoException;
 

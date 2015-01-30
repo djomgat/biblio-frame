@@ -1,6 +1,6 @@
-package com.sample.biblio.exceptions;
+package com.sample.biblio.exception;
 
-import com.sample.biblio.exceptions.BiblioDaoException;
+import com.sample.biblio.svc.exceptions.BiblioDaoException;
 
 public class BiblioDaoExceptionForTestTransact extends BiblioDaoException{
 	

@@ -1,8 +1,8 @@
-package com.sample.biblio.exceptions;
+package com.sample.biblio.dao.exceptions;
 
 import com.sample.frame.core.exception.GenericDaoException;
 
-public class BiblioDaoException extends GenericDaoException {
+public class BiblioSvcException extends GenericDaoException {
 
 	/**
 	 * 
@@ -12,14 +12,14 @@ public class BiblioDaoException extends GenericDaoException {
 	/**
 	 * 
 	 */
-	public BiblioDaoException() {
+	public BiblioSvcException() {
 		 
 	}
 
 	/**
 	 * @param message : message d'exception
 	 */
-	public BiblioDaoException(String message) {
+	public BiblioSvcException(String message) {
 		super(message);
 		 
 	}
@@ -27,7 +27,7 @@ public class BiblioDaoException extends GenericDaoException {
 	/**
 	 * @param cause
 	 */
-	public BiblioDaoException(Throwable cause) {
+	public BiblioSvcException(Throwable cause) {
 		super(cause);
 	}
 
@@ -35,16 +35,18 @@ public class BiblioDaoException extends GenericDaoException {
 	 * @param message : message d'exception
 	 * @param cause
 	 */
-	public BiblioDaoException(String p$message, Throwable p$cause) {
+	public BiblioSvcException(String p$message, Throwable p$cause) {
 		super(p$message, p$cause);
-	}	
+	}
 	
-	public BiblioDaoException(String p$catalogFileName,String p$messageId, Object[] p$params){
+	
+	public BiblioSvcException(String p$catalogFileName,String p$messageId, Object[] p$params){
 		super(p$catalogFileName, p$messageId, p$params);		
 	}
 	
-	public BiblioDaoException(String p$catalogFileName, String p$messageId, Object[] p$params, Throwable p$cause){
+	public BiblioSvcException(String p$catalogFileName, String p$messageId, Object[] p$params, Throwable p$cause){
 		super(p$catalogFileName, p$messageId, p$params, p$cause);		
-	}	
+	}
+	
 
 }

@@ -1,15 +1,15 @@
-package com.sample.biblio.svc.impl;
+package com.sample.biblio.svc.provider;
 
-import com.sample.biblio.svc.contract.IUserSvcLocal;
-import com.sample.biblio.svc.contract.IUserSvcRemote;
-import com.sample.biblio.dao.contract.IUserDao;
+import com.sample.biblio.svc.api.IUserSvcLocal;
+import com.sample.biblio.svc.api.IUserSvcRemote;
+import com.sample.biblio.dao.api.IUserDao;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 
-import com.sample.biblio.entity.Tabuser;
+import com.sample.biblio.model.Tabuser;
 import com.sample.frame.be.dao.generic.IGenericDao;
 import com.sample.frame.be.interceptor.AuthorizationInterceptor;
 import com.sample.frame.be.interceptor.LoggingInterceptor;

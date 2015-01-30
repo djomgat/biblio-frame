@@ -1,10 +1,8 @@
 package com.sample.frame.be.interceptor;
 
 import java.io.Serializable;
-
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
-
 import com.sample.frame.core.logging.FrameBaseLogger;
 
 /**
@@ -24,7 +22,7 @@ public class AuthorizationInterceptor implements Serializable {
 		logger.debug("AuthorizationInterceptor - before EJB method invoke: "
 				+ ctx.getMethod().getName());
 		try {
-			authorizationCheck();
+                    authorizationCheck();
 		} catch (Exception e) {
 			logger.debug("Authorization check failed");
 			throw e;

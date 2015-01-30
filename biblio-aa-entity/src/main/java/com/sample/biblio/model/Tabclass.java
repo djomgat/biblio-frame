@@ -1,4 +1,4 @@
-package com.sample.biblio.entity;
+package com.sample.biblio.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
