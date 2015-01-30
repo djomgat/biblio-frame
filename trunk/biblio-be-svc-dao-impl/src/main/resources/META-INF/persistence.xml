@@ -9,8 +9,12 @@
       <provider>org.hibernate.ejb.HibernatePersistence</provider>
       <jta-data-source>java:jboss/datasources/biblioDS</jta-data-source>
    
-      <class>com.sample.biblio.entity.Tabuser</class>
-      <class>com.sample.biblio.entity.Tabclass</class>
+      <class>com.sample.biblio.model.Tabuser</class>
+      <class>com.sample.biblio.model.Tabclass</class>      
+      
+      <class>com.sample.biblio.model.TabTypeCommission</class>      
+      <class>com.sample.biblio.model.TabTypeMarche</class>
+      <!---->
       
       <properties>
          <!-- Properties for Hibernate -->

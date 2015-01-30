@@ -6,7 +6,7 @@ import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
 
 import com.sample.frame.core.exception.GenericException;
-import com.sample.frame.core.exception.GenericSvcException;
+//import com.sample.frame.core.exception.GenericSvcException;
 
 /**
  *

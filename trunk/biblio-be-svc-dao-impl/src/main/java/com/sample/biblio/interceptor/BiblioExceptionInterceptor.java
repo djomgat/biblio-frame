@@ -1,11 +1,11 @@
-package com.sample.biblio.interceptors;
+package com.sample.biblio.interceptor;
 
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
 
 import com.sample.biblio.constant.be.BiblioBeConstant;
-import com.sample.biblio.exceptions.BiblioDaoException;
-import com.sample.biblio.exceptions.BiblioSvcException;
+import com.sample.biblio.svc.exceptions.BiblioDaoException;
+import com.sample.biblio.dao.exceptions.BiblioSvcException;
 import com.sample.frame.be.dao.generic.IFrameBaseDao;
 import com.sample.frame.core.exception.GenericException;
 import com.sample.frame.core.logging.FrameBaseLogger;

@@ -15,7 +15,8 @@ import com.sample.frame.fe.helper.FacesUtil;
 
 /**
  * Classe de base en charge de l'authentification d'un utilisateur <br>
- * Pourrait �tre utilis�e et red�finie par les developpeurs afin d'y impl�menter le m�canisme d'authentification propre � leur application
+ * Pourrait être utilisée et redéfinie par les developpeurs afin d'y implémenter 
+ * le mécanisme d'authentification propre à leur application
  * 
  *
  */
@@ -33,10 +34,15 @@ public abstract class  AbstractLoginController  extends BaseController {
 	 * user password
 	 */
 	private String userPassword;
+        
+	/**
+	 * user password
+	 */
+	private Boolean userRemember;        
 	
 	
 	/**
-	 * Constructeur par d�faut
+	 * Constructeur par défaut
 	 */
 	public AbstractLoginController(){
 		super();
@@ -73,6 +79,21 @@ public abstract class  AbstractLoginController  extends BaseController {
 	public void setuserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
+        
+	/**
+	 * @return the userRemember
+	 */
+	public Boolean getUserRemember() {
+		return userRemember;
+	}
+
+
+	/**
+	 * @param userRemember the rememberMe flag to set
+	 */
+	public void setUserRemember(Boolean userRemember) {
+		this.userRemember = userRemember;
+	}        
 	
 	
 	
@@ -172,7 +193,7 @@ public abstract class  AbstractLoginController  extends BaseController {
    
    /**
     * D�finit la r�gle de navigation d'acc�s au formulaire d'authentification <br>
-    * Peut �tre red�finie par le d�veloppeur si la valeur par d�faut n'est pas convenable
+    * Peut être redéfinie par le développeur si la valeur par défaut n'est pas convenable
     * 
     * @return <code>login</code> est la valeur retourn�e par d�faut
     */
@@ -187,13 +208,13 @@ public abstract class  AbstractLoginController  extends BaseController {
     * @param login
     * @param password
     * 
-    * @return La r�gle de navigation vers la prochaine vue
+    * @return La règle de navigation vers la prochaine vue
     */
    protected abstract String be_login(String login, String password) throws FrontEndException ;
    
    
    /**
-    * M�thode devant invoquer le service de deconnexion BE
+    * Méthode devant invoquer le service de deconnexion BE
     */
    protected abstract void be_logout() throws FrontEndException ;
 			

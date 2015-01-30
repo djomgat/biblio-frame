@@ -1,9 +1,9 @@
-package com.sample.biblio.svc.impl;
+package com.sample.biblio.svc.provider;
 
-import com.sample.biblio.svc.contract.IClassSvcRemote;
-import com.sample.biblio.svc.contract.IClassSvcLocal;
-import com.sample.biblio.dao.contract.IUserDao;
-import com.sample.biblio.dao.contract.IClassDao;
+import com.sample.biblio.svc.api.IClassSvcRemote;
+import com.sample.biblio.svc.api.IClassSvcLocal;
+import com.sample.biblio.dao.api.IUserDao;
+import com.sample.biblio.dao.api.IClassDao;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -12,9 +12,9 @@ import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 
-import com.sample.biblio.interceptors.BiblioExceptionInterceptor;
-import com.sample.biblio.entity.Tabclass;
-import com.sample.biblio.entity.Tabuser;
+import com.sample.biblio.interceptor.BiblioExceptionInterceptor;
+import com.sample.biblio.model.Tabclass;
+import com.sample.biblio.model.Tabuser;
 import com.sample.frame.be.dao.generic.IGenericDao;
 import com.sample.frame.be.interceptor.AuthorizationInterceptor;
 import com.sample.frame.be.interceptor.LoggingInterceptor;

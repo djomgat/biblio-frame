@@ -1,10 +1,10 @@
-package com.sample.biblio.dao.impl;
+package com.sample.biblio.dao.provider;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import com.sample.biblio.exceptions.BiblioDaoExceptionForTestTransact;
+import com.sample.biblio.exception.BiblioDaoExceptionForTestTransact;
 import com.sample.biblio.constant.be.BiblioBeConstant;
 import com.sample.biblio.constant.be.BiblioDaoMessageKey;
 
@@ -12,8 +12,8 @@ import com.sample.frame.be.dao.generic.GenericDaoJpaImpl;
 import com.sample.frame.core.exception.GenericDaoException;
 import com.sample.frame.core.logging.FrameBaseLogger;
 
-import com.sample.biblio.dao.contract.IUserDao;
-import com.sample.biblio.entity.Tabuser;
+import com.sample.biblio.dao.api.IUserDao;
+import com.sample.biblio.model.Tabuser;
 
 @Stateless
 public class UserDaoImpl extends GenericDaoJpaImpl<Tabuser, String> implements IUserDao {

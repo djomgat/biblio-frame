@@ -2,7 +2,7 @@ package com.sample.biblio.fe.core.crude.wrapper;
 
 import java.io.Serializable;
 
-import com.sample.biblio.entity.Tabuser;
+import com.sample.biblio.model.Tabuser;
 import com.sample.frame.fe.controller.crude.CrudeBusinessEntityWrapper;
 
 public class UserWrapper  extends CrudeBusinessEntityWrapper<Tabuser> {

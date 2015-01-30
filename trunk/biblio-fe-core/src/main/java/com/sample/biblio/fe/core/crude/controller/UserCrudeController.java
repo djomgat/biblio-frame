@@ -5,8 +5,8 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import com.sample.biblio.entity.Tabclass;
-import com.sample.biblio.entity.Tabuser;
+import com.sample.biblio.model.Tabclass;
+import com.sample.biblio.model.Tabuser;
 import com.sample.biblio.fe.core.crude.viewhelper.ClassCrudeViewhelper;
 import com.sample.biblio.fe.core.crude.viewhelper.UserCrudeViewhelper;
 import com.sample.biblio.fe.core.crude.wrapper.ClasseWrapper;

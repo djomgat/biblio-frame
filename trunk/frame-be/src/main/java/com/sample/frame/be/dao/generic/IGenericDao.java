@@ -8,7 +8,7 @@ import com.sample.frame.core.entity.GenericEntity;
 import com.sample.frame.core.exception.GenericDaoException;
 
 /**
- * le Dao avec JPA permet de:
+ * Le Dao avec JPA permet de:
  - découplage JPA api et code client;
  - regroupe tout le code spécifique au JPA
  - implémentation facile de transaction, logging, etc

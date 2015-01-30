@@ -1,11 +1,11 @@
-package com.sample.biblio.dao.impl;
+package com.sample.biblio.dao.provider;
 
-import com.sample.biblio.dao.contract.IClassDao;
+import com.sample.biblio.dao.api.IClassDao;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
-import com.sample.biblio.entity.Tabclass;
+import com.sample.biblio.model.Tabclass;
 
 import com.sample.frame.be.dao.generic.GenericDaoJpaImpl;
 import com.sample.frame.be.interceptor.AuthorizationInterceptor;
