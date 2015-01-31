@@ -1,17 +1,17 @@
 package com.sample.biblio.dao.provider;
 
-import com.sample.biblio.dao.api.IClassDao;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
-import com.sample.biblio.model.Tabclass;
 
 import com.sample.frame.be.dao.generic.GenericDaoJpaImpl;
 import com.sample.frame.be.interceptor.AuthorizationInterceptor;
 import com.sample.frame.be.interceptor.LoggingInterceptor;
-import com.sample.frame.core.logging.FrameBaseLogger;
+import com.sample.frame.core.logging.BaseLogger;
 
+import com.sample.biblio.model.Tabclass;
+import com.sample.biblio.dao.api.IClassDao;
 
 @Stateless
 @Interceptors({LoggingInterceptor.class,AuthorizationInterceptor.class})
@@ -20,7 +20,7 @@ public class ClassDaoImpl extends GenericDaoJpaImpl<Tabclass, String> implements
     @Inject
     private EntityManager em;
        
-    private static final FrameBaseLogger logger = FrameBaseLogger.getLogger(ClassDaoImpl.class) ;
+    private static final BaseLogger logger = BaseLogger.getLogger(ClassDaoImpl.class) ;
 
     @Override
     protected EntityManager getEntityManager() {
@@ -37,7 +37,7 @@ public class ClassDaoImpl extends GenericDaoJpaImpl<Tabclass, String> implements
     }
 
     @Override
-    protected FrameBaseLogger getLogger() {		
+    protected BaseLogger getLogger() {		
 	return logger;
     }
 

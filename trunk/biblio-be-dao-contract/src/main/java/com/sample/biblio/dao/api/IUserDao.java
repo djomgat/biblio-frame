@@ -13,4 +13,5 @@ public interface IUserDao extends IGenericDao<Tabuser, String> {
     <T extends Tabuser> void createNonAuthoriseTestRollbackTransac(T entity) throws GenericDaoException;
     <T extends Tabuser> void deleteNonAuthoriseForExceptionTest(T entity) throws GenericDaoException, Exception;
     <T extends Tabuser> void createNonAuthoriseForExceptionTest(T entity) throws GenericDaoException, Exception;
+    
 }

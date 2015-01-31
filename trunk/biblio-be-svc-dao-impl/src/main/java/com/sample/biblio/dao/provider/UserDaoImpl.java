@@ -10,7 +10,7 @@ import com.sample.biblio.constant.be.BiblioDaoMessageKey;
 
 import com.sample.frame.be.dao.generic.GenericDaoJpaImpl;
 import com.sample.frame.core.exception.GenericDaoException;
-import com.sample.frame.core.logging.FrameBaseLogger;
+import com.sample.frame.core.logging.BaseLogger;
 
 import com.sample.biblio.dao.api.IUserDao;
 import com.sample.biblio.model.Tabuser;
@@ -22,7 +22,7 @@ public class UserDaoImpl extends GenericDaoJpaImpl<Tabuser, String> implements I
         @Inject
         private EntityManager em;
 
-	private static final FrameBaseLogger logger = FrameBaseLogger.getLogger(UserDaoImpl.class) ;
+	private static final BaseLogger logger = BaseLogger.getLogger(UserDaoImpl.class) ;
 
 	@Override
 	protected EntityManager getEntityManager() {
@@ -63,7 +63,7 @@ public class UserDaoImpl extends GenericDaoJpaImpl<Tabuser, String> implements I
 	}
 
 	@Override
-	protected FrameBaseLogger getLogger() {		
+	protected BaseLogger getLogger() {		
 		return logger;
 	}
 	

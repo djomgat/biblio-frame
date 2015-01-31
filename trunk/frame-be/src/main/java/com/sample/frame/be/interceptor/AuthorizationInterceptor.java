@@ -3,7 +3,7 @@ package com.sample.frame.be.interceptor;
 import java.io.Serializable;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
-import com.sample.frame.core.logging.FrameBaseLogger;
+import com.sample.frame.core.logging.BaseLogger;
 
 /**
  * 
@@ -14,7 +14,7 @@ import com.sample.frame.core.logging.FrameBaseLogger;
 public class AuthorizationInterceptor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final FrameBaseLogger logger = FrameBaseLogger
+	private static final BaseLogger logger = BaseLogger
 			.getLogger(AuthorizationInterceptor.class.getName());
 
 	@AroundInvoke

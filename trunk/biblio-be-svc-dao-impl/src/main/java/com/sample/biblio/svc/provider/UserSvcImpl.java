@@ -15,7 +15,7 @@ import com.sample.frame.be.interceptor.AuthorizationInterceptor;
 import com.sample.frame.be.interceptor.LoggingInterceptor;
 import com.sample.frame.be.interceptor.TransactionInterceptor;
 import com.sample.frame.be.svc.generic.GenericSvcImpl;
-import com.sample.frame.core.logging.FrameBaseLogger;
+import com.sample.frame.core.logging.BaseLogger;
 
 @Stateless(name = "UserSvc", mappedName = "UserSvc")
 @TransactionManagement(TransactionManagementType.CONTAINER)
@@ -26,7 +26,7 @@ public class UserSvcImpl extends GenericSvcImpl<Tabuser, String> implements
 	@Inject
 	IUserDao dao;
 	
-	private static FrameBaseLogger logger = FrameBaseLogger.getLogger(UserSvcImpl.class) ;
+	private static BaseLogger logger = BaseLogger.getLogger(UserSvcImpl.class) ;
 
 	@Override
 	protected IGenericDao<Tabuser, String> getGenericDao() {		
@@ -34,7 +34,7 @@ public class UserSvcImpl extends GenericSvcImpl<Tabuser, String> implements
 	}
 
 	@Override
-	protected FrameBaseLogger getLogger() {
+	protected BaseLogger getLogger() {
 	
 		return logger;
 	}

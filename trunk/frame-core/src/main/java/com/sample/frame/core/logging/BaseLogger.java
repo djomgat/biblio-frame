@@ -12,15 +12,15 @@ import org.apache.log4j.Logger;
  * @author pdjomga
  *
  */
-public class FrameBaseLogger {
+public class BaseLogger {
 	
-	public static FrameBaseLogger getLogger(String loggerName){
-		return new FrameBaseLogger(loggerName);
+	public static BaseLogger getLogger(String loggerName){
+		return new BaseLogger(loggerName);
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public static FrameBaseLogger getLogger(Class loggerClass){
-		return new FrameBaseLogger(loggerClass);
+	public static BaseLogger getLogger(Class loggerClass){
+		return new BaseLogger(loggerClass);
 	}
 	
 	// Logger JAVA
@@ -37,22 +37,22 @@ public class FrameBaseLogger {
 	}
 
 	public static void setLogMode(EnumLoggingMode logMode) {
-		FrameBaseLogger.logMode = logMode;
+		BaseLogger.logMode = logMode;
 	}
 
 	/**
 	 * Constructeur par défaut
 	 */
-	private FrameBaseLogger(){
-		log4jLogger = Logger.getLogger(FrameBaseLogger.class);
-		javaLogger = java.util.logging.Logger.getLogger(FrameBaseLogger.class.getName());
+	private BaseLogger(){
+		log4jLogger = Logger.getLogger(BaseLogger.class);
+		javaLogger = java.util.logging.Logger.getLogger(BaseLogger.class.getName());
 	}
 	
 	/**
 	 * 
 	 * @param loggerName
 	 */
-	private FrameBaseLogger(String loggerName){
+	private BaseLogger(String loggerName){
 		log4jLogger = Logger.getLogger(loggerName);
 		javaLogger = java.util.logging.Logger.getLogger(loggerName);
 		javaLogger.setLevel(java.util.logging.Level.ALL);
@@ -63,7 +63,7 @@ public class FrameBaseLogger {
 	 * @param loggerClass
 	 */
 	@SuppressWarnings("rawtypes")
-	private FrameBaseLogger(Class loggerClass){
+	private BaseLogger(Class loggerClass){
 		log4jLogger = Logger.getLogger(loggerClass);
 		javaLogger = java.util.logging.Logger.getLogger(loggerClass.getName());
 	}

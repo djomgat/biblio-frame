@@ -49,10 +49,10 @@ import com.sample.frame.core.exception.GenericDaoException;
 import com.sample.frame.core.exception.GenericException;
 import com.sample.frame.core.exception.GenericSvcException;
 import com.sample.frame.core.logging.EnumLoggingMode;
-import com.sample.frame.core.logging.FrameBaseLogger;
+import com.sample.frame.core.logging.BaseLogger;
 import com.sample.frame.core.svc.generic.IFrameBaseSvc;
 import com.sample.frame.core.svc.generic.IGenericSvc;
-import com.sample.frame.core.utils.FrameRessourceLocator;
+import com.sample.frame.core.utils.FrameResourceLocator;
 import com.sample.frame.core.utils.FrameTools;
 
 @RunWith(Arquillian.class)
@@ -62,8 +62,7 @@ public class ClassSvcTest {
 	public static Archive<?> createTestArchive() {
 		return ShrinkWrap
 				.create(WebArchive.class, "testClassSvc.war")
-				.addClasses(
-						IFrameBaseDao.class, IFrameBaseSvc.class,FrameBaseLogger.class,EnumLoggingMode.class,
+				.addClasses(IFrameBaseDao.class, IFrameBaseSvc.class,BaseLogger.class,EnumLoggingMode.class,
 						IGenericDao.class, GenericDaoJpaImpl.class, 
 						IGenericSvc.class, GenericSvcImpl.class,  
 						GenericEntity.class,
@@ -77,7 +76,7 @@ public class ClassSvcTest {
 						UserDaoImpl.class, IUserDao.class,
 						IClassSvc.class, IClassSvcLocal.class, IClassSvcRemote.class,	
 						Tabuser.class, Tabclass.class, SvcTestResources.class, FrameTools.class,
-						FrameRessourceLocator.class	, TestClassConstants.class				
+						FrameResourceLocator.class	, TestClassConstants.class				
 						)
 				.addAsResource("META-INF/test-persistence.xml",
 						"META-INF/persistence.xml")

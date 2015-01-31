@@ -14,7 +14,7 @@
       
       <class>com.sample.biblio.model.TabTypeCommission</class>      
       <class>com.sample.biblio.model.TabTypeMarche</class>
-      <!---->
+      <class>com.sample.biblio.model.Tabmouchard</class>
       
       <properties>
          <!-- Properties for Hibernate -->

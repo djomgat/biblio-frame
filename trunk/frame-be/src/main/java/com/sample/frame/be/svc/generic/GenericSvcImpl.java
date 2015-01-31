@@ -6,7 +6,7 @@ import java.util.List;
 import com.sample.frame.be.dao.generic.IGenericDao;
 import com.sample.frame.core.entity.GenericEntity;
 import com.sample.frame.core.exception.GenericException;
-import com.sample.frame.core.logging.FrameBaseLogger;
+import com.sample.frame.core.logging.BaseLogger;
 import com.sample.frame.core.svc.generic.IGenericSvc;
 
 
@@ -17,7 +17,7 @@ public abstract class GenericSvcImpl<U extends GenericEntity, PK extends Seriali
 
 	protected abstract IGenericDao<U, PK> getGenericDao();
 	
-	protected abstract FrameBaseLogger getLogger();
+	protected abstract BaseLogger getLogger();
 
 	@Override
 	public <T extends U> T creer(T p$entite) throws GenericException {
