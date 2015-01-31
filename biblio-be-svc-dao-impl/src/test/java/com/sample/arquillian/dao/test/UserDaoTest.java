@@ -39,7 +39,7 @@ import com.sample.frame.core.exception.GenericDaoException;
 import com.sample.frame.core.exception.GenericException;
 import com.sample.frame.core.exception.GenericSvcException;
 import com.sample.frame.core.logging.EnumLoggingMode;
-import com.sample.frame.core.logging.FrameBaseLogger;
+import com.sample.frame.core.logging.BaseLogger;
 import com.sample.frame.core.svc.generic.IFrameBaseSvc;
 import com.sample.frame.core.utils.FrameTools;
 
@@ -50,7 +50,7 @@ public class UserDaoTest {
 	public static Archive<?> createTestArchive() {
 		return ShrinkWrap
 				.create(WebArchive.class, "testUserDAO.war")
-				.addClasses(IFrameBaseDao.class, IFrameBaseSvc.class,FrameBaseLogger.class,EnumLoggingMode.class,
+				.addClasses(IFrameBaseDao.class, IFrameBaseSvc.class,BaseLogger.class,EnumLoggingMode.class,
 						UserDaoImpl.class, IUserDao.class,
 						Tabuser.class, Tabclass.class, DaoTestResources.class, FrameTools.class,
 						GenericDaoJpaImpl.class, 

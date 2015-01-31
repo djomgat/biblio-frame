@@ -10,7 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 
 import com.sample.frame.core.entity.GenericEntity;
 import com.sample.frame.core.exception.GenericDaoException;
-import com.sample.frame.core.logging.FrameBaseLogger;
+import com.sample.frame.core.logging.BaseLogger;
 
 /**
  * 
@@ -26,7 +26,7 @@ public abstract class GenericDaoJpaImpl<U extends GenericEntity, PK extends Seri
 	
 	protected abstract Class<U> getEntityClass();
 	
-	protected abstract FrameBaseLogger getLogger();
+	protected abstract BaseLogger getLogger();
 	
 
 

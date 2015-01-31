@@ -5,7 +5,7 @@ package com.sample.frame.core.exception;
 
 import java.util.MissingResourceException;
 
-import com.sample.frame.core.utils.FrameRessourceLocator;
+import com.sample.frame.core.utils.FrameResourceLocator;
 
 /**
  * Exception de base 
@@ -64,13 +64,13 @@ public class GenericException extends Exception {
 		try{
 			
 		
-		String v$messageValue = FrameRessourceLocator.getValue(p$catalogFileName, p$messageId);
+		String v$messageValue = FrameResourceLocator.getValue(p$catalogFileName, p$messageId);
 		if(p$params != null && p$params.length > 0)
 			v$messageValue = String.format(v$messageValue, p$params);
 		return v$messageValue;
 		}catch(MissingResourceException e){
 			
-			String v$messageValue = FrameRessourceLocator.getValue(p$catalogFileName, defaultMessageKey);
+			String v$messageValue = FrameResourceLocator.getValue(p$catalogFileName, defaultMessageKey);
 			return v$messageValue;
 		}
 		

@@ -8,7 +8,7 @@ import com.sample.biblio.svc.exceptions.BiblioDaoException;
 import com.sample.biblio.dao.exceptions.BiblioSvcException;
 import com.sample.frame.be.dao.generic.IFrameBaseDao;
 import com.sample.frame.core.exception.GenericException;
-import com.sample.frame.core.logging.FrameBaseLogger;
+import com.sample.frame.core.logging.BaseLogger;
 
 public class BiblioExceptionInterceptor {
 
@@ -28,14 +28,14 @@ public class BiblioExceptionInterceptor {
 			if (IFrameBaseDao.class.isInstance(ctx.getTarget())) {
 				GenericException ex = new BiblioDaoException(BiblioBeConstant.DAO_MESSAGE_FILE,
 						messageKey, null);
-				FrameBaseLogger.getLogger(targetClass).error(ex.getMessage(), ex);
+				BaseLogger.getLogger(targetClass).error(ex.getMessage(), ex);
 				throw ex;
 			} 
 			else // (IFrameBaseSvc.class.isInstance(ctx.getTarget()))
 				{
 				GenericException ex =  new BiblioSvcException(BiblioBeConstant.SVC_MESSAGE_FILE,
 						messageKey, null);
-				FrameBaseLogger.getLogger(targetClass).error(ex.getMessage(), ex);
+				BaseLogger.getLogger(targetClass).error(ex.getMessage(), ex);
 				
 				throw ex;
 			}
