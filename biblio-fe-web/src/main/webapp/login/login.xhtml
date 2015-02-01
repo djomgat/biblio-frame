@@ -79,7 +79,7 @@
                     <div id="login-container" >
 			<p:panel id="login-panel" header="#{msg['view.login.panel.header.label']}"  >
                             <p:focus />
-                            <ui:param name="loginBean" value="#{loginController}" />
+                            <ui:param name="loginBean" value="#{shiroLoginController}" />
                             <ui:param name="localeCtl" value="#{languageSwitcher}" />
                             <h:panelGrid border="0" width="100%"  >
                             <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r" >
@@ -87,7 +87,7 @@
 				<h:outputLink  value="javascript:void(0)" onclick="dlg.show()"> #{msg['view.login.label.compte-oublie']} </h:outputLink>  									
                             </h:panelGrid>						
                             <h:panelGroup>
-                                <p:inputText id="userlogin" value="#{loginBean.userLogin}" required="true" style="width:100%" />
+                                <p:inputText id="userlogin" value="#{loginBean.username}" required="true" style="width:100%" />
                                 <p:watermark for="userlogin" value="#{msg['view.login.watermark.compte']}" />							
                             </h:panelGroup>
                             <p:message for="userlogin" />
@@ -97,7 +97,7 @@
 				<h:outputLink  value="javascript:void(0)" onclick="dlg.show()">#{msg['view.login.label.mot-de-passe-oublie']}</h:outputLink>  																	
                             </h:panelGrid>													
                             <h:panelGroup>
-                            	<p:password id="userpassword" 	value="#{loginBean.userPassword}"  	required="true" feedback="true" style="width:100%" />
+                                <p:password id="userpassword" 	value="#{loginBean.password}"  	required="true" feedback="true" style="width:100%" />
 				<p:watermark for="userpassword" value="#{msg['view.login.watermark.mot-de-passe']}"  />							
                             </h:panelGroup>
                             <p:message for="userpassword" />
@@ -105,7 +105,7 @@
                             <p:separator  />                                    
                             <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r"  >
                                 <p:outputLabel value="#{msg['label.remember-me']}" />	
-                                <p:selectBooleanCheckbox value="#{loginBean.userRemember}" />
+                                <p:selectBooleanCheckbox value="#{loginBean.rememberMe}" />
                             </h:panelGrid>  
                             
                             <h:panelGrid columns="2" rendered="true" >
@@ -123,7 +123,7 @@
                             <p:separator  />
 
                             <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r"  >
-                            	<p:commandButton value="#{msg['view.login.buton.login.label']}" action="#{loginBean.login}" update="login-form" />
+                                <p:commandButton value="#{msg['view.login.buton.login.label']}" action="#{loginBean.authenticate()}" update="login-form" />
 				<h:outputLink  value="javascript:void(0)" onclick="dlg.show()"> #{msg['view.login.label.pas-de-compte']} </h:outputLink>  																									
                             </h:panelGrid>													
 																											
