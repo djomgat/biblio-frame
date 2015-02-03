@@ -125,10 +125,18 @@
         </dependency>
         
         <dependency>                                 
-            <groupId>org.apache.commons</groupId>
+            <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>                                
-        </dependency>         
+        </dependency>
+        
+        <!-- Pour la gestion des servlets utilisées pour la visualisation jasper -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+                                   
     </dependencies>
 
     <build>

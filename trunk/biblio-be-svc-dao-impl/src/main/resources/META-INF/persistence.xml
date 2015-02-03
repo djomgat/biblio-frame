@@ -10,17 +10,24 @@
       <jta-data-source>java:jboss/datasources/biblioDS</jta-data-source>
    
       <class>com.sample.biblio.model.Tabuser</class>
-      <class>com.sample.biblio.model.Tabclass</class>      
-      
-      <class>com.sample.biblio.model.TabTypeCommission</class>      
+      <class>com.sample.biblio.model.Tabclass</class>       
+
       <class>com.sample.biblio.model.TabTypeMarche</class>
-      <class>com.sample.biblio.model.Tabmouchard</class>
-      
-      <properties>
+      <class>com.sample.biblio.model.TabMouchard</class>
+      <class>com.sample.biblio.model.TabSociete</class>
+      <class>com.sample.biblio.model.TabContrat</class>
+      <class>com.sample.biblio.model.TabAo</class> 
+      <class>com.sample.biblio.model.TabLot</class>
+      <class>com.sample.biblio.model.TabNatureMarche</class>
+      <class>com.sample.biblio.model.TabTypeCommission</class>
+      <class>com.sample.biblio.model.TabAttribution</class>
+      <class>com.sample.biblio.model.TabTypeCommission</class>
+  
+    <properties>
          <!-- Properties for Hibernate -->
          <property name="hibernate.hbm2ddl.auto" value="update" />
          <property name="hibernate.show_sql" value="false" />
-      </properties>
+    </properties>
    </persistence-unit>
    
 </persistence>
