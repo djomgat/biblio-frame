@@ -15,7 +15,7 @@ import com.sample.frame.core.svc.generic.IGenericSvc;
 
 @ManagedBean
 @SessionScoped
-public class UserCrudeController extends BiblioBaseCrudeController<Tabuser, UserWrapper>{
+public class UserCrudeController extends BaseCrudeController<Tabuser, UserWrapper>{
 
 	@Override
 	public IGenericSvc<Tabuser, String> getCurrentSvc() {

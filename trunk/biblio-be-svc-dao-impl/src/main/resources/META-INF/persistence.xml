@@ -8,6 +8,8 @@
    <persistence-unit name="primary" transaction-type="JTA">
       <provider>org.hibernate.ejb.HibernatePersistence</provider>
       <jta-data-source>java:jboss/datasources/biblioDS</jta-data-source>
+      
+      <jar-file></jar-file>
    
       <class>com.sample.biblio.model.Tabuser</class>
       <class>com.sample.biblio.model.Tabclass</class>       

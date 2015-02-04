@@ -7,27 +7,15 @@ import com.sample.frame.fe.helper.tablemanager.PrimeFacesTableManager;
 
 public class ClassCrudeViewhelper extends CrudeViewHelper<ClasseWrapper>{
 
+    public ClassCrudeViewhelper(){
+	super(new ClasseWrapper(new Tabclass()));	
+	this.setDataManager(new PrimeFacesTableManager<ClasseWrapper>());
+	this.setSelectionDataManager(new PrimeFacesTableManager<ClasseWrapper>());
+    }
 	
-	public ClassCrudeViewhelper(){
-		super(new ClasseWrapper(new Tabclass()));	
-		
-		this.setDataManager(new PrimeFacesTableManager<ClasseWrapper>());
-		this.setSelectionDataManager(new PrimeFacesTableManager<ClasseWrapper>());
-
-	}
-	
-//	public ClassCrudeViewhelper(ClasseWrapper wrapperInstance) {
-//		super(wrapperInstance);
-//		
-//		// Initialisation
-//		this.setDataManager(new PrimeFacesTableManager<ClasseWrapper>());
-//		this.setSelectionDataManager(new PrimeFacesTableManager<ClasseWrapper>());
-//	}
-
-	@Override
-	public void initializeTestContext() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void initializeTestContext() {
+	// TODO Auto-generated method stub
+    }
 
 }
