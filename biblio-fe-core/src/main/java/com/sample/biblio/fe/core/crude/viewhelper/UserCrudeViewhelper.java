@@ -5,13 +5,13 @@ import com.sample.frame.fe.controller.crude.CrudeViewHelper;
 
 public class UserCrudeViewhelper extends CrudeViewHelper<UserWrapper>{
 
-	public UserCrudeViewhelper(UserWrapper wrapperInstance) {
-		super(wrapperInstance);
-	}
+    public UserCrudeViewhelper(UserWrapper wrapperInstance) {
+        super(wrapperInstance);
+    }
 
-	@Override
-	public void initializeTestContext() {
-		
-	}
+    @Override
+    public void initializeTestContext() {
+	
+    }
 
 }

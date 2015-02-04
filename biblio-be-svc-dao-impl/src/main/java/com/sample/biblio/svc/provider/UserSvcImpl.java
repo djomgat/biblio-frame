@@ -19,24 +19,26 @@ import com.sample.frame.core.logging.BaseLogger;
 
 @Stateless(name = "UserSvc", mappedName = "UserSvc")
 @TransactionManagement(TransactionManagementType.CONTAINER)
-@Interceptors({TransactionInterceptor.class,LoggingInterceptor.class,AuthorizationInterceptor.class})
+@Interceptors({TransactionInterceptor.class,
+               LoggingInterceptor.class,
+               AuthorizationInterceptor.class})
+
 public class UserSvcImpl extends GenericSvcImpl<Tabuser, String> implements
 		IUserSvcLocal, IUserSvcRemote {
 
-	@Inject
-	IUserDao dao;
+    private static BaseLogger logger = BaseLogger.getLogger(UserSvcImpl.class) ;
+    
+    @Inject
+    IUserDao dao;
 	
-	private static BaseLogger logger = BaseLogger.getLogger(UserSvcImpl.class) ;
+    @Override
+    protected IGenericDao<Tabuser, String> getGenericDao() {		
+	return dao;
+    }
 
-	@Override
-	protected IGenericDao<Tabuser, String> getGenericDao() {		
-		return dao;
-	}
-
-	@Override
-	protected BaseLogger getLogger() {
-	
-		return logger;
-	}
+    @Override
+    protected BaseLogger getLogger() {
+	return logger;
+    }
 
 }
