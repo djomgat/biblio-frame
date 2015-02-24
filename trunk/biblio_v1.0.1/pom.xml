@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <name>frame-biblio</name>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.sample.frame.biblio</groupId>
+    <artifactId>frame-biblio</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <url>http://jboss.org/jbossas</url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <distribution>repo</distribution>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+        </license>
+    </licenses>
+    <modules>
+	<module>frame-core</module>
+	<module>frame-be</module>
+        <module>frame-fe</module>
+		
+	<module>biblio-aa-entity</module>
+        <module>biblio-be-dao-impl</module>
+	<module>biblio-be-dao-contract</module>
+        <module>biblio-be-svc-impl</module>
+        <module>biblio-be-svc-contract</module>	
+		
+	<module>biblio-fe-core</module>
+	<module>biblio-fe-web</module>
+        <module>biblio-z-ear</module>
+    </modules>
+
+    <properties>
+        <!-- Explicitly declaring the source encoding eliminates the following message: -->
+        <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
+            resources, i.e. build is platform dependent! -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
+        <version.jboss.bom>1.0.7.Final</version.jboss.bom>
+
+        <!-- other plugin versions -->
+        <version.ear.plugin>2.6</version.ear.plugin>
+        <version.ejb.plugin>2.3</version.ejb.plugin>
+        <version.surefire.plugin>2.10</version.surefire.plugin>
+        <version.war.plugin>2.1.1</version.war.plugin>
+
+        <!-- maven-compiler-plugin -->
+        <maven.compiler.target>1.6</maven.compiler.target>
+        <maven.compiler.source>1.6</maven.compiler.source>
+				
+	<!-- Explicitly declaring the source encoding eliminates the following message: -->
+	<!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
+	 resources, i.e. build is platform dependent! -->
+		 
+	<!--  doublon!! <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> -->
+	<!-- Timestamp format for the maven.build.timestamp property -->
+	<!-- You can reference property in pom.xml or filtered resources (must 
+	 enable third-party plugin if using Maven < 2.1) -->
+		 
+	<maven.build.timestamp.format>yyyyMMdd'T'HHmmss</maven.build.timestamp.format>
+				
+	<!-- Specify the JBoss AS directory to be the JBOSS_HOME environment variable -->		 
+	<!-- <jboss.home>C:\\unzip_program\\jboss-as-7.1.1.Final\\jboss-as-7.1.1.Final</jboss.home>  -->
+	<jboss.home>C:\\unzip_program\\jboss-as-7.1.1.Final.autres\\jboss-as-7.1.1.Final_eric</jboss.home>
+	<jboss.version>7.1.1.Final</jboss.version>		
+		        
+        <version.jboss.as>7.1.1.Final</version.jboss.as>		
+		
+        <!-- JBoss dependency versions -->        
+        <version.jboss.maven.plugin>7.4.Final</version.jboss.maven.plugin>
+        <version.jboss.as.maven.plugin>7.6.FINAL</version.jboss.as.maven.plugin>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.bom</groupId>
+                <artifactId>jboss-javaee-6.0-with-tools</artifactId>
+                <version>${version.jboss.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.bom</groupId>
+                <artifactId>jboss-javaee-6.0-with-hibernate</artifactId>
+                <version>${version.jboss.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- The JBoss AS plugin deploys your ear to a local JBoss 
+                    AS container -->
+                <!-- Due to Maven's lack of intelligence with EARs we need 
+                    to configure the jboss-as maven plugin to skip deployment for all modules. 
+                    We then enable it specifically in the ear module. -->
+                <plugin>
+                    <groupId>org.jboss.as.plugins</groupId>
+                    <artifactId>jboss-as-maven-plugin</artifactId>
+                    <version>${version.jboss.maven.plugin}</version>
+                    <inherited>true</inherited>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+                <plugin>
+		    <groupId>org.codehaus.mojo</groupId>
+		    <artifactId>sonar-maven-plugin</artifactId>
+		    <version>2.2</version>
+                </plugin>				
+            </plugins>
+        </pluginManagement>
+		
+		<plugins>
+		<!-- 
+		  <plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>2.2</version>
+		  </plugin>
+		-->  
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.1</version>
+			<configuration>
+				<source>1.7</source>
+				<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+    </build>
+	<repositories>
+    <repository>
+      <id>fdvsolution.public</id>
+      <url>http://archiva.fdvs.com.ar/repository/public1/</url>
+    </repository>
+ </repositories>
+
+</project>

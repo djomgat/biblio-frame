@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <url>http://jboss.org/jbossas</url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <distribution>repo</distribution>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+        </license>
+    </licenses>
+
+    <name>biblio-z-ear</name>
+	<artifactId>biblio-z-ear</artifactId>	
+	<!-- Specify the packaging value of any EAR module -->
+    <packaging>ear</packaging>
+    <!-- Reference the parent -->
+    <parent>
+        <groupId>com.sample.frame.biblio</groupId>
+        <artifactId>frame-biblio</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    
+    <!-- The absolute path to the Glassfish App. Server, please change this... -->
+    <properties>
+	<glassfish.directory>C:/Java/glassfish-3.1.2.2</glassfish.directory>
+    </properties>
+    <!-- The absolute path to the JBoss App. Server, please change this... -->
+   
+    <dependencies>
+        <!-- The dependencies for EAR module should include all those sub-modules 
+             that are needed to be packaged into the ear file -->
+	<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>biblio-aa-entity</artifactId>
+		<version>${project.version}</version>
+		<type>jar</type>			
+	</dependency>
+	<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>biblio-be-dao-impl</artifactId>
+		<version>${project.version}</version>
+		<type>ejb</type>			
+	</dependency>        
+	<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>biblio-be-dao-contract</artifactId>
+		<version>${project.version}</version>
+		<type>jar</type>			
+	</dependency>
+	<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>biblio-be-svc-impl</artifactId>
+		<version>${project.version}</version>
+		<type>ejb</type>			
+	</dependency>
+        <dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>biblio-be-svc-contract</artifactId>
+		<version>${project.version}</version>
+		<type>jar</type>			
+	</dependency>
+
+	<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>biblio-fe-core</artifactId>
+		<version>${project.version}</version>
+		<type>jar</type>			
+	</dependency>
+	<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>biblio-fe-web</artifactId>
+		<version>${project.version}</version>
+		<type>war</type>			
+	</dependency> 
+	</dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <!-- plugin de gestion des .ear par maven  -->
+            <plugin>
+                <!-- plugin de gestion des .ear par maven  -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>${version.ear.plugin}</version>
+                <configuration>
+                    <!-- Tell Maven we are using Java EE 6 -->
+                    <version>6</version>
+                    <!-- Use Java EE ear libraries as needed. Java EE ear libraries 
+                        are in easy way to package any libraries needed in the ear, and automatically 
+                        have any modules (EJB-JARs and WARs) use them -->
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <modules>
+                    <!-- Default context root of the web app is /as7example3-web. 
+                        If a custom context root is needed, uncomment the following snippet to
+                        register our War as a web module and set the contextRoot property -->
+                    <!--
+                    <webModule>
+                        <groupId>com.mastertheboss</groupId>
+                        <artifactId>as7example3-web</artifactId>
+                        <contextRoot>/as7example3</contextRoot>
+                    </webModule>
+                    -->
+                    </modules>
+                    <fileNameMapping>no-version</fileNameMapping>
+                </configuration>
+            </plugin>
+            
+            <!-- JBoss AS Server -->
+            <!-- The JBoss AS plugin deploys your ear to a local JBoss AS container -->
+            <!-- Due to Maven's lack of intelligence with EARs we need to configure 
+                the jboss-as maven plugin to skip deployment for all modules. We then enable 
+                it specifically in the ear module. -->
+            <!-- JBoss AS plugin to deploy .war .ear -->
+            <!-- To use, run: mvn package jboss-as:deploy -->
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>                
+                <!-- <version>${version.jboss.as.maven.plugin}</version>  -->                
+                <!-- Configuration de la connexion à AS Server -->
+                <configuration>
+                    <jbossHome>${jboss.home}</jbossHome>
+                    <serverName>standalone</serverName>
+                    <!--<serverName>all</serverName>-->
+                    <hostname>localhost</hostname> 
+                    <port>9999</port>                    
+                    <filename>${project.artifactId}.ear</filename>
+                    <skip>false</skip>
+                </configuration>
+                <!-- 
+                <configuration>
+                	<jbossHome>${jboss.home}</jbossHome>
+                	<serverName>all</serverName>
+                	<fileName>${project.artifactId}.ear</fileName>
+        	</configuration>
+        	-->
+                <executions>
+                    <!-- Deploy the ear application on install -->
+                    <execution>
+                        <id>jboss-deploy-install</id>
+      			<phase>install</phase>
+                        <goals>
+                            <goal>deploy</goal>
+          		</goals>              			
+                    </execution>
+                    <!-- Deploy the JDBC library -->
+                    <!-- 
+                    <execution>
+                        <id>jboss-deploy-jdbc-driver</id>
+                        <phase>install</phase>
+                        <configuration>
+                            <groupId>postgresql</groupId>
+                            <artifactId>postgresql</artifactId>
+                            <name>postgresql.jar</name>
+                        </configuration>
+                        <goals>
+                            <goal>deploy-artifact</goal>
+                        </goals>
+                    </execution>
+                     -->
+                    <!-- Undeploy the application on clean -->      				
+                    <execution>
+                        <id>jboss-undeploy</id>
+                        <phase>clean</phase>
+                        <configuration>
+                           <ignoreMissingDeployment>true</ignoreMissingDeployment>
+                        </configuration>      				    
+                       	<goals>
+                               	<goal>undeploy</goal>
+          		</goals>                		
+                    </execution>
+                    <!-- intéressant mais à revoir --> 
+                    <!--
+                    <execution>
+                        <id>start-server</id>
+                        <phase>process-test-classes</phase>                                
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>
+                    -->
+                    <!-- copying driver and datasource here -->
+                    <!--
+                    <execution>
+                        <id>shutdown-server</id>
+                        <phase>process-test-classes</phase>                                
+                            <goals>
+                                <goal>shutdown</goal>
+                            </goals>
+                    </execution>
+                    --> 
+                    
+                                                            				
+                    
+		</executions>
+            </plugin>
+            
+            <!-- Glassfish App Server -->
+            <!--  
+            <plugin>
+		<groupId>org.glassfish.maven.plugin</groupId>
+                <artifactId>maven-glassfish-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+			<id>gf-undeploy</id>
+                        <goals>
+                            <goal>undeploy</goal>
+			</goals>
+			<phase>clean</phase>
+                    </execution>
+                    <execution>
+			<id>gf-deploy</id>
+    			<goals>
+                        	<goal>deploy</goal>
+			</goals>
+			<phase>package</phase>
+                    </execution>
+		</executions>
+    		<configuration>
+			<user>admin</user>
+			<glassfishDirectory>${glassfish.directory}</glassfishDirectory>
+			<domainDirectory>${glassfish.directory}/glassfish/domains/</domainDirectory>
+    			<passwordFile>${basedir}/glassfishpasswordfile</passwordFile>
+			<domain>
+    				<name>DummyDemoDomain</name>
+    				<adminPort>4848</adminPort>
+				<httpPort>8080</httpPort>
+    				<httpsPort>8443</httpsPort>
+			</domain>
+    			<components>
+    				<component>
+                        		<name>DummyDemo</name>
+    					<artifact>target/DummyDemo-ear-1.0-SNAPSHOT.ear</artifact>
+    				</component>
+    			</components>
+    		</configuration>            
+	</plugin> 
+	--> <!-- End of Glassfish plugin configuration -->            
+        </plugins>
+    </build>
+   
+    <profiles>
+        <profile>
+            <!-- When built in OpenShift the 'openshift' profile will be used when invoking mvn. -->
+            <!-- Use this profile for any OpenShift specific customization your app will need. -->
+            <!-- By default that is to put the resulting archive into the 'deployments' folder. -->
+            <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
+            <id>openshift</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-ear-plugin</artifactId>
+                        <version>${version.ear.plugin}</version>
+                        <configuration>
+                            <outputDirectory>deployments</outputDirectory>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

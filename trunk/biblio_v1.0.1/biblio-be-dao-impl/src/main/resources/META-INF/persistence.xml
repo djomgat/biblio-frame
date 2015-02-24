@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence                         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="primary" transaction-type="JTA">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <jta-data-source>java:jboss/datasources/biblioDS</jta-data-source>
+  <!--   <jar-file/> -->
+    <class>com.sample.biblio.model.marche.TabTypeMarche</class>
+    <class>com.sample.biblio.model.marche.TabSociete</class>
+    <class>com.sample.biblio.model.marche.TabContrat</class>
+    <class>com.sample.biblio.model.marche.TabAo</class>
+    <class>com.sample.biblio.model.marche.TabLot</class>
+    <class>com.sample.biblio.model.marche.TabNatureMarche</class>
+    <class>com.sample.biblio.model.marche.TabTypeCommission</class>
+    <class>com.sample.biblio.model.marche.TabAttribution</class>
+<!--     <class>com.sample.biblio.model.marche.TabTypeCommission</class> -->
+    <class>com.sample.biblio.model.courrier.TabCourrier</class>
+    <class>com.sample.biblio.model.courrier.TabDestinataire</class>
+    <class>com.sample.biblio.model.courrier.TabDestinatairePK</class>
+    <class>com.sample.biblio.model.courrier.TabNatureCourrier</class>
+    <class>com.sample.biblio.model.courrier.TabPersonne</class>
+    <class>com.sample.biblio.model.courrier.TabPieceJointe</class>
+    <class>com.sample.biblio.model.courrier.TabService</class>
+    <class>com.sample.biblio.model.courrier.TabTypeCourrier</class>
+    <class>com.sample.biblio.model.securite.TabMouchard</class>
+    <class>com.sample.biblio.model.securite.Tabclass</class>
+    <class>com.sample.biblio.model.securite.Tabuser</class>
+    <class>com.sample.biblio.model.marche.TabConsultation</class>
+    <class>com.sample.biblio.model.marche.TabMoa</class>
+    <class>com.sample.biblio.model.marche.TabModeSelection</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <!-- Properties for Hibernate -->
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.show_sql" value="false"/>
+    </properties>
+  </persistence-unit>
+</persistence>

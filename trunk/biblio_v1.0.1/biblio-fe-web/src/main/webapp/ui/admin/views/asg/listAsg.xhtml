@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/default-template/templates/listViewTemplate.xhtml">
+	
+	
+	<ui:param name="viewController" value="#{asgController}" />
+	
+	<ui:define name="currentViewTitle" > Assignataires </ui:define>					
+	
+	<ui:define name="currentViewMenu">
+		<ui:include src="../asg/menu.xhtml" />
+	</ui:define>
+	
+	<ui:define name="standardFilter">
+
+       	<h:panelGrid columns="4" width="100%" >
+       		
+       		<h:outputLabel value="Code" />
+       		<h:inputText   value="#{criteria.wrappedEntity.CAsg}"  />
+
+       		<h:outputLabel value="Libelle" />
+       		<h:inputText   value="#{criteria.wrappedEntity.LAsg}" />
+       		       		       					         	
+       	</h:panelGrid>
+	
+	</ui:define>
+	
+	<ui:define name="specificColumns">
+	
+         <p:column sortBy="#{data.id}" filterBy="#{data.id}" filterMatchMode="contains" >  
+	        <f:facet name="header">  
+	             <h:outputText value="Code" />  
+	         </f:facet>		         		             
+             <h:outputText value="#{data.id}" />   		               
+         </p:column>  
+
+         <p:column sortBy="#{data.wrappedEntity.LAsg}" filterBy="#{data.wrappedEntity.LAsg}" filterMatchMode="contains" >  
+	        <f:facet name="header">  
+	             <h:outputText value="Libelle" />  
+	         </f:facet>		         		             
+             <h:outputText value="#{data.wrappedEntity.LAsg}" />   		               
+         </p:column>  
+	
+	</ui:define>
+	
+</ui:composition>

@@ -1,0 +1,31 @@
+ JSF <------> ViewHelper <----> BusinessDelegate <----> SessionFacade <----> 
+                                ClassCrudeController ----
+
+ClassCrudeController 
+ViewHelper: permet de séparer la vue de la logique du traitement
+BusinessDelegate reside dans le tier-présentation, il est utilisé pour accéder au service métier.
+Il peut-être vu comme une interface qui utilise un helper (serviceLocator)
+
+
+ Classe abstraite BaseCrudeController: 
+  méthode abstraite permettant d'obtenir un Business Service de manière transparente et le manipuler à travers les méthodes concrètes.
+
+  il permet de masquer l'appel distant du service
+
+ MyClassCrudeController<Entity, MyClassWrapper> extends BaseCrudeController
+  
+  . utilise le design pattern Service Locator
+
+Wrapper est une variante de design pattern Adapter. Il permet d'ajouter des propriétes et des méthodes
+aux objets natifs, en créant un objet dérivé. Il permet également d'adapter le modèle pour leur utilisation
+par les contrôleurs et les vues.
+
+Dans le module biblio-fe-core,
+ . On crée une classe MyClassWrapper pour envelopper l'entité TabMyClass et lui ajouter des méthodes;
+ . On crée une classe MyClassViewHelper pour 
+ . On crée une classe MyClassCrudeController qui étend BaseCrudeController qui va permettre consommer
+   un Business Service de manière transparente;
+
+Dans la vue [module biblio-fe-web] on aura une page JSF composite
+   qui fera appel à MyClassCrudeController comme Contrôleur et Wrapped et data comme modèles.
+        

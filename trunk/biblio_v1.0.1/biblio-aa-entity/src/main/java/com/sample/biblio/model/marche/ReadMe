@@ -1,0 +1,87 @@
+table moa: Administration
+table société : Operateur économique
+table contrat
+table Nature de marché
+table type de contrat (table type marche)
+
+Formulaire Contrat ()
+
+Maître d'Ouvrage:            [choix dans table Moa]
+
+Autorité contractante:       [choix dans table Moa]
+
+Type de contrat:             [choix dans table type de contrat]
+
+Numéro du contrat:           [texte]
+
+Type de procédure:           [choix dans table type de procédure]
+
+Référence Appel d'Offres:    [texte]
+
+Date Appel d'Offres:         [Date]
+
+Objet du contrat:            [texte]
+
+Nature du contrat:           [choix dans table Nature du marché]
+
+Titulaire du contrat:        [choix dans table de société]
+   Adresse:
+     BP:
+     Tél.:
+     N° Compte
+     Domiciliation bancaire:
+     Num. contribuable:
+     CNI/RC:
+
+Délai exécution:             [Entier]
+
+Lieu exécution: 	     [texte]
+
+Montant TTC:	             [Entier]
+
+Montant HT:   	             [Entier]
+
+Montant Net:	             [Entier]
+
+Financement: 	             [texte]
+
+Imputation:	             [texte]
+
+Date souscription:  	     [Date]
+
+Date signature:	    	     [Date]
+
+Date notification:  	     [Date]
+
+Date enregistrement:	     [Date]
+
+Date démarrage:		     [Date]
+
+Date réception:		     [Date]
+
+Chef service du marché:      [texte]
+
+Ingénieur du marché:         [texte]
+
+Fichier numérique:  [MAx 5 MB]
+
+Date heure d'enregistrement: /Auto
+
+Table Type de contrat: 
+   . LC - Lettre-Commande
+   . LM - Lettre-Marché
+
+
+Table Nature du marché: 
+   . PI  - Prestations intellectuelles
+   . FOU - Fournitures
+   . TRX - Travaux
+
+Table Type de procédures 
+   . AONO: Appel d'Offre NAtional Ouvert
+   . AONR: Appel d'Offre NAtional Restreint
+   . AOIO: Appel d'Offre International Ouvert
+   . AOIR: Appel d'Offre International Restreint
+   . GG: Gré à Gré
+   . DC: Demande de cotations
+

@@ -1,0 +1,14 @@
+
+On initialise le logger pour tracer un classe name
+private: pour prévenir des conflits avec les sous-classes, bloquer l'héritage;
+
+static: (s'oppose à instance) signifie qu'un seul logger est crée par classe et 
+        non par instance, toutes les instances partage la mm configuration.
+Avantage: saves memmory (static);
+    
+final: signifie que la valeur de la variable logger n'est pas modifiable. Vrai puisque
+    nous loguons tous les messages d'un classe via le même logger.
+    logger ne change pas durant l'exécution, et donc une fois initialisé, il n'est plus jamais reconfiguré;
+Avantage: optimized (final);
+ 
+private static final BaseLogger logger = BaseLogger.getLogger(JasperReportFactory.class);
