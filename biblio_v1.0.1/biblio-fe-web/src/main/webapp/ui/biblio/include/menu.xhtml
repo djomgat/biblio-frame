@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:submenu label="Biblio">
+            <p:column>
+		<p:submenu style="margin:0; padding:0; height:0; width:0">
+                    <p:menuitem value="Classes CRUDE" 	action="#{classCrudeController.navigateToLocalHomeView}" />
+                    <p:menuitem value="User CRUDE"  action="#{userCrudeController.navigateToLocalHomeView}" />
+		</p:submenu>
+            </p:column>
+	</p:submenu>
+	
+	<p:submenu label="Courrier">
+        <p:column>
+			<p:submenu style="margin:0; padding:0; height:0; width:0">
+	                    <p:menuitem value="Courrier Entrant" 	action="#{courrierCrudeController.navigateToEditionView}"  />
+	                    <p:menuitem value="Courrier Interne" 	action="#{courrierCrudeController.navigateToEditionView}"  />
+	                    <p:menuitem value="Courrier Sortant" 	action="#{courrierCrudeController.navigateToEditionView}"  />
+	                    <p:menuitem value="Expéditeur"  action="#{personneCrudeController.navigateToLocalHomeView}" />
+	                    <p:menuitem value="Nature de courrier"  action="#{natureCourrierCrudeController.navigateToLocalHomeView}" />
+	                    <p:menuitem value="Type de courrier"  action="#{typeCourrierCrudeController.navigateToLocalHomeView}" />
+			</p:submenu>
+        </p:column>
+	</p:submenu>
+
+</ui:composition>

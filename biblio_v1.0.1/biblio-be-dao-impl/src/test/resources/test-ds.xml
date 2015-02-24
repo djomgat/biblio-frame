@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is an unmanaged datasource. It should be used for proofs of concept 
+	 or testing only. It uses H2, an in memory database that ships with JBoss AS. -->
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.jboss.org/ironjacamar/schema 
+	                   http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
+
+	<!-- The datasource is bound into JNDI at this location. We reference this in META-INF/test-persistence.xml -->
+	<datasource jndi-name="java:jboss/datasources/biblioTestDS" pool-name="biblioTestDS">
+		<connection-url>jdbc:mysql://localhost:3306/db_contract</connection-url>
+		<driver>mysql</driver>
+		<pool>
+			<min-pool-size>10</min-pool-size>
+			<max-pool-size>100</max-pool-size>
+			<prefill>true</prefill>
+		</pool>
+		<security>
+			<user-name>root</user-name>
+			<password>m@nager</password>
+		</security>
+	</datasource>
+	<drivers>
+		<driver name="com.mysql" module="com.mysql">
+			<xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource
+			</xa-datasource-class>
+		</driver>
+	</drivers>
+</datasources>

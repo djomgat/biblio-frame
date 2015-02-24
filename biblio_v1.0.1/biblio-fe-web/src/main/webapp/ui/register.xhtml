@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui">
+	
+<f:view contentType="text/html">
+<h:head>
+	<title>#{msg['view.login.form.label']}</title>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+	<style type="text/css">
+	
+		html {
+			height: 100%;
+		}
+		body {
+			background: url(images/macback.png);			
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			font-family: geneva, arial, helvetica, sans-serif;
+			font-size:80%;
+		}		
+		#layout-table {
+			height: 100%;
+			width: 100%;
+			border-collapse: collapse;
+			/*text-align: center;*/
+		}				
+		#layout-td {
+			height: 100%;
+			padding: 0;
+			vertical-align: middle;
+		}
+		
+		div#message-container{
+			width: 600px;
+			margin: 0 auto;
+			text-align : center;
+		}
+								
+		div#login-container{
+			width: 400px;
+			margin: 0 auto;
+			/*border:1px dotted black;*/	/*border : width style color*/
+			/*text-align : center */
+		}
+		
+		div#locale-container{
+			width: 400px;
+			margin: 0 auto;
+			text-align : center;
+		}	
+		
+		.align-l{
+			text-align : left;
+		}	
+		
+		.align-r{
+			text-align : right;
+		}
+		
+		.align-c{
+			text-align : center;
+		}		
+		      
+	</style>
+</h:head>
+
+<h:body>
+    <table id="layout-table" >
+        <tr>
+            <td id="layout-td" >
+		<h:form id="register-form" >
+                    <div id="message-container" >
+                        <p:messages  />			
+                    </div>										
+                    <div id="register-container" >
+			<p:panel id="register-panel" header="#{msg['view.login.panel.header.label']}"  >
+                            <p:focus />
+                            <ui:param name="loginBean" value="#{shiroLoginController}" />
+                            <ui:param name="localeCtl" value="#{languageSwitcher}" />
+                            <h:panelGrid border="0" width="100%"  >
+
+                            <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r" >
+				<p:outputLabel for="userlogin" value="#{msg['label.compte']}" />
+                            </h:panelGrid>						
+                            <h:panelGroup>
+                                <p:inputText id="userlogin" value="#{loginBean.username}" required="true" style="width:100%" />
+                                <p:watermark for="userlogin" value="#{msg['view.login.watermark.compte']}" />							
+                            </h:panelGroup>
+                            <p:message for="userlogin" />
+                            
+                            
+                            <h:panelGrid columns="2" id="matchGrid" cellpadding="5">                  
+                                <h:outputLabel for="pwd1" value="Password 1: *" />
+                                <p:password id="pwd1" value="#{passwordView.password5}" 
+                                            match="pwd2" label="Password 1" required="true" />
+ 
+                                <h:outputLabel for="pwd2" value="Password 2: *" />
+                                <p:password id="pwd2" value="#{passwordView.password5}" 
+                                            label="Password 2" required="true" />
+                            </h:panelGrid>          
+                            
+
+                            <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r"  >
+                                <p:outputLabel for="userpassword" value="#{msg['label.mot-de-passe']}" />
+                            </h:panelGrid>													
+                            <h:panelGroup>
+                                <p:password id="userpassword" 	value="#{loginBean.password}"  	required="true" feedback="true" style="width:100%" />
+				<p:watermark for="userpassword" value="#{msg['view.login.watermark.mot-de-passe']}"  />							
+                            </h:panelGroup>
+                            <p:message for="userpassword" />                            
+                            
+                            <br/>
+                            <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r" >
+				<p:outputLabel for="userFirstName" value="#{msg['label.compte']}" />
+                            </h:panelGrid>						
+                            <h:panelGroup>
+                                <p:inputText id="userFirstName" value="#{loginBean.username}" required="true" style="width:100%" />
+                                <p:watermark for="userFirstName" value="#{msg['view.login.watermark.compte']}" />							
+                            </h:panelGroup>
+                            <p:message for="userFirstName" />
+                            <br/>   
+                            
+                            <br/>
+                            <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r" >
+				<p:outputLabel for="userLastName" value="#{msg['label.compte']}" />
+                            </h:panelGrid>						
+                            <h:panelGroup>
+                                <p:inputText id="userLastName" value="#{loginBean.username}" required="true" style="width:100%" />
+                                <p:watermark for="userLastName" value="#{msg['view.login.watermark.compte']}" />							
+                            </h:panelGroup>
+                            <p:message for="userLastName" />
+                            <br/>                                 
+
+                            <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r" >
+				<p:outputLabel for="userOrganism" value="#{msg['label.compte']}" />
+                            </h:panelGrid>						
+                            <h:panelGroup>
+                                <p:inputText id="userOrganism" value="#{loginBean.username}" required="true" style="width:100%" />
+                                <p:watermark for="userOrganism" value="#{msg['view.login.watermark.compte']}" />							
+                            </h:panelGroup>
+                            <p:message for="userOrganism" />
+                            <br/> 
+                            
+                            <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r" >
+				<p:outputLabel for="userAddressBox" value="#{msg['label.compte']}" />
+                            </h:panelGrid>						
+                            <h:panelGroup>
+                                <p:inputText id="userAddressBox" value="#{loginBean.username}" required="true" style="width:100%" />
+                                <p:watermark for="userAddressBox" value="#{msg['view.login.watermark.compte']}" />							
+                            </h:panelGroup>
+                            <p:message for="userAddressBox" />
+                            <br/>   
+                            
+                            <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r" >
+				<p:outputLabel for="userEmail" value="#{msg['label.compte']}" />
+                            </h:panelGrid>						
+                            <h:panelGroup>
+                                <p:inputText id="userEmail" value="#{loginBean.username}" required="true" style="width:100%" />
+                                <p:watermark for="userEmail" value="#{msg['view.login.watermark.compte']}" />							
+                            </h:panelGroup>
+                            <p:message for="userEmail" />
+                            <br/> 
+                            
+                            <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r" >
+				<p:outputLabel for="userComments" value="#{msg['label.compte']}" />
+                            </h:panelGrid>						
+                            <h:panelGroup>
+                                <p:inputText id="userComments" value="#{loginBean.username}" required="true" style="width:100%" />
+                                <p:watermark for="userComments" value="#{msg['view.login.watermark.compte']}" />							
+                            </h:panelGroup>
+                            <p:message for="userComments" />
+                            <br/>                             
+
+                            
+                            <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r" >
+				<p:outputLabel for="userCaptcha" value="#{msg['label.compte']}" />
+				<h:outputLink  value="javascript:void(0)" onclick="dlg.show()"> #{msg['view.login.label.compte-oublie']} </h:outputLink>  									
+                            </h:panelGrid>						
+                            <h:panelGroup>
+                                <p:inputText id="userCaptcha" value="#{loginBean.username}" required="true" style="width:100%" />
+                                <p:watermark for="userCaptcha" value="#{msg['view.login.watermark.compte']}" />							
+                            </h:panelGroup>
+                            <p:message for="userCaptcha" />
+                            <br/> 
+                            
+                            <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r"  >
+                                <p:outputLabel value="#{msg['label.remember-me']}" />	
+                                <p:selectBooleanCheckbox value="#{loginBean.rememberMe}" />
+                            </h:panelGrid>                           
+                            
+                            <p:separator  />
+
+                            <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r"  >
+                                <p:commandButton value="#{msg['view.login.buton.login.label']}" action="#{loginBean.authenticate()}" update="login-form" />
+                            </h:panelGrid>													
+																											
+                            </h:panelGrid>
+                            <p:dialog  widgetVar="dlg" header="#{msg['label.aide']}" width="400"  resizable="false" showEffect="clip" hideEffect="clip"   >
+				  ...
+                            </p:dialog>						
+			</p:panel>
+                    </div>
+		</h:form>						
+            </td>
+	</tr>
+    </table>
+			
+</h:body>
+
+</f:view>
+
+</html>
+
+
