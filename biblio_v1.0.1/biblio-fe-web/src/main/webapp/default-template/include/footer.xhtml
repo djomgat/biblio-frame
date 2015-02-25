@@ -1,25 +1,22 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
 	
-	<p:toolbar>
-		<p:toolbarGroup align="left" >
-			<h:outputText value="Biblio Sample" />
-			<p:separator />
-			<h:outputText value="PDT, Eric" />
-			<p:separator />
-			<h:outputText value="Other Static Infos ..." />
-			<p:separator />
-			<h:outputLink value="javascript:void(0)" onclick="notificationWV.show()" > Notifications here ... </h:outputLink>			  
-			
-		</p:toolbarGroup>
-		
-		<p:toolbarGroup align="right" >
-			<p:separator/>
-			<h:outputText value="Template Biblio, designed by PDT" />
-		</p:toolbarGroup>				
-	</p:toolbar>
+    <p:toolbar>
+        <p:toolbarGroup align="left" >
+            <h:outputText value="Biblio Sample" />
+            <p:separator />
+            <h:outputText value="Other Static Infos ..." />
+            <p:separator />
+            <h:outputLink value="javascript:void(0)" onclick="notificationWV.show()" > Notifications here ... </h:outputLink>			  
+        </p:toolbarGroup>
+
+        <p:toolbarGroup align="right" >
+            <p:separator/>
+            <h:outputText value="#{msg['label.application.copyrights']}" />
+        </p:toolbarGroup>				
+    </p:toolbar>
 
 </ui:composition>

@@ -1,15 +1,13 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
 	
-	<p:overlayPanel id="preferencePanel" for="preferenceBtn" hideEffect="fade" >  
-	
-		<p:panel header="Preferences" >		
-			Editer mes preferences
-		</p:panel>
-
-	</p:overlayPanel>	     	     		    			
+    <p:overlayPanel id="preferencePanel" for="preferenceBtn" hideEffect="fade" > 
+        <p:panel header="#{msg['label.preference']}" >		
+                #{msg['label.preferences.details']}
+        </p:panel>
+    </p:overlayPanel>	     	     		    			
 
 </ui:composition>
