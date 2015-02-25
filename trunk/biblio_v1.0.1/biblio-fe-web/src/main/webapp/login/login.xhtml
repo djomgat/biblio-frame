@@ -9,64 +9,7 @@
 <h:head>
     <title>#{msg['view.login.form.label']}</title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <!--<h:outputStylesheet name="login-css.css" library="css"/> Ne marche pas correctement-->
-    <style type="text/css">
-	
-		html {
-			height: 100%;
-		}
-		body {
-			background: url(images/macback.png);			
-			height: 100%;
-			margin: 0;
-			padding: 0;
-			font-family: geneva, arial, helvetica, sans-serif;
-			font-size:80%;
-		}		
-		#layout-table {
-			height: 100%;
-			width: 100%;
-			border-collapse: collapse;
-			/*text-align: center;*/
-		}				
-		#layout-td {
-			height: 100%;
-			padding: 0;
-			vertical-align: middle;
-		}
-		
-		div#message-container{
-			width: 600px;
-			margin: 0 auto;
-			text-align : center;
-		}
-								
-		div#login-container{
-			width: 400px;
-			margin: 0 auto;
-			/*border:1px dotted black;*/	/*border : width style color*/
-			/*text-align : center */
-		}
-		
-		div#locale-container{
-			width: 400px;
-			margin: 0 auto;
-			text-align : center;
-		}	
-		
-		.align-l{
-			text-align : left;
-		}	
-		
-		.align-r{
-			text-align : right;
-		}
-		
-		.align-c{
-			text-align : center;
-		}		
-		      
-	</style>
+    <h:outputStylesheet name="login.css" library="css"/>
 </h:head>
 
 <h:body>
@@ -85,14 +28,11 @@
                             <h:panelGrid border="0" width="100%"  >
 
                             <h:panelGrid columns="2" rendered="true" >
-                                <!--<h:outputText value="#{localeCtl.displayLanguage}" 
-                                              title="#{localeCtl.locale}"  />-->
                                 <h:selectOneMenu  title="#{localeCtl.displayLanguage}" 
                                                   value="#{localeCtl.selectedLanguage}"  >
-                                    <f:selectItem itemValue="fr" itemLabel="Français"/>
-                                    <f:selectItem itemValue="en" itemLabel="Anglais"  />
-                                    <!-- <a4j:support event="onchange" ajaxSingle="false" oncomplete="javascript:location.reload(true)"/> -->
-                             		<p:ajax id="idy" event="change"  value="javascript:void(0)" update="login-form"/>
+                                    <f:selectItem itemValue="fr" itemLabel="#{msg['locale.francais']}"/>
+                                    <f:selectItem itemValue="en" itemLabel="#{msg['locale.anglais']}"  />
+                                    <p:ajax id="idy" event="change"  value="javascript:void(0)" update="login-form"/>
                                 </h:selectOneMenu>
                             </h:panelGrid>     
                                 

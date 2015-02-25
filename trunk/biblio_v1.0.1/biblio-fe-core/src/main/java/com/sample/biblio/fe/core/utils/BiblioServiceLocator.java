@@ -22,8 +22,7 @@ public class BiblioServiceLocator {
     }
     
     private static String earname = "biblio-z-ear";
-    private static String svcmodule =  "biblio-be-svc-impl";
-    
+    private static String svcmodule =  "biblio-be-svc-impl";    
     
     public static Object lookup(String beanName, Class viewClass) throws ServiceLocatorException{
     	
@@ -31,10 +30,4 @@ public class BiblioServiceLocator {
     	return SingleCachingServiceLocator.getInstance().lookup(ejbPath);
     	
     }
-    
-    
-  
-    	
-   
-
 }
