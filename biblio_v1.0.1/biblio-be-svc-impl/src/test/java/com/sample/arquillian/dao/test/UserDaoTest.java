@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 
 import com.sample.biblio.dao.api.securite.IUserDao;
 import com.sample.arquillian.dao.test.resource.DaoTestResources;
-import com.sample.biblio.svc.impl.exception.BiblioDaoExceptionForTestTransact;
+import com.sample.biblio.svc.impl.exception.BiblioSvcExceptionForTestTransact;
 import com.sample.biblio.svc.impl.interceptor.BiblioExceptionInterceptor;
 import com.sample.arquillian.svc.test.TestClassConstants;
 import com.sample.biblio.svc.impl.constant.be.BiblioBeConstant;
@@ -54,7 +54,7 @@ public static Archive<?> createTestArchive() {
             IGenericDao.class, GenericEntity.class,
             GenericDaoException.class, GenericSvcException.class,
             GenericException.class,
-            BiblioDaoExceptionForTestTransact.class,
+            BiblioSvcExceptionForTestTransact.class,
             BiblioExceptionInterceptor.class, TransactionInterceptor.class,
             LoggingInterceptor.class, AuthorizationInterceptor.class,
             BiblioSvcException.class, BiblioSvcException.class, BiblioBeConstant.class,

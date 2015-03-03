@@ -1,8 +1,8 @@
 package com.sample.biblio.svc.api.exception;
 
-import com.sample.frame.core.exception.GenericDaoException;
+import com.sample.frame.core.exception.GenericSvcException;
 
-public class BiblioSvcException extends GenericDaoException {
+public class BiblioSvcException extends GenericSvcException {
 
 	/**
 	 * 

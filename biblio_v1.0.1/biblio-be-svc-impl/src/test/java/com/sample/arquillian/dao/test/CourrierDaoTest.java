@@ -16,7 +16,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.sample.arquillian.dao.test.resource.DaoTestResources;
-import com.sample.biblio.svc.impl.exception.BiblioDaoExceptionForTestTransact;
+import com.sample.biblio.svc.impl.exception.BiblioSvcExceptionForTestTransact;
 import com.sample.biblio.svc.impl.interceptor.BiblioExceptionInterceptor;
 import com.sample.arquillian.svc.test.TestClassConstants;
 import com.sample.biblio.svc.impl.constant.be.BiblioBeConstant;
@@ -56,7 +56,7 @@ public class CourrierDaoTest {
                 IGenericDao.class, GenericDaoJpaImpl.class, GenericEntity.class,
                 GenericDaoException.class, GenericSvcException.class, GenericException.class,
                 BiblioSvcException.class, BiblioSvcException.class, BiblioBeConstant.class,
-                BiblioSvcMessageKey.class, BiblioDaoExceptionForTestTransact.class,
+                BiblioSvcMessageKey.class, BiblioSvcExceptionForTestTransact.class,
                 BiblioExceptionInterceptor.class, TransactionInterceptor.class,
                 LoggingInterceptor.class, AuthorizationInterceptor.class,
                 ICourrierDao.class,IPersonneDao.class, TabCourrier.class, TabPersonne.class, 

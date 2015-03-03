@@ -28,7 +28,7 @@ public class AuthorizationInterceptor implements Serializable {
 			+ ctx.getMethod().getName());        
             throw e;
 	}
-            return ctx.proceed();
+        return ctx.proceed();
     }
 
     private void authorizationCheck() throws Exception {

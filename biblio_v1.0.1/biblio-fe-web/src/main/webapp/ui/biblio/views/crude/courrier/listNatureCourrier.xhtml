@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    template="/default-template/templates/listViewTemplate.xhtml">
+
+    <ui:param name="viewController" value="#{natureCourrierCrudeController}" />	
+    <ui:define name="currentViewTitle" > #{msg['application.fonction.form.nature-courrier']} </ui:define>	
+    <ui:define name="standardFilter">
+    <h:panelGrid columns="2" width="100%" >       		
+        <h:panelGrid columns="2" width="100%" >       		
+            <h:outputLabel value="#{msg['application.form.field.code']}" />
+            <h:inputText id="code" value="#{criteria.wrappedEntity.codeNatureCourrier}"  />
+
+            <h:outputLabel value="#{msg['application.form.field.libel']}" />
+            <h:inputText id="libelle" value="#{criteria.wrappedEntity.libNatureCourrier}" />
+        </h:panelGrid>
+
+        <h:panelGrid columns="2" width="100%" >
+        </h:panelGrid>
+    </h:panelGrid>
+    </ui:define>
+
+    <ui:define name="specificColumns">
+    <p:column sortBy="#{data.wrappedEntity.codeNatureCourrier}" 
+              filterBy="#{data.wrappedEntity.codeNatureCourrier}" 
+              filterMatchMode="contains" >  
+        <f:facet name="header">  
+            <h:outputText value="#{msg['application.form.field.code']}" />  
+            </f:facet>		         		             
+        <h:outputText value="#{data.wrappedEntity.codeNatureCourrier}" />   		               
+    </p:column>  
+
+    <p:column sortBy="#{data.wrappedEntity.libNatureCourrier}" 
+              filterBy="#{data.wrappedEntity.libNatureCourrier}" 
+              filterMatchMode="contains" >  
+        <f:facet name="header">  
+            <h:outputText value="#{msg['application.form.field.libel']}" />  
+        </f:facet>		         		             
+        <h:outputText value="#{data.wrappedEntity.libNatureCourrier}" />   		               
+     </p:column> 
+
+    <p:column sortBy="#{data.wrappedEntity.descNatureCourrier}" 
+              filterBy="#{data.wrappedEntity.descNatureCourrier}" 
+              filterMatchMode="contains" >  
+        <f:facet name="header">  
+            <h:outputText value="#{msg['application.form.field.descr']}" />  
+        </f:facet>		         		             
+        <h:outputText value="#{data.wrappedEntity.descNatureCourrier}" />   		               
+    </p:column>  
+
+    </ui:define>	
+
+</ui:composition>

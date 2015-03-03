@@ -108,6 +108,8 @@ public abstract class CrudeViewHelper<E extends CrudeBusinessEntityWrapper<?>>  
      * @return the entityToCreate
      */
     public E getEntityToCreate() {
+        if(entityToCreate == null)
+            entityToCreate = (E)wrapperInstance.getNewInstance();
 	return entityToCreate;
     }
 
@@ -122,6 +124,8 @@ public abstract class CrudeViewHelper<E extends CrudeBusinessEntityWrapper<?>>  
      * @return the entityToModify
      */
     public E getEntityToModify() {
+         if(entityToModify == null)
+            entityToModify = (E)wrapperInstance.getNewInstance();
 	return entityToModify;
     }
 
@@ -141,9 +145,9 @@ public abstract class CrudeViewHelper<E extends CrudeBusinessEntityWrapper<?>>  
 	if(this.isEditionModeIsCreation()) return this.getEntityToCreate();
 		
 	// En modification l'on retourne l'entit� de modification
-	if(this.isEditionModeIsModification()) 	return this.getEntityToModify();
+	if(this.isEditionModeIsModification()) return this.getEntityToModify();
 		
-	return null;
+	return this.getEntityToCreate();
     }
 
     /**
@@ -270,6 +274,8 @@ public abstract class CrudeViewHelper<E extends CrudeBusinessEntityWrapper<?>>  
      * @return the editionViewMode
      */
     public EnumEditionMode getEditionViewMode() {
+        if(editionViewMode == null)
+            editionViewMode = EnumEditionMode.CREATION;
 	return editionViewMode;
     }
 
@@ -281,7 +287,7 @@ public abstract class CrudeViewHelper<E extends CrudeBusinessEntityWrapper<?>>  
     }
 	
     /**
-     * Indique si le contexte d'�dition est celui de la cr�ation
+     * Indique si le contexte d'édition est celui de la création
      * @return
      */
     public boolean isEditionModeIsCreation(){
@@ -289,7 +295,7 @@ public abstract class CrudeViewHelper<E extends CrudeBusinessEntityWrapper<?>>  
     }
 
     /**
-     * Indique si le contexte d'�dition est celui la modification
+     * Indique si le contexte d'édition est celui la modification
      * @return
      */
     public boolean isEditionModeIsModification(){
@@ -297,7 +303,7 @@ public abstract class CrudeViewHelper<E extends CrudeBusinessEntityWrapper<?>>  
     }
 
     /**
-     * M�thode d'initialisation des donn�es de test
+     * M�thode d'initialisation des données de test
      */
     public abstract void initializeTestContext();
 	

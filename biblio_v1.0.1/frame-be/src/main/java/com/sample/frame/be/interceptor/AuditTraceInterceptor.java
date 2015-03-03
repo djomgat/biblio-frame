@@ -14,9 +14,7 @@ import javax.interceptor.InvocationContext;
 public class AuditTraceInterceptor {
     
     private static final BaseLogger logger = BaseLogger
-                                .getLogger(AuditTraceInterceptor.class.getName());
-
-    
+                                .getLogger(AuditTraceInterceptor.class.getName());    
     
     @AroundInvoke
     public Object auditInvocation(InvocationContext ctx) throws Exception {

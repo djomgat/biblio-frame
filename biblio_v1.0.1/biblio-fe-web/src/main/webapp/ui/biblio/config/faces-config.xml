@@ -19,6 +19,7 @@
    <to-view-id>/ui/biblio/views/crude/listClass.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
+  
   <navigation-case>
    <from-outcome>displayUser</from-outcome>
    <to-view-id>/ui/biblio/views/crude/displayUser.xhtml</to-view-id>
@@ -32,6 +33,46 @@
   <navigation-case>
    <from-outcome>listUser</from-outcome>
    <to-view-id>/ui/biblio/views/crude/listUser.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+  
+  <navigation-case>
+   <from-outcome>editCourrierEntrant</from-outcome>
+   <to-view-id>/ui/biblio/views/crude/courrier/editCourrierEntrant.xhtml</to-view-id>
+    <redirect/>
+  </navigation-case>
+  
+  <!-- Gestion des Natures de courriers  -->
+  <navigation-case>
+   <from-outcome>displayNatureCourrier</from-outcome>
+   <to-view-id>/ui/biblio/views/crude/courrier/displayNatureCourrier.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>editNatureCourrier</from-outcome>
+   <to-view-id>/ui/biblio/views/crude/courrier/editNatureCourrier.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>listNatureCourrier</from-outcome>
+   <to-view-id>/ui/biblio/views/crude/courrier/listNatureCourrier.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+  
+    <!-- Gestion des services  -->
+  <navigation-case>
+   <from-outcome>displayService</from-outcome>
+   <to-view-id>/ui/biblio/views/crude/courrier/displayService.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>editService</from-outcome>
+   <to-view-id>/ui/biblio/views/crude/courrier/editService.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>listService</from-outcome>
+   <to-view-id>/ui/biblio/views/crude/courrier/listService.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
   

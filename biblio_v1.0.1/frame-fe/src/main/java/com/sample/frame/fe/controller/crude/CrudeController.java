@@ -428,9 +428,9 @@ public abstract class CrudeController<E extends CrudeBusinessEntityWrapper<?>>
     }
 	
     /**
-     * Encapsule la logique de navigation ou d'acc�s � la page d'acceuil de l'entit�
+     * Encapsule la logique de navigation ou d'accès à la page d'acceuil de l'entité
      * 
-     * @return La r�gle de navigation vers la vue appropri�e
+     * @return La règle de navigation vers la vue appropriée
      */
     public String navigateToLocalHomeView(){
 	return getNavigationRuleToLocalHomeView();

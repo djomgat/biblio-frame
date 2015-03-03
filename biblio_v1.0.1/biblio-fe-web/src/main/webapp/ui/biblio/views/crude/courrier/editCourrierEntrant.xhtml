@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    template="/default-template/templates/editionViewTemplate.xhtml">
+
+    <ui:param name="viewController" value="#{courrierCrudeController}" />	
+    <ui:define name="currentViewTitle" > Courrier Entrant </ui:define>		
+    <ui:define name="currentViewDefaultContent" >  	
+        <h:panelGrid width="100%" columns="2" >		
+            <h:panelGrid width="100%" columns="2" >
+                <p:outputLabel value="Objet" for="objet" />
+                <h:panelGroup>
+                    <p:inputTextarea id="objet" value="#{wrapped.objetCourrier}" required="true"  />
+                    <p:message  for="objet" />
+                </h:panelGroup>
+                
+                <p:outputLabel value="Description" for="description" />
+                <h:panelGroup>
+                    <p:inputTextarea id="description" value="#{wrapped.descCourrier}" required="true"  />
+                    <p:message  for="description" />
+                </h:panelGroup>                
+
+            </h:panelGrid>
+            
+            <h:panelGrid width="100%" columns="2" >
+                <p:outputLabel value="Date Expedition" for="date_expedition" />
+                <h:panelGroup>
+                    <p:calendar id="date_expedition" value="#{wrapped.dateCourrier}" required="true" style="width:80%" />
+                    <p:message  for="date_expedition" />
+                </h:panelGroup>
+
+                <p:outputLabel value="Mots clés" for="motCle" />
+                <h:panelGroup>
+                    <p:inputText id="motCle" value="#{wrapped.motsCles}" style="width:80%" />
+                    <p:message  for="motCle" />
+                </h:panelGroup>
+            </h:panelGrid>                
+                
+            <h:panelGrid width="100%" columns="2" >
+                <p:outputLabel value="Référence Expéditeur" for="reference" />
+                <h:panelGroup>
+                    <p:inputText id="reference" value="#{wrapped.refExtCourrier}" required="true" style="width:80%" />
+                    <p:message  for="reference" />
+                </h:panelGroup>				
+            </h:panelGrid>
+
+        </h:panelGrid>
+
+    </ui:define>					
+
+</ui:composition>

@@ -2,7 +2,7 @@ package com.sample.biblio.svc.impl.exception;
 
 import com.sample.biblio.svc.api.exception.BiblioSvcException;
 
-public class BiblioDaoExceptionForTestTransact extends BiblioSvcException{
+public class BiblioSvcExceptionForTestTransact extends BiblioSvcException{
 	
 	/**
 	 * 
@@ -12,14 +12,14 @@ public class BiblioDaoExceptionForTestTransact extends BiblioSvcException{
 	/**
 	 * 
 	 */
-	public BiblioDaoExceptionForTestTransact() {
+	public BiblioSvcExceptionForTestTransact() {
 		 
 	}
 
 	/**
 	 * @param message : message d'exception
 	 */
-	public BiblioDaoExceptionForTestTransact(String message) {
+	public BiblioSvcExceptionForTestTransact(String message) {
 		super(message);
 		 
 	}
@@ -27,7 +27,7 @@ public class BiblioDaoExceptionForTestTransact extends BiblioSvcException{
 	/**
 	 * @param cause
 	 */
-	public BiblioDaoExceptionForTestTransact(Throwable cause) {
+	public BiblioSvcExceptionForTestTransact(Throwable cause) {
 		super(cause);
 	}
 
@@ -35,16 +35,16 @@ public class BiblioDaoExceptionForTestTransact extends BiblioSvcException{
 	 * @param message : message d'exception
 	 * @param cause
 	 */
-	public BiblioDaoExceptionForTestTransact(String p$message, Throwable p$cause) {
+	public BiblioSvcExceptionForTestTransact(String p$message, Throwable p$cause) {
 		super(p$message, p$cause);
 	}
 	
 	
-	public BiblioDaoExceptionForTestTransact(String p$catalogFileName,String p$messageId, Object[] p$params){
+	public BiblioSvcExceptionForTestTransact(String p$catalogFileName,String p$messageId, Object[] p$params){
 		super(p$catalogFileName, p$messageId, p$params);		
 	}
 	
-	public BiblioDaoExceptionForTestTransact(String p$catalogFileName, String p$messageId, Object[] p$params, Throwable p$cause){
+	public BiblioSvcExceptionForTestTransact(String p$catalogFileName, String p$messageId, Object[] p$params, Throwable p$cause){
 		super(p$catalogFileName, p$messageId, p$params, p$cause);		
 	}
 

@@ -34,42 +34,42 @@ public class TabCourrier extends BiblioBaseEntity {
     @Column(name = "numero_courrier")
     private String numeroCourrier;
     @Basic(optional = false)
-    @NotNull
+
     @Column(name = "date_courrier")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCourrier;
     @Basic(optional = false)
-    @NotNull
+
     @Size(min = 1, max = 500)
     @Column(name = "objet_courrier")
     private String objetCourrier;
     @Basic(optional = false)
-    @NotNull
+
     @Size(min = 1, max = 100)
     @Column(name = "desc_courrier")
     private String descCourrier;
     @Basic(optional = false)
-    @NotNull
+
     @Size(min = 1, max = 30)
     @Column(name = "mots_cles")
     private String motsCles;
     @Basic(optional = false)
-    @NotNull
+
     @Size(min = 1, max = 100)
     @Column(name = "ref_ext_courrier")
     private String refExtCourrier;
     @Basic(optional = false)
-    @NotNull
+    
     @Column(name = "date_ext_courrier")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateExtCourrier;
     @Basic(optional = false)
-    @NotNull
+    
     @Column(name = "date_crea_courrier")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreaCourrier;
     @Basic(optional = false)
-    @NotNull
+    
     @Column(name = "date_mod_courrier")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateModCourrier;
@@ -90,24 +90,24 @@ public class TabCourrier extends BiblioBaseEntity {
     public TabCourrier() {
     }
 
-    public TabCourrier(String numeroCourrier) {
-        this.numeroCourrier = numeroCourrier;
-    }
-
-    public TabCourrier(String numeroCourrier, Date dateCourrier, String objetCourrier, String descCourrier, String motsCles, String refExtCourrier, Date dateExtCourrier, Date dateCreaCourrier, Date dateModCourrier, String codeTypeCourrier, String codeNatureCourrier, String codePersCrea) {
-        this.numeroCourrier = numeroCourrier;
-        this.dateCourrier = dateCourrier;
-        this.objetCourrier = objetCourrier;
-        this.descCourrier = descCourrier;
-        this.motsCles = motsCles;
-        this.refExtCourrier = refExtCourrier;
-        this.dateExtCourrier = dateExtCourrier;
-        this.dateCreaCourrier = dateCreaCourrier;
-        this.dateModCourrier = dateModCourrier;
-//        this.codeTypeCourrier = codeTypeCourrier;
-//        this.codeNatureCourrier = codeNatureCourrier;
-//        this.codePersCrea = codePersCrea;
-    }
+//    public TabCourrier(String numeroCourrier) {
+//        this.numeroCourrier = numeroCourrier;
+//    }
+//
+//    public TabCourrier(String numeroCourrier, Date dateCourrier, String objetCourrier, String descCourrier, String motsCles, String refExtCourrier, Date dateExtCourrier, Date dateCreaCourrier, Date dateModCourrier, String codeTypeCourrier, String codeNatureCourrier, String codePersCrea) {
+//        this.numeroCourrier = numeroCourrier;
+//        this.dateCourrier = dateCourrier;
+//        this.objetCourrier = objetCourrier;
+//        this.descCourrier = descCourrier;
+//        this.motsCles = motsCles;
+//        this.refExtCourrier = refExtCourrier;
+//        this.dateExtCourrier = dateExtCourrier;
+//        this.dateCreaCourrier = dateCreaCourrier;
+//        this.dateModCourrier = dateModCourrier;
+////        this.codeTypeCourrier = codeTypeCourrier;
+////        this.codeNatureCourrier = codeNatureCourrier;
+////        this.codePersCrea = codePersCrea;
+//    }
 
     public String getNumeroCourrier() {
         return numeroCourrier;

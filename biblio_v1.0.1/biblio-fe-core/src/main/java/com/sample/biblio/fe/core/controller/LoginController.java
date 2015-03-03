@@ -9,8 +9,6 @@ import javax.faces.bean.RequestScoped;
 import com.sample.frame.fe.controller.AbstractLoginController;
 import com.sample.frame.fe.exception.FrontEndException;
 import javax.faces.context.FacesContext;
-//import javax.faces.application.FacesMessage;
-//import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -19,8 +17,6 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.mgt.DefaultSecurityManager;
-
 
 /**
  * Contrôleur en charge de l'authentification

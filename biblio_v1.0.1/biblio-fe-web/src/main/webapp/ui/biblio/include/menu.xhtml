@@ -1,29 +1,78 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
 
-	<p:submenu label="Biblio">
-            <p:column>
-		<p:submenu style="margin:0; padding:0; height:0; width:0">
-                    <p:menuitem value="Classes CRUDE" 	action="#{classCrudeController.navigateToLocalHomeView}" />
-                    <p:menuitem value="User CRUDE"  action="#{userCrudeController.navigateToLocalHomeView}" />
-		</p:submenu>
-            </p:column>
-	</p:submenu>
-	
-	<p:submenu label="Courrier">
+    <p:submenu label="Biblio">
         <p:column>
-			<p:submenu style="margin:0; padding:0; height:0; width:0">
-	                    <p:menuitem value="Courrier Entrant" 	action="#{courrierCrudeController.navigateToEditionView}"  />
-	                    <p:menuitem value="Courrier Interne" 	action="#{courrierCrudeController.navigateToEditionView}"  />
-	                    <p:menuitem value="Courrier Sortant" 	action="#{courrierCrudeController.navigateToEditionView}"  />
-	                    <p:menuitem value="Expéditeur"  action="#{personneCrudeController.navigateToLocalHomeView}" />
-	                    <p:menuitem value="Nature de courrier"  action="#{natureCourrierCrudeController.navigateToLocalHomeView}" />
-	                    <p:menuitem value="Type de courrier"  action="#{typeCourrierCrudeController.navigateToLocalHomeView}" />
-			</p:submenu>
+            <p:submenu style="margin:0; padding:0; height:0; width:0">
+                <p:menuitem value="Classes CRUDE"   action="#{classCrudeController.navigateToLocalHomeView}" />
+                <p:menuitem value="User CRUDE"      action="#{userCrudeController.navigateToLocalHomeView}" />
+            </p:submenu>
         </p:column>
-	</p:submenu>
+    </p:submenu>
+
+    <p:submenu label="Courrier">
+    <p:column>
+        <p:submenu style="margin:0; padding:0; height:0; width:0">
+            <p:menuitem value="Courrier Entrant"    action="#{courrierCrudeController.navigateToEditCourrierEntrant}"  />
+            <p:menuitem value="Courrier Interne"    action="#{courrierCrudeController.navigateToEditionView}"  />
+            <p:menuitem value="Courrier Sortant"    action="#{courrierCrudeController.navigateToEditionView}"  />
+        </p:submenu>
+    </p:column>
+    </p:submenu>
+    
+    <p:submenu label="Transmission">
+    <p:column>
+        <p:submenu style="margin:0; padding:0; height:0; width:0">
+            <p:menuitem value="Emission des Bordereaux"    action="#{courrierCrudeController.navigateToEditionView}"  />
+            <p:menuitem value="Décharge des Bordereaux"    action="#{courrierCrudeController.navigateToEditionView}"  />
+        </p:submenu>
+    </p:column>
+    </p:submenu> 
+    
+    <p:submenu label="Traitement">
+    <p:column>
+        <p:submenu style="margin:0; padding:0; height:0; width:0">
+            <p:menuitem value="Affectation des courriers"   action="#{courrierCrudeController.navigateToEditionView}"  />
+            <p:menuitem value="Décharge des Bordereaux"     action="#{courrierCrudeController.navigateToEditionView}"  />
+        </p:submenu>
+    </p:column>
+    </p:submenu>  
+    
+    <p:submenu label="Consultation">
+        <p:column>
+            <p:submenu style="margin:0; padding:0; height:0; width:0">
+                <p:menuitem value="Recherche des courriers"     action="#{courrierCrudeController.navigateToEditionView}"  />
+                <p:menuitem value="Recherche des Bordereaux"    action="#{courrierCrudeController.navigateToEditionView}"  />
+            </p:submenu>
+        </p:column>
+    </p:submenu>   
+    
+    <p:submenu label="Sécurité">
+        <p:column>
+            <p:submenu style="margin:0; padding:0; height:0; width:0">
+                <p:menuitem value="Utilisateurs"    action="#{courrierCrudeController.navigateToEditionView}"  />
+                <p:menuitem value="Groupe d'utilisateurs"    action="#{courrierCrudeController.navigateToEditionView}"  />
+                <p:menuitem value="Profils de Groupes"    action="#{courrierCrudeController.navigateToEditionView}"  />
+            </p:submenu>
+        </p:column>
+    </p:submenu>
+    
+    <p:submenu label="Données de base">
+        <p:column>
+            <p:submenu style="margin:0; padding:0; height:0; width:0">
+                <p:menuitem value="Expéditeur"          
+                            action="#{personneCrudeController.navigateToLocalHomeView}" />
+                <p:menuitem value="Nature de courrier"  
+                            action="#{natureCourrierCrudeController.navigateToLocalHomeView}" />
+                <p:menuitem value="Type de courrier"    
+                            action="#{typeCourrierCrudeController.navigateToLocalHomeView}" />
+                <p:menuitem value="#{msg['application.fonction.form.services']}"            
+                            action="#{serviceCrudeController.navigateToLocalHomeView}" />                
+            </p:submenu>
+        </p:column>
+    </p:submenu>    
 
 </ui:composition>
