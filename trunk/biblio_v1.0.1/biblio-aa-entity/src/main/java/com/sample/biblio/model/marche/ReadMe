@@ -85,3 +85,27 @@ Table Type de procédures
    . GG: Gré à Gré
    . DC: Demande de cotations
 
+
+
+# Insertion des modes de sélection
+INSERT INTO `db_contract`.`tab_mode_selection` (`code_mode_selection`, `lib_mode_selection`,`desc_mode_selection`)
+VALUES ('AOIO', 'Appel d''Offres International Ouvert','desc');
+
+INSERT INTO `db_contract`.`tab_mode_selection` (`code_mode_selection`, `lib_mode_selection`,`desc_mode_selection`)
+VALUES ('AOIR', 'Appel d''Offres International Restreint','desc');
+
+INSERT INTO `db_contract`.`tab_mode_selection` (`code_mode_selection`, `lib_mode_selection`,`desc_mode_selection`)
+VALUES ('AONO', 'Appel d''Offres National Ouvert','desc');
+
+INSERT INTO `db_contract`.`tab_mode_selection` (`code_mode_selection`, `lib_mode_selection`,`desc_mode_selection`)
+VALUES ('AONR', 'Appel d''Offres National Restreint','desc');
+
+INSERT INTO `db_contract`.`tab_mode_selection` (`code_mode_selection`, `lib_mode_selection`,`desc_mode_selection`)
+VALUES ('DC', 'Demande de Cotation','desc');
+
+# Insertion des types de marché
+INSERT INTO `db_contract`.`tab_nature_marche` (`code_nature_marche`, `lib_nature_marche`)
+VALUES ('AG', 'Approvisionnements Généraux');
+
+INSERT INTO `db_contract`.`tab_nature_marche` (`code_nature_marche`, `lib_nature_marche`)
+VALUES ('SPI', 'services et Prestations Intellectuelles');

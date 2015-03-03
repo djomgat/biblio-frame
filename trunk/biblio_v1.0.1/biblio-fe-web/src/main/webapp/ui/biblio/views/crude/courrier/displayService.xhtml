@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/default-template/templates/displayViewTemplate.xhtml">
+
+    <ui:param name="viewController" value="#{serviceCrudeController}" />
+	
+    <ui:define name="currentViewTitle" > #{msg['application.fonction.form.services']} </ui:define>					
+	
+    <ui:define name="currentViewDefaultContent" >  
+	
+	<h:panelGrid width="100%" columns="2" >
+            
+            <h:panelGrid width="100%" columns="2" >
+		<p:outputLabel value="#{msg['application.form.field.code']}"  />
+		<p:inputText value="#{wrapped.idService}" readonly="true" />
+            </h:panelGrid>
+	
+            <h:panelGrid width="100%" columns="2" >
+		<p:outputLabel value="#{msg['application.form.field.libel']}"  />
+		<p:inputText value="#{wrapped.nomService}" readonly="true" style="width:80%" />
+		<p:outputLabel value="#{msg['application.form.field.sigle']}"  />
+		<p:inputText value="#{wrapped.sigleService}" readonly="true" style="width:80%" />
+            </h:panelGrid>
+						
+	</h:panelGrid>
+
+    </ui:define>					
+	
+</ui:composition>

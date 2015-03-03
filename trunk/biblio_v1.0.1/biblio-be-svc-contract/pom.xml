@@ -7,9 +7,9 @@
     <modelVersion>4.0.0</modelVersion>
    
     <parent>
-	    <groupId>com.sample.frame.biblio</groupId>
-		<artifactId>frame-biblio</artifactId>
-		<version>1.0-SNAPSHOT</version>
+	<groupId>com.sample.frame.biblio</groupId>
+	<artifactId>frame-biblio</artifactId>
+	<version>1.0-SNAPSHOT</version>
     </parent>
 	
     <artifactId>biblio-be-svc-contract</artifactId>
@@ -29,6 +29,14 @@
 	<dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>biblio-aa-entity</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+            <scope>provided</scope>
+	</dependency>
+        
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>frame-be</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
             <scope>provided</scope>
@@ -164,9 +172,7 @@
                     <scope>test</scope>
                 </dependency>
             </dependencies>
-        </profile>
-        
-       
+        </profile>       
 
     </profiles>
 

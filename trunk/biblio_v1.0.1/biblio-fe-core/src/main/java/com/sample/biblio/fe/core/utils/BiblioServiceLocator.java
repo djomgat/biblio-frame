@@ -1,11 +1,7 @@
 package com.sample.biblio.fe.core.utils;
 
-import com.sample.biblio.svc.api.courrier.ICourrierSvc;
-import com.sample.biblio.svc.api.courrier.ICourrierSvcRemote;
-import com.sample.biblio.svc.api.marche.IContratSvcRemote;
 import com.sample.frame.core.utils.JndiHelper;
 import com.sample.frame.fe.exception.ServiceLocatorException;
-import com.sample.frame.fe.locator.CachingServiceLocator;
 import com.sample.frame.fe.locator.SingleCachingServiceLocator;
 
 public class BiblioServiceLocator {

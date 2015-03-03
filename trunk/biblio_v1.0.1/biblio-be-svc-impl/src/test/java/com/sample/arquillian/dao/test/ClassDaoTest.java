@@ -19,7 +19,7 @@ import com.sample.biblio.dao.api.securite.IClassDao;
 import com.sample.biblio.dao.api.securite.IUserDao;
 //import com.sample.biblio.dao.provider.UserDaoImpl;
 import com.sample.arquillian.dao.test.resource.DaoTestResources;
-import com.sample.biblio.svc.impl.exception.BiblioDaoExceptionForTestTransact;
+import com.sample.biblio.svc.impl.exception.BiblioSvcExceptionForTestTransact;
 import com.sample.biblio.svc.impl.interceptor.BiblioExceptionInterceptor;
 import com.sample.arquillian.svc.test.TestClassConstants;
 import com.sample.biblio.svc.impl.constant.be.BiblioBeConstant;
@@ -55,7 +55,7 @@ public class ClassDaoTest {
 			GenericDaoException.class, GenericSvcException.class,GenericException.class,
 			BiblioSvcException.class, BiblioSvcException.class, BiblioBeConstant.class,
 			BiblioSvcMessageKey.class,
-			BiblioDaoExceptionForTestTransact.class,
+			BiblioSvcExceptionForTestTransact.class,
 			BiblioExceptionInterceptor.class, TransactionInterceptor.class,
 			LoggingInterceptor.class, AuthorizationInterceptor.class,
 			IClassDao.class,IUserDao.class,

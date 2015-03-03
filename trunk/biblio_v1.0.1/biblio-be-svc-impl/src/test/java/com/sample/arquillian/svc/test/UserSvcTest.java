@@ -21,7 +21,7 @@ import com.sample.biblio.svc.api.securite.IUserSvcLocal;
 import com.sample.biblio.svc.api.securite.IUserSvcRemote;
 import com.sample.biblio.dao.impl.securite.UserDaoImpl;
 import com.sample.biblio.svc.impl.securite.UserSvcImpl;
-import com.sample.biblio.svc.impl.exception.BiblioDaoExceptionForTestTransact;
+import com.sample.biblio.svc.impl.exception.BiblioSvcExceptionForTestTransact;
 import com.sample.biblio.svc.impl.interceptor.BiblioExceptionInterceptor;
 import com.sample.arquillian.svc.test.resource.SvcTestResources;
 import com.sample.biblio.dao.impl.constant.be.BiblioBeConstant;
@@ -61,7 +61,7 @@ public class UserSvcTest {
 						GenericDaoException.class, GenericSvcException.class,GenericException.class,
 						BiblioSvcException.class, BiblioSvcException.class, BiblioBeConstant.class,
 						BiblioDaoMessageKey.class, BiblioSvcMessageKey.class,
-						BiblioDaoExceptionForTestTransact.class,
+						BiblioSvcExceptionForTestTransact.class,
 						BiblioExceptionInterceptor.class, TransactionInterceptor.class,
 						LoggingInterceptor.class, AuthorizationInterceptor.class,
 						UserDaoImpl.class, IUserDao.class, UserSvcImpl.class,

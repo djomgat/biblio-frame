@@ -4,6 +4,7 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <jta-data-source>java:jboss/datasources/biblioDS</jta-data-source>
   <!--   <jar-file/> -->
+    <!--     Module de Marché  -->
     <class>com.sample.biblio.model.marche.TabTypeMarche</class>
     <class>com.sample.biblio.model.marche.TabSociete</class>
     <class>com.sample.biblio.model.marche.TabContrat</class>
@@ -12,7 +13,7 @@
     <class>com.sample.biblio.model.marche.TabNatureMarche</class>
     <class>com.sample.biblio.model.marche.TabTypeCommission</class>
     <class>com.sample.biblio.model.marche.TabAttribution</class>
-<!--     <class>com.sample.biblio.model.marche.TabTypeCommission</class> -->
+    <!--     Module de Courrier  -->
     <class>com.sample.biblio.model.courrier.TabCourrier</class>
     <class>com.sample.biblio.model.courrier.TabDestinataire</class>
     <class>com.sample.biblio.model.courrier.TabDestinatairePK</class>
@@ -21,6 +22,8 @@
     <class>com.sample.biblio.model.courrier.TabPieceJointe</class>
     <class>com.sample.biblio.model.courrier.TabService</class>
     <class>com.sample.biblio.model.courrier.TabTypeCourrier</class>
+    <class>com.sample.biblio.model.courrier.TabCompteurCourrier</class>
+    <!--     Module de sécurité  -->
     <class>com.sample.biblio.model.securite.TabMouchard</class>
     <class>com.sample.biblio.model.securite.Tabclass</class>
     <class>com.sample.biblio.model.securite.Tabuser</class>

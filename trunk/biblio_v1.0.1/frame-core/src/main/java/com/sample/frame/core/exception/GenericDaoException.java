@@ -3,6 +3,8 @@
  */
 package com.sample.frame.core.exception;
 
+import com.sample.frame.core.exception.GenericException;
+
 /**
  * Classe d'exception de la couche des DAO
  * @author pdjomga

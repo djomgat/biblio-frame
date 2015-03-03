@@ -4,14 +4,14 @@ import com.sample.frame.core.entity.GenericEntity;
 
 public class BiblioBaseEntity extends GenericEntity{
 	
-	BiblioTicket ticket ;
+    BiblioTicket ticket ;
 
-	public BiblioTicket getTicket() {
-		return ticket;
-	}
+    public BiblioTicket getTicket() {
+        return ticket;
+    }
 
-	public void setTicket(BiblioTicket ticket) {
-		this.ticket = ticket;
-	}
+    public void setTicket(BiblioTicket ticket) {
+        this.ticket = ticket;
+    }
 
 }

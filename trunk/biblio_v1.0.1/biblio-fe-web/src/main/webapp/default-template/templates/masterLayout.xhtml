@@ -1,69 +1,68 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
 
 <f:view contentType="text/html">
+    <h:head>
+        <f:facet name="first">
+                <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+                <title>#{msg['application.name']}</title>
+        </f:facet>
 
-	<h:head>
-		<f:facet name="first">
-			<meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
-			<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
-			<title>Biblio Sample</title>
-		</f:facet>
+        <link type="text/css" rel="stylesheet"
+                href="#{request.contextPath}/default-template/css/default.css" />
 
-		<link type="text/css" rel="stylesheet"
-			href="#{request.contextPath}/default-template/css/default.css" />
+        <style type="text/css"></style>
 
-		<style type="text/css"></style>
+        <ui:insert name="head" />
+    </h:head>
 
-		<ui:insert name="head" />
+    <h:body>
 
-	</h:head>
+        <ui:insert name="body_content_before_layout" />
+        <!-- Insertion du module de gestion des time-out   -->
+        <ui:include src="/default-template/include/expirationSession.xhtml"/>
 
-	<h:body>
+        <h:form id="form">
+            <p:layout id="layout_full" fullPage="true">
 
-		<ui:insert name="body_content_before_layout" />
+                <p:layoutUnit id="unit_north" position="north">
+                    <ui:insert name="unit_north_content">
+                        <h:outputText value="North Unit Content" />
+                    </ui:insert>
+                </p:layoutUnit>
 
-		<h:form id="form">
+                <p:layoutUnit id="unit_south" position="south">
+                    <ui:insert name="unit_south_content">
+                        <h:outputText value="South Unit Content" />
+                    </ui:insert>
+                </p:layoutUnit>
 
-			<p:layout id="layout_full" fullPage="true">
+                <p:layoutUnit id="unit_west" position="west" resizable="true"
+                    collapsible="true" header="Navigateur !!" minSize="260"
+                    maxSize="350">
+                    <ui:insert name="unit_west_content">
+                        <h:outputText value="West Unit Content" />
+                    </ui:insert>
+                </p:layoutUnit>
 
-				<p:layoutUnit id="unit_north" position="north">
-					<ui:insert name="unit_north_content">
-						<h:outputText value="North Unit Content" />
-					</ui:insert>
-				</p:layoutUnit>
+                <p:layoutUnit id="unit_center" position="center">
+                    <ui:insert name="unit_center_content">
+                        <h:outputText value="Middle top unit content." />
+                    </ui:insert>
+                </p:layoutUnit>
 
-				<p:layoutUnit id="unit_south" position="south">
-					<ui:insert name="unit_south_content">
-						<h:outputText value="South Unit Content" />
-					</ui:insert>
-				</p:layoutUnit>
+            </p:layout>
 
-				<p:layoutUnit id="unit_west" position="west" resizable="true"
-					collapsible="true" header="Navigateur !!" minSize="260"
-					maxSize="350">
-					<ui:insert name="unit_west_content">
-						<h:outputText value="West Unit Content" />
-					</ui:insert>
-				</p:layoutUnit>
+        </h:form>
 
-				<p:layoutUnit id="unit_center" position="center">
-					<ui:insert name="unit_center_content">
-						<h:outputText value="Middle top unit content." />
-					</ui:insert>
-				</p:layoutUnit>
+        <ui:insert name="body_content_after_layout" />
 
-			</p:layout>
-
-		</h:form>
-
-		<ui:insert name="body_content_after_layout" />
-
-	</h:body>
+    </h:body>
 
 </f:view>
 

@@ -2,10 +2,7 @@
  */
 package com.sample.biblio.svc.api.courrier;
 
-import java.util.List;
 import com.sample.biblio.model.courrier.TabCourrier;
-import com.sample.biblio.model.courrier.TabPersonne;
-import com.sample.frame.core.exception.GenericDaoException;
 import com.sample.frame.core.svc.generic.IGenericSvc;
 
 /**

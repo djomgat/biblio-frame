@@ -25,8 +25,8 @@ import com.sample.frame.core.logging.BaseLogger;
 
 @Stateless(name = "ClassSvc", mappedName = "ClassSvc")
 @TransactionManagement(TransactionManagementType.CONTAINER)
-@Interceptors({TransactionInterceptor.class,LoggingInterceptor.class,
-          AuthorizationInterceptor.class,BiblioExceptionInterceptor.class})
+@Interceptors({TransactionInterceptor.class, LoggingInterceptor.class,
+          AuthorizationInterceptor.class, BiblioExceptionInterceptor.class})
 
 public class ClassSvcImpl extends GenericSvcImpl<Tabclass, String> 
                           implements IClassSvcLocal, IClassSvcRemote {

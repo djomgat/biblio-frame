@@ -9,7 +9,12 @@ import com.sample.frame.core.exception.GenericException;
 import com.sample.frame.core.logging.BaseLogger;
 import com.sample.frame.core.svc.generic.IGenericSvc;
 
-
+/**
+ * @param <U>
+ * @param <PK> 
+ * @author pdjomga
+ *
+ */
 //@TransactionManagement(TransactionManagementType.CONTAINER)
 //@Interceptors({ TransactionInterceptor.class })
 public abstract class GenericSvcImpl<U extends GenericEntity, PK extends Serializable>
