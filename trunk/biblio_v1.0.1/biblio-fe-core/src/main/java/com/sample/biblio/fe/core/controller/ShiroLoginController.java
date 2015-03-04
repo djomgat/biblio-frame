@@ -2,11 +2,11 @@
  */
 package com.sample.biblio.fe.core.controller;
  
-import java.util.logging.Logger;
+import com.sample.frame.fe.controller.AbstractLoginController;
+import com.sample.frame.fe.exception.FrontEndException;
+import com.sample.frame.core.logging.BaseLogger;
 
-import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
-import javax.faces.application.FacesMessage.Severity;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -21,6 +21,7 @@ import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.realm.jdbc.JdbcRealm;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.session.Session;
 
 import com.sample.frame.fe.helper.FacesUtil;
  
@@ -32,15 +33,22 @@ import com.sample.frame.fe.helper.FacesUtil;
 //@Model
 @ManagedBean
 @RequestScoped
-public class ShiroLoginController {
- 
+public class ShiroLoginController extends AbstractLoginController {
+     
     String username;
     String password;
     boolean rememberMe = false;
- 
-    private static final Logger log = Logger.getLogger(ShiroLoginController.class.getName());
- 
-    public String authenticate() {
+	
+    private static final long serialVersionUID = 1L;
+    
+    public static final String HOME_URL = "login.xhtml";
+
+    private static final BaseLogger log = BaseLogger.getLogger(ShiroLoginController.class) ;
+    
+    @Override
+    protected String be_login(String login, String password1) throws FrontEndException {
+
+        // Les paramètres passés sont ignorés !!!!
         
         // Règle de navigation
         String navigationRule = null;
@@ -50,29 +58,33 @@ public class ShiroLoginController {
         DefaultSecurityManager securityManager = new DefaultSecurityManager(realm);
         
         // Example using most common scenario of username/password pair:
-        UsernamePasswordToken token = new UsernamePasswordToken(username,
-                password);
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
  
         // "Remember Me" built-in:
         token.setRememberMe(rememberMe);
  
         Subject currentUser = SecurityUtils.getSubject();
  
-        log.info("Before Submitting login with username of " + username
-                + " and password of " + password);
- 
         try {
+            String strMsg ="Before Submitting login with username of " + username
+                + " and password of " + password;
+            log.info(strMsg);
             currentUser.login(token);
             navigationRule = "home";
-            log.info("Authentication success : " + username);
+            strMsg="Authentication success : " + username;
+            log.info(strMsg);
+            
+            //  Récupérer de la session de l'utilisateur 
+            Session session = currentUser.getSession();
+            session.setAttribute( "username", username );
             
         } catch (UnknownAccountException uae ) {
             //username wasn't in the system, show them an error message?
-        	String strMsg = "Login Failed: The username you entered is invalid " + username;
+            String strMsg = "Login Failed: The username you entered is invalid " + username;
             log.info(strMsg);
             
             FacesUtil.addWarnMessage(null, strMsg, uae.toString());
-            log.severe(uae.getMessage());
+            log.warn(uae.getMessage());
         } catch ( IncorrectCredentialsException ice ) {
             //password didn't match, try again?
             
@@ -80,7 +92,7 @@ public class ShiroLoginController {
             log.info(strMsg);
             
             FacesUtil.addWarnMessage(null, strMsg, ice.toString());
-            log.severe(ice.getMessage());
+            log.warn(ice.getMessage());
             
         } catch ( LockedAccountException lae ) {
             //account for that username is locked - can't login.  Show them a message?
@@ -89,15 +101,14 @@ public class ShiroLoginController {
             log.info(strMsg);
             
             FacesUtil.addWarnMessage(null, strMsg, lae.toString());
-            log.severe(lae.getMessage());
+            log.warn(lae.getMessage());
             
         } catch (AuthenticationException e) {
             // Could catch a subclass of AuthenticationException if you like
-            log.warning(e.getMessage());
+            log.warn(e.getMessage());
             FacesContext.getCurrentInstance().addMessage(
                     null,
-                    new FacesMessage("Login Failed: " + e.getMessage(), e
-                            .toString()));
+                    new FacesMessage("Login Failed: " + e.getMessage(), e.toString()));
             return "/login";
         }
         //return "protected?faces-redirect=true";
@@ -105,20 +116,30 @@ public class ShiroLoginController {
  
     }
  
-    public String logout() {
- 
+    @Override
+    protected void be_logout() throws FrontEndException{
+        //Shiro removes all identifying information and invalidates their session too.
         Subject currentUser = SecurityUtils.getSubject();
-        log.info("Log-out the user " + username
-                + " and password of " + password);
+
         try {
+            //  Récupérer de la session de l'utilisateur 
+            Session session = currentUser.getSession();
+            //String username = session.getAttribute();
+            String strMsg ="Log-out the user " + username;
+            log.info(strMsg);
+            
             currentUser.logout();
-            log.info("Logging-out success for : " + username);
+            
+            strMsg="Logging-out success for : " + username;
+            log.info(strMsg);
+            FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+            //FacesContext.getCurrentInstance().getExternalContext().redirect(HOME_URL);
         } catch (Exception e) {
-            log.warning(e.toString());
+            log.warn(e.toString());
         }
-        return "index";
+
     }
- 
+    
     public String getUsername() {
         return username;
     }

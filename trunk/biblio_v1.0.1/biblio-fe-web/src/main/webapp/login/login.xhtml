@@ -64,7 +64,7 @@
                             <p:separator  />
 
                             <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r"  >
-                                <p:commandButton value="#{msg['view.login.buton.login.label']}" action="#{loginBean.authenticate()}" update="login-form" />
+                                <p:commandButton value="#{msg['view.login.buton.login.label']}" action="#{loginBean.login()}" update="login-form" />
 				<h:outputLink  value="javascript:void(0)" onclick="dlg.show()"> #{msg['view.login.label.pas-de-compte']} </h:outputLink>  																									
                             </h:panelGrid>													
 																											
