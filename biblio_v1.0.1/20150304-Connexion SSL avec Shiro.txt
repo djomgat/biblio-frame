@@ -1,0 +1,41 @@
+1. Générer un certificat à usage personnel (le certificat n'est pas sûr car il est auto-signé )
+
+WINDOWS:
+ 
+%JAVA_HOME%\bin\keytool -genkey -alias tomcat -keyalg RSA -keystore \serverKeyRSA.keystore
+                        -keystorePass=changeit  
+
+Unix:
+
+$JAVA_HOME/bin/keytool -genkey -alias tomcat -keyalg RSA -keystore /path/to/my/keystore
+
+Mot de passe de la clé: idem fichier à clés
+
+
+2. Copier le fichier serverKeyRSA.keystore dans le dossier ${jboss.server.config.dir}/
+
+
+3. Configurer le serveur via standalone.xml
+
+<subsystem xmlns="urn:jboss:domain:web:1.1" default-virtual-server="default-host" native="false">
+            
+   ...			
+			
+   <connector name="https" protocol="HTTP/1.1" socket-binding="https" scheme="https" secure="true">
+				
+        <ssl name="https" password="changeit" certificate-key-file="${jboss.server.config.dir}/serverKeyRSA.keystore" />
+			
+   </connector>
+
+   ...
+
+4. Configurer le fichier shiro.ini pour spécifier les pages à connecter par SSL
+
+[urls]
+# Forcer la redirection vers le protocole sécurisé SSL
+/login/login.jsf = ssl[8443]
+
+
+5. Se connecter à l'adresse https://localhost:8443 pour accepter le certificat
+
+   Puis http://localhost:8080/biblio-fe-web/ pour lancer l'application
