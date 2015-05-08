@@ -24,13 +24,6 @@
     </licenses>
 
     <dependencies>
-	
-	<dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>frame-fe</artifactId>
-            <version>${project.version}</version>
-            <type>jar</type>
-	</dependency>
 		
 	<dependency>
             <groupId>${project.groupId}</groupId>
@@ -44,7 +37,14 @@
             <artifactId>biblio-be-svc-contract</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
-	</dependency>
+	</dependency>        
+	
+	<dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>frame-fe</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+	</dependency>        
 	
         <!-- Import the EJB API, we use provided scope as the API is included in JBoss AS 7 -->
         <dependency>
@@ -100,23 +100,58 @@
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-            <version>1.2.3</version>
+            <version>${shiro-core.version}</version>
             <!--<scope>provided</scope>-->
         </dependency>
 
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-web</artifactId>
-            <version>1.2.3</version>
+            <version>${shiro-web.version}</version>
             <!--<scope>provided</scope>-->
         </dependency>
         
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-ehcache</artifactId>
-            <version>1.2.3</version>
+            <version>${shiro-ehcache.version}</version>
             <!--<scope>provided</scope>-->
-        </dependency>                        
+        </dependency>
+        
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>${primefaces.version}</version>
+        </dependency>
+
+        <!-- commons-fileupload-xx.jar and common-io-xx.jar -->
+        <!-- Apache Commons FileUpload dependency -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons-fileupload.version}</version>
+        </dependency>    
+
+        <!-- Apache Commons IO dependency biblio pour la manipulation des fichiers -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire-junit3</artifactId>
+            <version>${surefire-junit3.version}</version>
+            <scope>provided</scope>
+        </dependency>                                                        
         
     </dependencies>
 
@@ -125,10 +160,10 @@
         <plugins>
             <plugin>
                 <artifactId>maven-ejb-plugin</artifactId>
-                <version>${version.ejb.plugin}</version>
+                <version>${maven-ejb-plugin.version}</version>
                 <configuration>
                     <!-- Tell Maven we are using EJB 3.1 -->
-                    <ejbVersion>3.1</ejbVersion>
+                    <ejbVersion>${ejb.version}</ejbVersion>
                 </configuration>
             </plugin>
             
@@ -154,7 +189,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${version.surefire.plugin}</version>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <skip>true</skip>
                         </configuration>

@@ -1,22 +1,110 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+    <!-- Activation du déboggage dans l'interface Primefaces  CTRL + SHIFT + letter -->
+    <ui:debug hotkey="e" rendered="true"/>
+    <ui:param name="localeCtl" value="#{languageSwitcher}" />
+    <!--<p:log />  -->
 
-    <p:megaMenu>
-        <p:submenu icon="appleIcon">
-            <p:column>
-                <p:submenu style="margin:0; padding:0; height:0; width:0">
+    <!-- #######    top tool bar     ####### -->
+    <div class="top_bar" position="top" style=" width: 100%; height: 30px; background-color: #4a4a4a;" header="top">
+        <p:toolbar>
+            <p:toolbarGroup align="left" >
+                <h:outputText value="Biblio Sample" />
+                <p:separator />
+                <h:outputText value="Other Static Infos ..." />
+            </p:toolbarGroup>
+
+            <p:toolbarGroup align="right" >
+                <p:separator/>
+                <h:outputText value="Welcome, #{shiroLoginController.userLogin}" 
+                              rendered="#{shiroLoginController.loggedIn}"/>
+                <p:separator/>
+                <!--
+                <h:outputText value="{shiroLoginController.loginTime}">
+                      <f:convertDateTime pattern="MM/dd/yyyy" type="date" />
+                </h:outputText>
+                -->
+                <p:separator/>
+                <p:commandLink value="About-us" action="Profile"/>
+                <p:separator/>
+                <p:commandLink value="Logout" action="#{shiroLoginController.logout()}" />
+                <p:separator/>
+                <p:commandButton id="dynaButton" value="Show" type="button" icon="ui-icon-extlink"/>
+                <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
+                    <p:submenu icon="ui-icon-home" label="username">
+                        <p:submenu style="margin:0; padding:0; height:0; width:0">
+                            <p:menuitem value="#{msg['view.home.home']}" url="#" icon="ui-icon ui-icon-home" />
+                            <p:separator />
+                            <p:menuitem value="Profile" url="#" icon="ui-icon ui-icon-home" />
+                            <p:separator />                            
+                            <p:menuitem value="#{msg['view.home.logout']}"  action="#{shiroLoginController.logout()}" icon="ui-icon ui-icon-power" />
+                        </p:submenu>
+                    </p:submenu>                    
+                </p:menu>
+                <p:separator/>
+                <p:menuButton value="Username" >
                     <p:menuitem value="#{msg['view.home.home']}" url="#" icon="ui-icon ui-icon-home" />
                     <p:separator />
+                    <p:menuitem value="Profile" url="#" icon="ui-icon ui-icon-home" />
+                    <p:separator />                            
                     <p:menuitem value="#{msg['view.home.logout']}"  action="#{shiroLoginController.logout()}" icon="ui-icon ui-icon-power" />
-                </p:submenu>
-            </p:column>
-        </p:submenu>
+                </p:menuButton>
+                <!--
+                <p:outputPanel style="float:left" >
+                    <h:selectOneMenu  value="#{localeCtl.selectedLanguage}"  >
+                       <f:selectItem itemValue="fr" itemLabel="#{msg['locale.francais']}"/>
+                       <f:selectItem itemValue="en" itemLabel="#{msg['locale.anglais']}"  />
+                       <p:ajax id="idy" event="change" update="header-form"/>
+                   </h:selectOneMenu> 
+                
+                </p:outputPanel>
+                -->
 
-        <ui:include src="/ui/biblio/include/menu.xhtml" />		
+            </p:toolbarGroup>				
+        </p:toolbar>        
+    </div>
 
-    </p:megaMenu>
+    <!-- #######  header  ####### -->
+    <div id="header" style="width: 100%; height: 30%;" position="center" header="logo">
+        <div id="logo" style="float: left; padding: 5px;">
+            <p:outputPanel id="campnou" style="float:left">  
+                <p:graphicImage value="/#{resourceDir}/images/logo/prime_logo.png" rendered="true" width="100" height="25" />
+                <!-- <ui:include src="../include/logo.xhtml" />   -->
+            </p:outputPanel>
+        </div>
+        <div class="oferte_content" style="width: 600px; height: 30px;	float: left; padding: 0 0 0 50px;">
+            <!--
+            <div class="top_divider" style="float: left; width: 1px; height: 30px;">
+                <p:graphicImage library="images" name="header_divider.png" width="1" height="30" />
+            </div>
+            -->
+            <div class="oferta" style="width: auto; float: left; padding: 1px 30px 0 30px;">
+                <div class="oferta_content" >
+                    <div class="oferta_details">
+                        <h1 style="font-size: 30px;">RFID Attendance Tracking System</h1>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="top_divider" style="float: left; width: 1px; height: 30px;">
+                <p:graphicImage library="images" name="header_divider.png" width="1" height="30" />
+            </div>
+            -->
+        </div>
+    </div>
+        
+    <div id="nav-bar" style="width: 100%; height: 20px;  float: left;" position="bottom" header="nav-bar-0">
+        <p:megaMenu>
+            <ui:include src="/ui/biblio/include/menu.xhtml" />
+            <f:facet name="options">
+                <p:commandButton type="button" value="#{msg['view.home.logout']}" actionListener="#{shiroLoginController.logout()}" icon="ui-icon ui-icon-power" />
+            </f:facet>
+        </p:megaMenu>
+    </div>
+    
 
 </ui:composition>

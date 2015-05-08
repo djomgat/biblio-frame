@@ -18,6 +18,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.sample.biblio.model.core.BiblioBaseEntity;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import java.util.List;
+import javax.validation.constraints.Past;
 
 /**
  *
@@ -57,57 +64,58 @@ public class TabCourrier extends BiblioBaseEntity {
 
     @Size(min = 1, max = 100)
     @Column(name = "ref_ext_courrier")
-    private String refExtCourrier;
-    @Basic(optional = false)
+    private String refExtCourrier;    
+    @Basic(optional = false) 
     
     @Column(name = "date_ext_courrier")
     @Temporal(TemporalType.TIMESTAMP)
+    @Past     
     private Date dateExtCourrier;
-    @Basic(optional = false)
     
+    @Basic(optional = false)    
     @Column(name = "date_crea_courrier")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreaCourrier;
-    @Basic(optional = false)
     
+    @Basic(optional = false)    
     @Column(name = "date_mod_courrier")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date dateModCourrier;
-    
+    private Date dateModCourrier;    
 
     @ManyToOne
-	@JoinColumn(name = "code_type_courrier")
+    @JoinColumn(name = "code_type_courrier")
     private TabTypeCourrier typeCourrier;
     
     @ManyToOne
-  	@JoinColumn(name = "code_nature_courrier")
+    @JoinColumn(name = "code_nature_courrier")
     private TabNatureCourrier natureCourrier;
-    
+      
+    // 
     @ManyToOne
-  	@JoinColumn(name = "code_pers_crea")
+    @JoinColumn(name = "code_pers_crea")
     private TabPersonne persCrea;
-
+    
+    // un courrier provient d'un expéditeur et 
+    // Plusieurs courriers peuvent avoir un même expéditeur
+    @ManyToOne
+    @JoinColumn(name = "code_expediteur", referencedColumnName="id_personne")
+    private TabPersonne expediteur;
+    
+    // Un courrier peut avoir plusieurs pièces jointes, une pièce jointe est attaché à un seul courrier
+    // , cascade = CascadeType.ALL
+    @OneToMany(mappedBy = "courrier", targetEntity=TabPieceJointe.class) 
+    private List<TabPieceJointe> piecesJointes = new ArrayList<TabPieceJointe>();
+    
+    // Un courrier peut traiter plusieurs souches et une souche peut être traitée par plusieurs courriers
+    @ManyToMany
+    @JoinTable(name="COURRIER_REPONSE", 
+        joinColumns={@JoinColumn(name="NUMERO_COURRIER", referencedColumnName="NUMERO_COURRIER")},                                      
+        inverseJoinColumns={@JoinColumn(name="RE_NUMERO_COURRIER", referencedColumnName="RE_NUMERO_COURRIER")})
+    private List<TabCourrierReponse> reponses = new ArrayList<TabCourrierReponse>();
+  
     public TabCourrier() {
     }
 
-//    public TabCourrier(String numeroCourrier) {
-//        this.numeroCourrier = numeroCourrier;
-//    }
-//
-//    public TabCourrier(String numeroCourrier, Date dateCourrier, String objetCourrier, String descCourrier, String motsCles, String refExtCourrier, Date dateExtCourrier, Date dateCreaCourrier, Date dateModCourrier, String codeTypeCourrier, String codeNatureCourrier, String codePersCrea) {
-//        this.numeroCourrier = numeroCourrier;
-//        this.dateCourrier = dateCourrier;
-//        this.objetCourrier = objetCourrier;
-//        this.descCourrier = descCourrier;
-//        this.motsCles = motsCles;
-//        this.refExtCourrier = refExtCourrier;
-//        this.dateExtCourrier = dateExtCourrier;
-//        this.dateCreaCourrier = dateCreaCourrier;
-//        this.dateModCourrier = dateModCourrier;
-////        this.codeTypeCourrier = codeTypeCourrier;
-////        this.codeNatureCourrier = codeNatureCourrier;
-////        this.codePersCrea = codePersCrea;
-//    }
 
     public String getNumeroCourrier() {
         return numeroCourrier;
@@ -122,6 +130,11 @@ public class TabCourrier extends BiblioBaseEntity {
     }
 
     public void setDateCourrier(Date dateCourrier) {
+//        try {
+//            this.dateCourrier = (Date) new SimpleDateFormat("dd/MM/yyyy").parse(dateExtCourrier);
+//        } catch (Exception e) {
+//                e.printStackTrace();
+//        }
         this.dateCourrier = dateCourrier;
     }
 
@@ -162,7 +175,13 @@ public class TabCourrier extends BiblioBaseEntity {
     }
 
     public void setDateExtCourrier(Date dateExtCourrier) {
+        //formatter = new SimpleDateFormat("dd/MM/yyyy");
+        //try {
         this.dateExtCourrier = dateExtCourrier;
+                //(Date) new SimpleDateFormat("dd/MM/yyyy").parse(dateExtCourrier);
+        //} catch (Exception e) {
+        //        e.printStackTrace();
+        //}
     }
 
     public Date getDateCreaCourrier() {
@@ -181,30 +200,36 @@ public class TabCourrier extends BiblioBaseEntity {
         this.dateModCourrier = dateModCourrier;
     }
 
-	public TabTypeCourrier getTypeCourrier() {
-		return typeCourrier;
-	}
+    public TabTypeCourrier getTypeCourrier() {
+        return typeCourrier;
+    }
 
-	public void setTypeCourrier(TabTypeCourrier typeCourrier) {
-		this.typeCourrier = typeCourrier;
-	}
+    public void setTypeCourrier(TabTypeCourrier typeCourrier) {
+        this.typeCourrier = typeCourrier;
+    }
 
-	public TabNatureCourrier getNatureCourrier() {
-		return natureCourrier;
-	}
+    public TabNatureCourrier getNatureCourrier() {
+        return natureCourrier;
+    }
 
-	public void setNatureCourrier(TabNatureCourrier natureCourrier) {
-		this.natureCourrier = natureCourrier;
-	}
+    public void setNatureCourrier(TabNatureCourrier natureCourrier) {
+        this.natureCourrier = natureCourrier;
+    }
 
-	public TabPersonne getPersCrea() {
-		return persCrea;
-	}
+    public TabPersonne getPersCrea() {
+        return persCrea;
+    }
 
-	public void setPersCrea(TabPersonne persCrea) {
-		this.persCrea = persCrea;
-	}
+    public void setPersCrea(TabPersonne persCrea) {
+        this.persCrea = persCrea;
+    }
 
-  
+    public TabPersonne getExpediteur() {
+        return expediteur;
+    }
+
+    public void setExpediteur(TabPersonne expediteur) {
+        this.expediteur = expediteur;
+    }  
 
 }

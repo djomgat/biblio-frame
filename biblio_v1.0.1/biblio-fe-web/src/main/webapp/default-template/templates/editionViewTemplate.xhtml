@@ -1,40 +1,35 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	template="../templates/baseViewTemplate.xhtml">
-	
-	<ui:param name="wrapper" value="#{viewController.viewHelper.entityToEdit}" />
-			
-	<ui:param name="wrapped" value="#{wrapper.wrappedEntity}" />
-	
-	<ui:param name="activeViewIndex" value="2" />
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
 
-	<ui:define name="currentViewTitle" > Entete Formulaire Edition </ui:define>					
+    template="../templates/baseViewTemplate.xhtml">
+	
+    <ui:param name="wrapper" value="#{viewController.viewHelper.entityToEdit}" />
 
-	<ui:define name="unit_center_content">
+    <ui:param name="wrapped" value="#{wrapper.wrappedEntity}" />
+
+    <ui:param name="activeViewIndex" value="2" />
+
+    <ui:define name="currentViewTitle" >#{msg['menu.edit.header.name']}</ui:define>					
+
+    <ui:define name="unit_center_content">
+
+        <h:panelGrid id="panelViewContent" width="100%" >
+            <ui:insert name="currentViewDefaultContent"> #{msg['menu.edit.default.zone']} </ui:insert>
+        </h:panelGrid>
+        <p:separator />
+        <h:panelGroup>
+            <p:splitButton  value="#{msg['menu.edit.bouton.save']}" 		action="#{viewController.saveEditionAndDisplay}"	ajax="false"  	icon="ui-icon-disk"  >
+                <p:menuitem value="#{msg['menu.edit.bouton.saveAndAdd']}" 	action="#{viewController.saveEditionAndCreate}" 	ajax="false"	icon="ui-icon-disk" />
+                <p:menuitem value="#{msg['menu.edit.bouton.saveAndCopy']}" 	action="#{viewController.saveEditionAndCopy}" 		ajax="false"	icon="ui-icon-disk" />																	
+                <p:menuitem value="#{msg['menu.edit.bouton.saveAndClose']}" 	action="#{viewController.saveEditionAndDisplay}" 	ajax="false"	icon="ui-icon-disk" />				
+            </p:splitButton>
+
+            <p:commandButton value="#{msg['menu.edit.bouton.cancel']}" action="#{viewController.cancelEdition}" immediate="true" icon="ui-icon-cancel" onclick="if(! confirm('Etes vous certain de vouloir effectuer cette operation ?','Confirmation')) return false;" />			
+        </h:panelGroup>	
+        <p:separator />
 				
-		<h:panelGrid id="panelViewContent" width="100%" >
-		
-			<ui:insert name="currentViewDefaultContent"> Zone de contenu par defaut a redefinir  </ui:insert>
-			
-		</h:panelGrid>
-		
-		<p:separator />
-		<h:panelGroup>
-			<p:splitButton 	value="Enregistrer" 			action="#{viewController.saveEditionAndDisplay}"	ajax="false"  	icon="ui-icon-disk"  >
-				<p:menuitem value="Enregistrer et Ajouter" 	action="#{viewController.saveEditionAndCreate}" 	ajax="false"	icon="ui-icon-disk" />
-				<p:menuitem value="Enregistrer et Copier" 	action="#{viewController.saveEditionAndCopy}" 		ajax="false"	icon="ui-icon-disk" />																	
-				<p:menuitem value="Enregistrer et Fermer" 	action="#{viewController.saveEditionAndDisplay}" 	ajax="false"	icon="ui-icon-disk" />				
-			</p:splitButton>
-			
-			<p:commandButton value="Annuler" action="#{viewController.cancelEdition}" immediate="true" icon="ui-icon-cancel" onclick="if(! confirm('Etes vous certain de vouloir effectuer cette operation ?','Confirmation')) return false;" />			
-		</h:panelGroup>	
-		<p:separator />
-				
-	</ui:define>
-	
-
+    </ui:define>
 	
 </ui:composition>

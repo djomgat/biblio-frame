@@ -1,0 +1,51 @@
+@import url(http://meyerweb.com/eric/tools/css/reset/reset.css);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+[class*="fontawesome-"]:before {
+    font-family: 'FontAwesome', sans-serif;
+}
+
+#login {
+    margin: 50px auto;
+    width: 300px;
+    background: #999;
+    padding: 50px;
+}
+
+#login p {
+    line-height: 50px;
+}
+
+#login p span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    padding: 3px;
+    text-align: center;
+    border: 1px solid #ccc;
+    background: #ccc;
+    color: #fff;
+} 
+
+#login p input { 
+    font-family: Verdana, Arial, Helvetica, sans-serif; 
+    font-size: 12px; 
+    padding: 3px; 
+    width: 200px; 
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ccc; 
+    background: #fdfdfd;
+}
+
+.fa-password { 
+    font-family: Verdana, Arial, Helvetica, sans-serif; 
+    font-size: 12px; 
+    padding: 3px; 
+    width: 200px; 
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ccc; 
+    background: #fdfdfd;
+}

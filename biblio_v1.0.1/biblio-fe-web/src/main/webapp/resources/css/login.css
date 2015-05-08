@@ -1,55 +1,107 @@
 
     html {
-            height: 100%;
-    }
+        height: 100%;
+    }   
+
     body {
-            //background: url(images/macback.png);	
-            background: url("#{request.contextPath}/resources/images/macback.png");			
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: geneva, arial, helvetica, sans-serif;
-            font-size:80%;
+        background: url("#{request.contextPath}/resources/images/macback.png");			
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: geneva, arial, helvetica, sans-serif;
+        font-size:80%;
     }		
     #layout-table {
-            height: 100%;
-            width: 100%;
-            border-collapse: collapse;
-            /*text-align: center;*/
-    }				
+        height: 100%;
+        width: 100%;
+        border-collapse: collapse;
+        /*text-align: center;*/
+    }
+    
     #layout-td {
-            height: 100%;
-            padding: 0;
-            vertical-align: middle;
+        height: 100%;
+        padding: 0;
+        vertical-align: middle;
     }
 
     div#message-container{
-            width: 600px;
-            margin: 0 auto;
-            text-align : center;
+        width: 600px;
+        margin: 0 auto;
+        text-align : center;
     }
 
     div#login-container{
-            width: 400px;
-            margin: 0 auto;
-            /*border:1px dotted black;*/	/*border : width style color*/
-            /*text-align : center */
+        width: 400px;
+        margin: 0 auto;
+        /*border:1px dotted black;*/	
+        /*border : width style color*/
+        /*text-align : center */
     }
 
     div#locale-container{
-            width: 400px;
-            margin: 0 auto;
-            text-align : center;
+        width: 400px;
+        margin: 0 auto;
+        text-align : center;
     }	
 
     .align-l{
-            text-align : left;
+        text-align : left;
     }	
 
     .align-r{
-            text-align : right;
+        text-align : right;
     }
 
     .align-c{
-            text-align : center;
-    }		
+        text-align : center;
+    }	
+    
+    .user-icon {
+        background:url("#{request.contextPath}/resources/images/user-icon.png") 2% center no-repeat !important;
+        //background-repeat: no-repeat;  //no-repeat
+        //background-position: left center; 2% center //6px;
+        //background-attachment: fixed;
+        border:1px solid #DADADA;
+        margin-top:10px;
+        padding-left:30px;
+        width:330px;
+        height:20px;
+        font-size:14px;
+        font-weight: bold;
+        box-shadow:0 0 10px;
+        -webkit-box-shadow:0 0 10px;
+        /* For I.E */
+        -moz-box-shadow:0 0 10px;
+        /* For Mozilla Web Browser*/
+        border-radius:5px;
+        -webkit-border-radius:5px;
+        /* For I.E */
+        -moz-border-radius:5px
+        /* For Mozilla Web Browser*/    
+    } 
+
+    .pass-icon {
+        background:url("#{request.contextPath}/resources/images/lock-icon.png") 2% center no-repeat !important ;
+        // Primefaces ne réagit pas bien avec les attributs suvants
+        //background-image: url("#{request.contextPath}/resources/images/lock-icon.png") !important ;
+        //background-repeat: no-repeat;
+        //background-position: 2% center; //horizontal vertical 6px;
+        //background-attachment:fixed;
+        border:1px solid #DADADA;        
+        margin-top:10px;
+        padding-left:30px;
+        width:330px;
+        height:20px;
+        font-size:14px;
+        box-shadow:0 0 10px;
+        -webkit-box-shadow:0 0 10px;
+        /* For I.E */
+        -moz-box-shadow:0 0 10px;
+        /* For Mozilla Web Browser*/
+        border-radius:5px;
+        -webkit-border-radius:5px;
+        /* For I.E */
+        -moz-border-radius:5px
+        /* For Mozilla Web Browser*/    
+    }
+  

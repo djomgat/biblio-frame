@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
    <parent>
@@ -9,9 +10,9 @@
 	<version>1.0-SNAPSHOT</version>
     </parent>
 	
+    <name>biblio-be-svc-impl</name>
     <artifactId>biblio-be-svc-impl</artifactId>
     <packaging>ejb</packaging>
-    <name>biblio-be-svc-impl</name>
 
     <url>http://jboss.org/jbossas</url>
     <licenses>
@@ -62,8 +63,7 @@
             <version>${project.version}</version>
             <type>ejb</type>
             <scope>provided</scope>
-	</dependency>
-        
+	</dependency>        
 
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -72,45 +72,14 @@
             <type>jar</type>
             <scope>provided</scope>
 	</dependency>
-
-        <!-- Import the EJB API, we use provided scope as the API is included in JBoss AS 7 -->
-        <dependency>
-            <groupId>org.jboss.spec.javax.ejb</groupId>
-            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- Import the CDI API, we use provided scope as the API is included in JBoss AS 7 -->
-        <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- Import the JPA API, we use provided scope as the API is included in JBoss AS 7 -->
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- JSR-303 (Bean Validation) Implementation -->
-        <!-- Provides portable constraints such as @Email -->
-        <!-- Hibernate Validator is shipped in JBoss AS 7 -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-
+        
         <!-- Test scope dependencies -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-
+        
         <!-- Optional, but highly recommended -->
         <!-- Arquillian allows you to test enterprise code such as EJBs and 
             Transactional(JTA) JPA from JUnit/TestNG -->
@@ -124,8 +93,8 @@
             <groupId>org.jboss.arquillian.protocol</groupId>
             <artifactId>arquillian-protocol-servlet</artifactId>
             <scope>test</scope>               
-        </dependency>
-        
+        </dependency>        
+
     </dependencies>
 
     <build>
@@ -133,16 +102,15 @@
         <plugins>
             <plugin>
                 <artifactId>maven-ejb-plugin</artifactId>
-                <version>${version.ejb.plugin}</version>
+                <version>${maven-ejb-plugin.version}</version>
                 <configuration>
                     <!-- Tell Maven we are using EJB 3.1 -->
-                    <ejbVersion>3.1</ejbVersion>
+                    <ejbVersion>${ejb.version}</ejbVersion>
                 </configuration>
             </plugin>
             <plugin>
 		<groupId>org.jboss.as.plugins</groupId>
 		<artifactId>jboss-as-maven-plugin</artifactId>
-		<!--   <version>${version.jboss.maven.plugin}</version>  -->
             </plugin>
         </plugins>
     </build>
@@ -161,7 +129,6 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${version.surefire.plugin}</version>
                         <configuration>
                             <skip>true</skip>
                         </configuration>
@@ -181,7 +148,6 @@
                 <dependency>
                     <groupId>org.jboss.as</groupId>
                     <artifactId>jboss-as-arquillian-container-managed</artifactId>
-                    <version>${jboss.version}</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -196,13 +162,10 @@
                 <dependency>
                     <groupId>org.jboss.as</groupId>
                     <artifactId>jboss-as-arquillian-container-remote</artifactId>
-                    <version>${jboss.version}</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
-        </profile>
-        
-        
+        </profile>        
 
     </profiles>
 

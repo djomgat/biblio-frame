@@ -36,8 +36,6 @@ public class TabNatureMarche extends BiblioBaseEntity {
     @Size(max = 20)
     @Column(name = "lib_nature_marche")
     private String libNatureMarche;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codeNatureMarche")
-    private Collection<TabContrat> tabcontratCollection;
 
     public TabNatureMarche() {
     }
@@ -61,13 +59,5 @@ public class TabNatureMarche extends BiblioBaseEntity {
     public void setLibNatureMarche(String libNatureMarche) {
         this.libNatureMarche = libNatureMarche;
     }
-
-    @XmlTransient
-    public Collection<TabContrat> getTabcontratCollection() {
-        return tabcontratCollection;
-    }
-
-    public void setTabcontratCollection(Collection<TabContrat> tabcontratCollection) {
-        this.tabcontratCollection = tabcontratCollection;
-    }
+    
 }

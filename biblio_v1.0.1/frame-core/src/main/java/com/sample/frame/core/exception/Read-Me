@@ -1,0 +1,3 @@
+. Sachant que les exceptions lévées dans les couches dao et svc doivent être transportées 
+ou connues du Front-End (FE), les classes GenericDaoException et GenericSvcException iront 
+dans le module core;

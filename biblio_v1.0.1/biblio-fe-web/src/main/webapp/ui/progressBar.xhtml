@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+    
+<h:head>
+    <h:outputStylesheet name="\progressbar\progressbar.css" library="css"/>
+</h:head>
+<h:body>
+    <h:form >
+        <p:growl id="growl" />
+        <h3>Advanced Ajax ProgressBar</h3>
+        <p:commandButton value="Start" type="button" onclick="pbAjax.start();
+                startButton1.disable();" widgetVar="startButton1" />
+        <br /><br />
+        <p:progressBar widgetVar="pbAjax" value="#{RealprogressBean.progress}" 
+                       ajax="true" labelTemplate="{value}%" 
+                       styleClass="animated">
+            <p:ajax event="complete" listener="#{RealprogressBean.onComplete}"
+                    update="growl" oncomplete="startButton1.enable()"/>
+        </p:progressBar>
+        <p:dialog></p:dialog><!-- For PrimeFaces 3.5 -->
+    </h:form>
+</h:body>

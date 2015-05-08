@@ -1,0 +1,11 @@
+
+.headerStyleClass .ui-widget{
+    font-size:90% !important;
+}
+.headerStyleClass .ui-layout-unit-content{
+   background-image:url("#{request.contextPath}/resources/images/macback.png");
+}
+
+.headerStyleClass .ui-layout-unit-content{
+   background-image:url("#{request.contextPath}/resources/images/macback.png");
+}

@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+    <!-- #######    top tool bar     ####### -->
+    <div class="top_bar" position="top" style=" width: 100%; height: 30px; background-color: #4a4a4a;" header="top">
+        <p:toolbar>
+            <h:form>
+                <p:toolbarGroup align="right" >
+                    <p:separator/>
+                    <h:outputText value="Welcome, #{shiroLoginController.userLogin}" 
+                        rendered="#{shiroLoginController.loggedIn}"/>
+                    <p:separator/>
+                    <!--
+                    <h:outputText value="{shiroLoginController.loginTime}">
+                          <f:convertDateTime pattern="MM/dd/yyyy" type="date" />
+                    </h:outputText>
+                    -->
+                    <p:separator/>
+                    <p:commandLink value="#{msg['view.home.about']}" action="Profile" />  <!--  ui-icon-info   -->
+                    <p:separator/>
+                    <p:commandLink value="#{msg['view.home.help']}" action="Help" />  <!-- ui-icon-help  -->
+
+                    <p:separator/>
+                    <p:commandButton id="dynaButton" value="echoupe" type="button" icon="ui-icon-person"/>
+                    <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
+                        <p:submenu style="margin:0; padding:0; height:0; width:0">
+                            <p:menuitem value="#{msg['view.home.home']}" url="#" icon="ui-icon ui-icon-home" />
+                            <p:separator />
+                            <p:menuitem value="#{msg['view.home.profile']}" url="#" icon="ui-icon ui-icon-wrench" />
+                            <p:separator />                            
+                            <p:menuitem value="#{msg['view.home.logout']}"  action="#{shiroLoginController.logout()}" icon="ui-icon ui-icon-power" />
+                        </p:submenu>
+                    </p:menu>
+
+                    <p:separator/>
+                    <p:commandButton id="paramButton" value="#{msg['view.home.parameters']}" 
+                                     type="button" icon="ui-icon-gear"/>
+                    <p:menu overlay="true" trigger="paramButton" my="left top" at="left bottom">
+                        <p:submenu style="margin:0; padding:0; height:0; width:0">
+                            <p:menuitem value="#{msg['view.home.profile']}" 
+                                        url="#" icon="ui-icon ui-icon-wrench" />
+                        </p:submenu>
+                    </p:menu>
+                    <p:separator/>
+
+                    <p:selectOneMenu  
+                        title="#{localeCtl.displayLanguage}" 
+                        value="#{localeCtl.selectedLanguage}"  >
+                        <f:selectItems value="#{localeCtl.countriesInMap}" />
+                        <p:ajax id="idy" event="change" />  <!-- update="login-form"  -->
+                    </p:selectOneMenu>                
+
+                </p:toolbarGroup>
+            </h:form>    
+        </p:toolbar>        
+    </div>
+
+</ui:composition>

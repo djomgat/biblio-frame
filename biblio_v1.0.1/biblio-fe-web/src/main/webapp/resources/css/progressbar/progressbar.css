@@ -1,0 +1,5 @@
+.animated .ui-progressbar-value { 
+    border:0px;
+    background-image: url("#{request.contextPath}/resources/images/progressbar/progressbar-ani.gif']}");
+    //background: url("#{request.contextPath}/resources/images/macback.png");
+}

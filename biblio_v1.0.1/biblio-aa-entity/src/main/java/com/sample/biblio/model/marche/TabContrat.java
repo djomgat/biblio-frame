@@ -119,39 +119,51 @@ public class TabContrat extends BiblioBaseEntity {
     @Column(name = "date_recep_contrat")
     @Temporal(TemporalType.DATE)
     private Date dateRecepContrat;
-    @JoinColumn(name = "code_nature_marche", referencedColumnName = "code_nature_marche")
+    
+ 
     @ManyToOne(optional = false)
-    private TabNatureMarche codeNatureMarche;
-    @JoinColumn(name = "code_titulaire_contrat", referencedColumnName = "id_societe")
+    @JoinColumn(name = "code_moa")
+    private TabMoa moa;
+    
     @ManyToOne(optional = false)
-    private TabSociete codeTitulaireContrat;
+    @JoinColumn(name = "code_mode_selection")
+    private TabModeSelection modeSelection;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "code_nature_marche")
+    private TabNatureMarche natureMarche;
+    
+    @ManyToOne (optional = false)
+    @JoinColumn(name = "code_titulaire_contrat")
+    private TabSociete titulaireContrat;
 
     public TabContrat() {
+        
     }
 
-    public TabContrat(String idContrat) {
-        this.idContrat = idContrat;
-    }
-
-    public TabContrat(String idContrat, String idLot, String numContrat, String numAo, String objetContrat, String descrContrat, int montantContrat, int montantCaution, int delaiExecContrat, String lieuExecContrat, String financContrat, String imputContrat, int delaiGarantiContrat, String codeCsContrat, String codeIngContrat, Date dateSouscrContrat, Date dateSignContrat) {
-        this.idContrat = idContrat;
-        this.idLot = idLot;
-        this.numContrat = numContrat;
-        this.numAo = numAo;
-        this.objetContrat = objetContrat;
-        this.descrContrat = descrContrat;
-        this.montantContrat = montantContrat;
-        this.montantCaution = montantCaution;
-        this.delaiExecContrat = delaiExecContrat;
-        this.lieuExecContrat = lieuExecContrat;
-        this.financContrat = financContrat;
-        this.imputContrat = imputContrat;
-        this.delaiGarantiContrat = delaiGarantiContrat;
-        this.codeCsContrat = codeCsContrat;
-        this.codeIngContrat = codeIngContrat;
-        this.dateSouscrContrat = dateSouscrContrat;
-        this.dateSignContrat = dateSignContrat;
-    }
+//    public TabContrat(String idContrat) {
+//        this.idContrat = idContrat;
+//    }
+//
+//    public TabContrat(String idContrat, String idLot, String numContrat, String numAo, String objetContrat, String descrContrat, int montantContrat, int montantCaution, int delaiExecContrat, String lieuExecContrat, String financContrat, String imputContrat, int delaiGarantiContrat, String codeCsContrat, String codeIngContrat, Date dateSouscrContrat, Date dateSignContrat) {
+//        this.idContrat = idContrat;
+//        this.idLot = idLot;
+//        this.numContrat = numContrat;
+//        this.numAo = numAo;
+//        this.objetContrat = objetContrat;
+//        this.descrContrat = descrContrat;
+//        this.montantContrat = montantContrat;
+//        this.montantCaution = montantCaution;
+//        this.delaiExecContrat = delaiExecContrat;
+//        this.lieuExecContrat = lieuExecContrat;
+//        this.financContrat = financContrat;
+//        this.imputContrat = imputContrat;
+//        this.delaiGarantiContrat = delaiGarantiContrat;
+//        this.codeCsContrat = codeCsContrat;
+//        this.codeIngContrat = codeIngContrat;
+//        this.dateSouscrContrat = dateSouscrContrat;
+//        this.dateSignContrat = dateSignContrat;
+//    }
 
     public String getIdContrat() {
         return idContrat;
@@ -313,20 +325,36 @@ public class TabContrat extends BiblioBaseEntity {
         this.dateRecepContrat = dateRecepContrat;
     }
 
-    public TabNatureMarche getCodeNatureMarche() {
-        return codeNatureMarche;
+    public TabMoa getMoa() {
+        return moa;
     }
 
-    public void setCodeNatureMarche(TabNatureMarche codeNatureMarche) {
-        this.codeNatureMarche = codeNatureMarche;
+    public void setMoa(TabMoa moa) {
+        this.moa = moa;
     }
 
-    public TabSociete getCodeTitulaireContrat() {
-        return codeTitulaireContrat;
+    public TabModeSelection getModeSelection() {
+        return modeSelection;
     }
 
-    public void setCodeTitulaireContrat(TabSociete codeTitulaireContrat) {
-        this.codeTitulaireContrat = codeTitulaireContrat;
+    public void setModeSelection(TabModeSelection modeSelection) {
+        this.modeSelection = modeSelection;
+    }
+
+    public TabNatureMarche getNatureMarche() {
+        return natureMarche;
+    }
+
+    public void setNatureMarche(TabNatureMarche natureMarche) {
+        this.natureMarche = natureMarche;
+    }
+
+    public TabSociete getTitulaireContrat() {
+        return titulaireContrat;
+    }
+
+    public void setTitulaireContrat(TabSociete titulaireContrat) {
+        this.titulaireContrat = titulaireContrat;
     }
 
 }

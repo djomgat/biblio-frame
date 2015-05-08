@@ -2,19 +2,14 @@
  */
 package com.sample.biblio.model.marche;
 
-import java.util.Collection;
-
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 import com.sample.biblio.model.core.BiblioBaseEntity;
 /**
@@ -76,10 +71,10 @@ public class TabSociete extends BiblioBaseEntity {
     @Size(min = 1, max = 30)
     @Column(name = "domicil_bancaire_societe")
     private String domicilBancaireSociete;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codeTitulaireContrat")
-    private Collection<TabContrat> tabcontratCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tabsociete")
-    private Collection<TabAttribution> tabattributionCollection;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codeTitulaireContrat")
+//    private Collection<TabContrat> tabcontratCollection;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tabsociete")
+//    private Collection<TabAttribution> tabattributionCollection;
 
     public TabSociete() {
     }
@@ -200,47 +195,4 @@ public class TabSociete extends BiblioBaseEntity {
         this.domicilBancaireSociete = domicilBancaireSociete;
     }
 
-    @XmlTransient
-    public Collection<TabContrat> getTabcontratCollection() {
-        return tabcontratCollection;
-    }
-
-    public void setTabcontratCollection(Collection<TabContrat> tabcontratCollection) {
-        this.tabcontratCollection = tabcontratCollection;
-    }
-
-    @XmlTransient
-    public Collection<TabAttribution> getTabattributionCollection() {
-        return tabattributionCollection;
-    }
-
-    public void setTabattributionCollection(Collection<TabAttribution> tabattributionCollection) {
-        this.tabattributionCollection = tabattributionCollection;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idSociete != null ? idSociete.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TabSociete)) {
-            return false;
-        }
-        TabSociete other = (TabSociete) object;
-        if ((this.idSociete == null && other.idSociete != null) || (this.idSociete != null && !this.idSociete.equals(other.idSociete))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.sample.biblio.model.Tabsociete[ idSociete=" + idSociete + " ]";
-    }
-    
 }

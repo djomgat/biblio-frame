@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <!-- Basic Properties -->
     <modelVersion>4.0.0</modelVersion>
+      
+   <!-- Reference the parent of the current .ear project -->
+    <parent>
+        <groupId>com.sample.frame.biblio</groupId>
+        <artifactId>frame-biblio</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <!--<groupId>com.developerscrappad</groupId> -->
+    <artifactId>biblio-z-ear</artifactId>
+    <name>biblio-z-ear</name>
+    <!-- <version>1.0-SNAPSHOT</version>  -->
+    <packaging>ear</packaging>    
+    
     <url>http://jboss.org/jbossas</url>
     <licenses>
         <license>
@@ -9,106 +24,77 @@
             <distribution>repo</distribution>
             <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
         </license>
-    </licenses>
-
-    <name>biblio-z-ear</name>
-	<artifactId>biblio-z-ear</artifactId>	
-	<!-- Specify the packaging value of any EAR module -->
-    <packaging>ear</packaging>
-    <!-- Reference the parent -->
-    <parent>
-        <groupId>com.sample.frame.biblio</groupId>
-        <artifactId>frame-biblio</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    
-    <!-- The absolute path to the Glassfish App. Server, please change this... -->
-    <properties>
-	<glassfish.directory>C:/Java/glassfish-3.1.2.2</glassfish.directory>
-    </properties>
-    <!-- The absolute path to the JBoss App. Server, please change this... -->
-   
+    </licenses>    
+     
     <dependencies>
-        <!-- The dependencies for EAR module should include all those sub-modules 
-             that are needed to be packaged into the ear file -->
+        <!-- The dependencies for EAR module should include all those needed sub-modules  -->
 	<dependency>
-		<groupId>${project.groupId}</groupId>
-		<artifactId>biblio-aa-entity</artifactId>
-		<version>${project.version}</version>
-		<type>jar</type>			
+            <groupId>${project.groupId}</groupId>
+            <artifactId>biblio-aa-entity</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>			
 	</dependency>
 	<dependency>
-		<groupId>${project.groupId}</groupId>
-		<artifactId>biblio-be-dao-impl</artifactId>
-		<version>${project.version}</version>
-		<type>ejb</type>			
+            <groupId>${project.groupId}</groupId>
+            <artifactId>biblio-be-dao-impl</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>			
 	</dependency>        
 	<dependency>
-		<groupId>${project.groupId}</groupId>
-		<artifactId>biblio-be-dao-contract</artifactId>
-		<version>${project.version}</version>
-		<type>jar</type>			
+            <groupId>${project.groupId}</groupId>
+            <artifactId>biblio-be-dao-contract</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>			
 	</dependency>
 	<dependency>
-		<groupId>${project.groupId}</groupId>
-		<artifactId>biblio-be-svc-impl</artifactId>
-		<version>${project.version}</version>
-		<type>ejb</type>			
+            <groupId>${project.groupId}</groupId>
+            <artifactId>biblio-be-svc-impl</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>			
 	</dependency>
         <dependency>
-		<groupId>${project.groupId}</groupId>
-		<artifactId>biblio-be-svc-contract</artifactId>
-		<version>${project.version}</version>
-		<type>jar</type>			
+            <groupId>${project.groupId}</groupId>
+            <artifactId>biblio-be-svc-contract</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>			
 	</dependency>
 
 	<dependency>
-		<groupId>${project.groupId}</groupId>
-		<artifactId>biblio-fe-core</artifactId>
-		<version>${project.version}</version>
-		<type>jar</type>			
+            <groupId>${project.groupId}</groupId>
+            <artifactId>biblio-fe-core</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>			
 	</dependency>
 	<dependency>
-		<groupId>${project.groupId}</groupId>
-		<artifactId>biblio-fe-web</artifactId>
-		<version>${project.version}</version>
-		<type>war</type>			
+            <groupId>${project.groupId}</groupId>
+            <artifactId>biblio-fe-web</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>			
 	</dependency> 
-	</dependencies>
+    </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
-            <!-- plugin de gestion des .ear par maven  -->
             <plugin>
                 <!-- plugin de gestion des .ear par maven  -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ear-plugin</artifactId>
-                <version>${version.ear.plugin}</version>
-                <configuration>
-                    <!-- Tell Maven we are using Java EE 6 -->
-                    <version>6</version>
-                    <!-- Use Java EE ear libraries as needed. Java EE ear libraries 
-                        are in easy way to package any libraries needed in the ear, and automatically 
-                        have any modules (EJB-JARs and WARs) use them -->
+                <!-- <version>${maven-ear-plugin.version}</version>-->
+                <configuration>                    
+                    <version>6</version><!-- Tell Maven we are using Java EE 6 -->
+                    <!-- Use Java EE ear libraries as needed. Java EE ear libraries -->
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
                     <modules>
                     <!-- Default context root of the web app is /as7example3-web. 
                         If a custom context root is needed, uncomment the following snippet to
                         register our War as a web module and set the contextRoot property -->
-                    <!--
-                    <webModule>
-                        <groupId>com.mastertheboss</groupId>
-                        <artifactId>as7example3-web</artifactId>
-                        <contextRoot>/as7example3</contextRoot>
-                    </webModule>
-                    -->
                     </modules>
                     <fileNameMapping>no-version</fileNameMapping>
                 </configuration>
             </plugin>
             
-            <!-- JBoss AS Server -->
+            <!-- JBoss AS Server deployment configuration -->
             <!-- The JBoss AS plugin deploys your ear to a local JBoss AS container -->
             <!-- Due to Maven's lack of intelligence with EARs we need to configure 
                 the jboss-as maven plugin to skip deployment for all modules. We then enable 
@@ -118,7 +104,6 @@
             <plugin>
                 <groupId>org.jboss.as.plugins</groupId>
                 <artifactId>jboss-as-maven-plugin</artifactId>                
-                <!-- <version>${version.jboss.as.maven.plugin}</version>  -->                
                 <!-- Configuration de la connexion à AS Server -->
                 <configuration>
                     <jbossHome>${jboss.home}</jbossHome>
@@ -129,13 +114,6 @@
                     <filename>${project.artifactId}.ear</filename>
                     <skip>false</skip>
                 </configuration>
-                <!-- 
-                <configuration>
-                	<jbossHome>${jboss.home}</jbossHome>
-                	<serverName>all</serverName>
-                	<fileName>${project.artifactId}.ear</fileName>
-        	</configuration>
-        	-->
                 <executions>
                     <!-- Deploy the ear application on install -->
                     <execution>
@@ -145,21 +123,6 @@
                             <goal>deploy</goal>
           		</goals>              			
                     </execution>
-                    <!-- Deploy the JDBC library -->
-                    <!-- 
-                    <execution>
-                        <id>jboss-deploy-jdbc-driver</id>
-                        <phase>install</phase>
-                        <configuration>
-                            <groupId>postgresql</groupId>
-                            <artifactId>postgresql</artifactId>
-                            <name>postgresql.jar</name>
-                        </configuration>
-                        <goals>
-                            <goal>deploy-artifact</goal>
-                        </goals>
-                    </execution>
-                     -->
                     <!-- Undeploy the application on clean -->      				
                     <execution>
                         <id>jboss-undeploy</id>
@@ -168,41 +131,18 @@
                            <ignoreMissingDeployment>true</ignoreMissingDeployment>
                         </configuration>      				    
                        	<goals>
-                               	<goal>undeploy</goal>
+                            <goal>undeploy</goal>
           		</goals>                		
-                    </execution>
-                    <!-- intéressant mais à revoir --> 
-                    <!--
-                    <execution>
-                        <id>start-server</id>
-                        <phase>process-test-classes</phase>                                
-                        <goals>
-                            <goal>start</goal>
-                        </goals>
-                    </execution>
-                    -->
-                    <!-- copying driver and datasource here -->
-                    <!--
-                    <execution>
-                        <id>shutdown-server</id>
-                        <phase>process-test-classes</phase>                                
-                            <goals>
-                                <goal>shutdown</goal>
-                            </goals>
-                    </execution>
-                    --> 
-                    
-                                                            				
-                    
+                    </execution>                   
 		</executions>
             </plugin>
-            
-            <!-- Glassfish App Server -->
+            <!-- End of Jboss as plugin configuration -->
+            <!-- Glassfish App Server deployment configuration -->
             <!--  
             <plugin>
 		<groupId>org.glassfish.maven.plugin</groupId>
                 <artifactId>maven-glassfish-plugin</artifactId>
-                <version>2.1</version>
+                <version>${maven-glassfish-plugin.version}</version>
                 <executions>
                     <execution>
 			<id>gf-undeploy</id>
@@ -214,31 +154,32 @@
                     <execution>
 			<id>gf-deploy</id>
     			<goals>
-                        	<goal>deploy</goal>
+                            <goal>deploy</goal>
 			</goals>
 			<phase>package</phase>
                     </execution>
 		</executions>
     		<configuration>
-			<user>admin</user>
-			<glassfishDirectory>${glassfish.directory}</glassfishDirectory>
-			<domainDirectory>${glassfish.directory}/glassfish/domains/</domainDirectory>
-    			<passwordFile>${basedir}/glassfishpasswordfile</passwordFile>
-			<domain>
-    				<name>DummyDemoDomain</name>
-    				<adminPort>4848</adminPort>
-				<httpPort>8080</httpPort>
-    				<httpsPort>8443</httpsPort>
-			</domain>
-    			<components>
-    				<component>
-                        		<name>DummyDemo</name>
-    					<artifact>target/DummyDemo-ear-1.0-SNAPSHOT.ear</artifact>
-    				</component>
-    			</components>
+                    <user>admin</user>
+                    <glassfishDirectory>${glassfish.directory}</glassfishDirectory>
+                    <domainDirectory>${glassfish.directory}/glassfish/domains/</domainDirectory>
+                    <passwordFile>${basedir}/glassfishpasswordfile</passwordFile>
+                    <domain>
+                        <name>DummyDemoDomain</name>
+                        <adminPort>4848</adminPort>
+                        <httpPort>8080</httpPort>
+                        <httpsPort>8443</httpsPort>
+                    </domain>
+                    <components>
+                        <component>
+                            <name>DummyDemo</name>
+                            <artifact>target/DummyDemo-ear-1.0-SNAPSHOT.ear</artifact>
+                        </component>
+                    </components>
     		</configuration>            
 	</plugin> 
-	--> <!-- End of Glassfish plugin configuration -->            
+	--> 
+        <!-- End of Glassfish plugin configuration -->            
         </plugins>
     </build>
    
@@ -253,7 +194,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-ear-plugin</artifactId>
-                        <version>${version.ear.plugin}</version>
+                        <version>${maven-ear-plugin.version}</version>
                         <configuration>
                             <outputDirectory>deployments</outputDirectory>
                         </configuration>

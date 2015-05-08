@@ -2,12 +2,13 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+
+        <modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.sample.frame.biblio</groupId>
-		<artifactId>frame-biblio</artifactId>
-		<version>1.0-SNAPSHOT</version>
+            <groupId>com.sample.frame.biblio</groupId>
+            <artifactId>frame-biblio</artifactId>
+            <version>1.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>frame-core</artifactId>
@@ -16,11 +17,11 @@
 
 	<url>http://jboss.org/jbossas</url>
 	<licenses>
-		<license>
-			<name>Apache License, Version 2.0</name>
-			<distribution>repo</distribution>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-		</license>
+            <license>
+                <name>Apache License, Version 2.0</name>
+                <distribution>repo</distribution>
+                <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            </license>
 	</licenses>
 
     <dependencies>
@@ -28,30 +29,49 @@
 	<dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <version>${log4j.version}</version>
+            <scope>provided</scope>
 	</dependency>
+        
+        <!-- Fournit par Java EE  -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${javaee-api.version}</version>
+        </dependency>
+        
+        <dependency>
+          <groupId>javax.annotation</groupId>
+          <artifactId>javax.annotation-api</artifactId>
+          <version>${javax.annotation-api.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>javax.ejb</groupId>
+          <artifactId>javax.ejb-api</artifactId>
+          <version>${javax.ejb-api.version}</version>
+        </dependency>         
 
-	<!-- Import the EJB API, we use provided scope as the API is 
-             included in JBoss AS 7 -->
+	 <!-- Import the EJB API, we use provided scope as the API is included in JBoss AS 7 -->
 	<dependency>
             <groupId>org.jboss.spec.javax.ejb</groupId>
             <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+            <!--<version>${jboss-ejb-api_3.1_spec.version}</version>-->
             <scope>provided</scope>
 	</dependency>
 
-	<!-- Import the CDI API, we use provided scope as the API 
-            is included in JBoss AS 7 -->
+	<!-- Import the CDI API, we use provided scope as the API is included in JBoss AS 7 -->
 	<dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
+            <!--<version>${cdi-api.version}</version>-->
             <scope>provided</scope>
 	</dependency>
 
-	<!-- Import the JPA API, we use provided scope as the 
-             API is included in JBoss AS 7 -->
+	<!-- Import the JPA API, we use provided scope as the API is included in JBoss AS 7 -->
 	<dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <!--<version>${hibernate-jpa-2.0-api.version}</version>-->
             <scope>provided</scope>
 	</dependency>
 
@@ -61,14 +81,22 @@
 	<dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
             <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>            
 	</dependency>
 
 	<!-- Unit Test scope dependencies -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <scope>test</scope>
+            <version>${junit.version}</version>
+            <scope>test</scope> 
 	</dependency>
 
 	<!-- Optional, but highly recommended for integration testing-->
@@ -77,12 +105,14 @@
 	<dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
+            <version>${arquillian-junit-container.version}</version>
             <scope>test</scope>
-	</dependency>
+	</dependency> 
 
 	<dependency>
             <groupId>org.jboss.arquillian.protocol</groupId>
             <artifactId>arquillian-protocol-servlet</artifactId>
+            <version>${arquillian-protocol-servlet.version}</version> 
             <scope>test</scope>
 	</dependency>
 
@@ -90,50 +120,66 @@
         <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
-            <version>5.6.1</version>
+            <version>${jasperreports.version}</version>
         </dependency>
-    
+     
         <dependency>
             <!-- création dynamic des rapports (.jrxml) - ad-hoc (ver. 2014)-->
             <!-- http://www.dynamicreports.org/ -->
             <groupId>ar.com.fdvs</groupId>
             <artifactId>DynamicJasper</artifactId>
-            <version>5.0.0</version>
+            <version>${dynamicjasper.version}</version>
             <type>jar</type>
         </dependency>
     
         <dependency>
             <!-- iText is a Java PDF Library  -->
-            <groupId>com.lowagie</groupId>
-            <artifactId>itext</artifactId>
-            <version>4.2.1</version>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>${itext.version}</version>
         </dependency>
     
-        <dependency>
-            <!-- Apache JFreeChart for chart reporting -->
+        <!-- Apache JFreeChart for chart reporting -->
+        <dependency>            
             <groupId>org.jfree</groupId>
             <artifactId>jfreechart</artifactId>
-            <version>1.0.17</version>
+            <version>${jfreechart.version}</version>
+        </dependency>
+        
+        <!-- Gestion des codes barres  -->
+        <dependency>
+            <groupId>net.sf.barcode4j</groupId>
+            <artifactId>barcode4j</artifactId>
+            <version>${barcode4j.version}</version>
         </dependency> 
         
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
-            <artifactId>xstream</artifactId>
-            <version>1.4.7</version>
+            <artifactId>xstream</artifactId> 
+            <version>${xstream.version}</version>
+        </dependency> 
+        
+        <!-- API de gestion des date et heures -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId> 
+            <version>${joda-time.version}</version>
         </dependency>
         
         <dependency>                                 
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
-            <version>2.6</version>                                
+            <version>${commons-lang.version}</version>                                
         </dependency>
         
         <!-- Pour la gestion des servlets utilisées pour la visualisation jasper -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>${javax.servlet-api.version}</version>
         </dependency>
+        
+       
                                    
     </dependencies>
 
@@ -142,16 +188,16 @@
 	<plugins>
             <plugin>
 		<artifactId>maven-ejb-plugin</artifactId>
-		<version>${version.ejb.plugin}</version>
+		<version>${maven-ejb-plugin.version}</version> 
 		<configuration>
                     <!-- Tell Maven we are using EJB 3.1 -->
-                    <ejbVersion>3.1</ejbVersion>
+                    <ejbVersion>${ejb.version}</ejbVersion>
 		</configuration>
             </plugin>
             <plugin>
 		<groupId>org.jboss.as.plugins</groupId>
 		<artifactId>jboss-as-maven-plugin</artifactId>
-		<!--   <version>${version.jboss.maven.plugin}</version>  -->
+		<!-- <version>${jboss-as-maven-plugin.version}</version> -->
             </plugin>
 	</plugins>
     </build>
@@ -160,17 +206,17 @@
 	<profile>
 	<!-- The default profile skips all tests, though you can tune it to run 
 	just unit tests based on a custom pattern -->
-	<!-- Seperate profiles are provided for running all tests, including Arquillian 
-                tests that execute in the specified container -->
+	<!-- Seperate profiles are provided for running all tests, including 
+             Arquillian tests that execute in the specified container -->
             <id>default</id>
             <activation>
-		<activeByDefault>true</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <build>
             	<plugins>
                     <plugin>
 			<artifactId>maven-surefire-plugin</artifactId>
-			<version>${version.surefire.plugin}</version>
+			<!-- <version>${maven-surefire-plugin.version}</version>  -->
 			<configuration>
                             <skip>true</skip>
 			</configuration>
@@ -190,7 +236,7 @@
                 <dependency>
                     <groupId>org.jboss.as</groupId>
                     <artifactId>jboss-as-arquillian-container-managed</artifactId>
-                    <version>${jboss.version}</version>
+                    <!--<version>${jboss.version}</version> -->
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -204,13 +250,13 @@
             <dependencies>
 		<dependency>
                     <groupId>org.jboss.as</groupId>
-			<artifactId>jboss-as-arquillian-container-remote</artifactId>
-			<version>${jboss.version}</version>
-			<scope>test</scope>
+                    <artifactId>jboss-as-arquillian-container-remote</artifactId>
+                <!--<version>${jboss.version}</version> -->
+                    <scope>test</scope>
 		</dependency>
             </dependencies>
 	</profile>
 
-	</profiles>
+    </profiles>
 
 </project>

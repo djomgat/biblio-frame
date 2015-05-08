@@ -60,12 +60,13 @@ import com.sample.frame.core.utils.FrameLocaleUtil;
 /**
  * @author btoko
  * Génération des rapports avec l'implémentation JasperReport
+ * Implémentation Jasper de l'interface IReportFactory
  */
 
 @SuppressWarnings("unchecked")
 public class JasperReportFactory implements IReportFactory {
 
-    private BaseLogger logger = BaseLogger.getLogger(JasperReportFactory.class);
+    private static final BaseLogger logger = BaseLogger.getLogger(JasperReportFactory.class);
     JasperPrint jasperPrint;
     boolean showViewer;
 
@@ -330,7 +331,7 @@ public class JasperReportFactory implements IReportFactory {
 
             File fichier = File.createTempFile("docxFile", ".docx");
             logger.debug("Fichier doc créé : " + fichier.getAbsolutePath());
-            System.out.println("Fichier docx cr�� : "+ fichier.getAbsolutePath());
+            System.out.println("Fichier docx crée : "+ fichier.getAbsolutePath());
             FileOutputStream myoutput;
             try {
                 myoutput = new FileOutputStream(fichier);
@@ -366,7 +367,7 @@ public class JasperReportFactory implements IReportFactory {
             byte[] bytes = docxReport.toByteArray();
 
             File sortie = File.createTempFile("docxFile", ".docx");
-            System.out.println("Fichier docx cr�� : "+ sortie.getAbsolutePath());
+            System.out.println("Fichier docx crée : "+ sortie.getAbsolutePath());
             // File sortie = new File("excelFile.xls");
             FileOutputStream myoutput;
             try {
@@ -426,7 +427,7 @@ public class JasperReportFactory implements IReportFactory {
 		this.getApiXlsExporter(xlsReport, jasperPrint).exportReport();
             } 
             catch (Exception e) {
-		logger.warn( "Erreur de g�n�ration de l'�tat avec l'API JExcelApi : "
+		logger.warn( "Erreur de g�n�ration de l'état avec l'API JExcelApi : "
                         + e.getMessage()
 			+ "\n Tentative avec l'API POI...", e);
 		this.getCommonXlsExporter(xlsReport, jasperPrint).exportReport();

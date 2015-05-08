@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+            <title>#{msg['application.name']}</title>
+        </f:facet>
+
+        <link type="text/css" rel="stylesheet" 
+              href="#{request.contextPath}/default-template/css/default.css" />
+        
+        <h:outputStylesheet name="layout.css" library="css"/>
+        
+        <style type="text/css"></style>
+
+        <ui:insert name="head" />
+
+    </h:head>
+
+    <h:body>
+        <!-- Activation du déboggage dans l'interface Primefaces  -->
+        <ui:debug hotkey="e"/>
+        
+        <!-- Insertion du moniteur d'inactivité ou time-out ancien expirationSession.xhtml-->
+        <ui:include src="/default-template/include/idleMonitor.xhtml"/>
+        
+        <ui:insert name="body_content_before_layout" />
+
+        <h:form id="form">
+            <!-- Définition de la structure du layout -->
+            <p:layout id="layout_full" fullPage="true">
+                <!-- Structuration du header de la page en 5 régions -->
+                <p:layoutUnit id="unit_north" position="north" styleClass="headerStyleClass">
+                    <p:layout id="layout_header">
+                        <p:layoutUnit id="unit_header_north" position="north" style="border: 0px">
+                            <ui:insert name="unit_header_north_content">
+                                <h:outputText value="header North Unit Content" />
+                            </ui:insert>
+                        </p:layoutUnit>
+                        <p:layoutUnit id="unit_header_west" position="west" style="border: 0px;"  >
+                            <ui:insert name="unit_header_west_content">
+                                <h:outputText value="Header West Unit Content" />
+                            </ui:insert>
+                        </p:layoutUnit>
+                        <p:layoutUnit id="unit_header_center" position="center" style="border: 0px;" >
+                            <ui:insert name="unit_header_center_content">
+                                <h:outputText value="Header Center Unit Content" />
+                            </ui:insert>
+                        </p:layoutUnit>                        
+                        <p:layoutUnit id="unit_header_east" position="east" style="border: 0px;" >
+                            <ui:insert name="unit_header_east_content">
+                                <h:outputText value="Header East Unit Content" />
+                            </ui:insert>
+                        </p:layoutUnit>
+                        <p:layoutUnit id="unit_header_south" position="south" style="border: 0px">
+                            <ui:insert name="unit_header_south_content">
+                                <h:outputText value="Header South Unit Content" />
+                            </ui:insert>
+                        </p:layoutUnit>
+						
+                    </p:layout>
+                </p:layoutUnit>
+
+                <p:layoutUnit id="unit_south" position="south" 
+                    styleClass="headerStyleClass">
+                    <ui:insert name="unit_south_content">
+                        <h:outputText value="South Unit Content" />
+                    </ui:insert>
+                </p:layoutUnit>
+
+                <p:layoutUnit id="unit_west" position="west" resizable="true"
+                    collapsible="true" header="Menu" minSize="260"
+                    maxSize="350" styleClass="leftStyleClass">
+                    <ui:insert name="unit_west_content">
+                        <h:outputText value="West Unit Content" />
+                    </ui:insert>
+                </p:layoutUnit>
+
+                <p:layoutUnit id="unit_center" position="center" styleClass="contentStyleClass">
+                    <ui:insert name="unit_center_content">
+                        <h:outputText value="Middle top unit content." />
+                    </ui:insert>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:form>
+
+        <ui:insert name="body_content_after_layout" />
+
+    </h:body>
+
+</f:view>
+
+</html>

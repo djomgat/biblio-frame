@@ -24,6 +24,11 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.session.Session;
 
 import com.sample.frame.fe.helper.FacesUtil;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
  
 /**
  * Simple JSF Controller demonstrating Shiro login/logout process.
@@ -75,8 +80,21 @@ public class ShiroLoginController extends AbstractLoginController {
             log.info(strMsg);
             
             //  Récupérer de la session de l'utilisateur 
-            Session session = currentUser.getSession();
-            session.setAttribute( "username", username );
+            Session userSession = currentUser.getSession(true);
+            userSession.setAttribute( "username", username );
+            
+            if(currentUser.isAuthenticated()){
+                Date loginTime = userSession.getStartTimestamp();
+                //Date lastAccessTime = userSession.getLastAccessTime(); //last active time
+                long timeout = (long)(userSession.getTimeout()* 0.001); // get sessiontime out in seconds
+                long oneMinleft = timeout - 60 ; // get time to show timeout dialog before 1 min of session timeout
+                String userHost = userSession.getHost();
+                log.info("User login time is: " + loginTime);
+                log.info("User session idle time-out is (s): " + timeout);
+                log.info("User seconds left to timeout(s) is: " + oneMinleft);
+                log.info("User login host is : " + userHost);
+            }              
+            
             
         } catch (UnknownAccountException uae ) {
             //username wasn't in the system, show them an error message?
@@ -122,18 +140,39 @@ public class ShiroLoginController extends AbstractLoginController {
         Subject currentUser = SecurityUtils.getSubject();
 
         try {
-            //  Récupérer de la session de l'utilisateur 
-            Session session = currentUser.getSession();
-            //String username = session.getAttribute();
+
+            // Détermine la durée de la session de l'utilisateur
+            Session userSession = currentUser.getSession();
+                        
+            Date startTime = userSession.getStartTimestamp(); //login time
+            long timeout = (long)(userSession.getTimeout()* 0.001); // get sessiontime out in seconds
+            //long oneMinleft =    timeout - 60 ; // get time to show timeout dialog before 1 min of session timeout
+            log.info("User Login time is: " + startTime);
+            log.info("User session time-out is (s): " + timeout);
+            Date date = new Date();
+            log.info("Log out time is (s): " + date.toString() );
+            //Convert Date to new java 8 format
+            //Instant instant = Instant.ofEpochMilli(startTime.getTime());
+            
+//            Problème de version de Java
+//            LocalDateTime dt1 = LocalDateTime.ofInstant(startTime.toInstant(), ZoneId.systemDefault());
+//            LocalDateTime dtf = LocalDateTime.now(); 
+//            Period p = Period.between(dt1.toLocalDate(), dtf.toLocalDate());
+//            log.info("Session duratio is " + p.getYears() + " years, " + p.getMonths() + " months, and " + p.getDays() );
+
+            username=(String)userSession.getAttribute("username");
             String strMsg ="Log-out the user " + username;
             log.info(strMsg);
             
+            //removes all identifying information and invalidates their session too.
             currentUser.logout();
             
             strMsg="Logging-out success for : " + username;
             log.info(strMsg);
             FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
             //FacesContext.getCurrentInstance().getExternalContext().redirect(HOME_URL);
+            
+            
         } catch (Exception e) {
             log.warn(e.toString());
         }
