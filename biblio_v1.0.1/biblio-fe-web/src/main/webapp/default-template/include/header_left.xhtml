@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+    <!-- Activation du déboggage dans l'interface Primefaces  CTRL + SHIFT + letter -->
+    <ui:debug hotkey="e" rendered="true"/>
+    <ui:param name="localeCtl" value="#{languageSwitcher}" />
+
+    <!-- #######  header  ####### -->
+    <div id="header" style="width: 100%; height: 30%;" position="center" header="logo">
+        <div id="logo" style="float: left; padding: 5px;">
+            <p:outputPanel id="campnou" style="float:left">  
+                <p:graphicImage value="/#{resourceDir}/images/logo/prime_logo.png" rendered="true" width="100" height="25" />
+                <!-- <ui:include src="../include/logo.xhtml" />   -->
+            </p:outputPanel>
+        </div>
+    </div>    
+
+</ui:composition>

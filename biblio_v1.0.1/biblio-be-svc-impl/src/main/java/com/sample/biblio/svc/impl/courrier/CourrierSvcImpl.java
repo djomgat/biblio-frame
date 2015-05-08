@@ -21,13 +21,15 @@ import com.sample.biblio.dao.api.courrier.ICourrierDao;
 import com.sample.biblio.svc.api.courrier.ICourrierSvcLocal;
 import com.sample.biblio.svc.api.courrier.ICourrierSvcRemote;
 import com.sample.frame.core.exception.GenericException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
  * @author ECHOUPE
+ * @date 9 mars 2015
+ * 
  */
 
 @Stateless(name = "CourrierSvc", mappedName = "CourrierSvc")
@@ -56,16 +58,17 @@ public class CourrierSvcImpl extends GenericSvcImpl<TabCourrier, String>
 
     @Override
     public <T extends TabCourrier> T creer(T p$entite) throws GenericException {
+        // déterminer la date-heure courante
+        Timestamp dateCourante = new Timestamp( System.currentTimeMillis() );
+        
         // generation du code du corrier
         String datestr = SimpleDateFormat.getInstance().format(new Date());
+        
         p$entite.setNumeroCourrier(datestr);
-        p$entite.setDateCreaCourrier(new Date());
-        p$entite.setDateModCourrier(new Date()); 
-        //java.sql.Timestamp tstamp = new java.sql.Timestamp(new Date());
+        p$entite.setDateCreaCourrier(dateCourante);
+        p$entite.setDateModCourrier(dateCourante); 
         return super.creer(p$entite);
-    }
-    
-    
+    }   
     
 
 }

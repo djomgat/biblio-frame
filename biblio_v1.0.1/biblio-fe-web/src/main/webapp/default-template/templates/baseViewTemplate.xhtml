@@ -1,43 +1,54 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	template="../templates/masterLayout.xhtml">	
-	
-	<ui:param name="viewHelper" value="#{viewController.viewHelper}" />
-	<ui:param name="templateDir" value="default-template" />
-	
-	<ui:param name="unit_east_show" value="false" />	
-	<ui:param name="unit_center_west_show" value="false" />
-	<ui:param name="unit_center_south_show" value="false" />
-	
-	<ui:define name="unit_north_content">
-		<ui:include src="../include/header.xhtml" />
-	</ui:define>
-	
-	<ui:define name="unit_south_content">
-		<ui:include src="../include/footer.xhtml" />	
-	</ui:define>
-	
-	<ui:define name="unit_west_content">
-		     	           		     		
-	    <table  style="width:100%; height:100%;" cellspacing="0" cellpadding="0"   >
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+        
+    template="../templates/masterLayoutTemplate.xhtml">	
 
-	    	<tr>
-	    		<td align="center" >
-	    			<ui:include src="../include/logo.xhtml" />						
-	    		</td>
-	    	</tr>
-	    	    
-	    	<tr>
-	    		<td valign="top" >
-	    			<ui:include src="../include/leftMenu.xhtml" />							    		 
-	    		</td>
-	    	</tr>	    	
-	    
-	    </table>  		
-	      		
-	</ui:define>	
+    <!-- Définit les paramètres à passer au template de la composition -->
+    <ui:param name="viewHelper" value="#{viewController.viewHelper}" />
+    <ui:param name="localeCtl" value="#{languageController}" />
+    <ui:param name="templateDir" value="default-template" />
+    <ui:param name="resourceDir" value="resources" />
+    <ui:param name="includeTemplateDir" value="default-template/include" />
+
+    <ui:param name="unit_east_show" value="false" />	
+    <ui:param name="unit_center_west_show" value="false" />
+    <ui:param name="unit_center_south_show" value="false" />
+     
+    <!-- Insertion des régions dans le header -->
+
+    <ui:define name="unit_header_north_content">
+        <ui:include src="../include/header_top.xhtml" />
+    </ui:define>
+
+    <ui:define name="unit_header_west_content">
+        <ui:include src="../include/header_left.xhtml" />
+    </ui:define>
+    
+    <ui:define name="unit_header_east_content">
+       <ui:include src="../include/language.xhtml" />
+    </ui:define> 
+       
+    <ui:define name="unit_header_south_content">
+        <ui:include src="../include/header_nav-bar.xhtml" />
+    </ui:define>
+    
+    <!-- Insertion des régions dans le footer -->	
+    <ui:define name="unit_south_content">
+        <ui:include src="../include/footer.xhtml" />	
+    </ui:define>
+	
+    <!-- Insertion des régions dans le left menu -->
+    <ui:define name="unit_west_content">		     	           		     		
+        <table  style="width:100%; height:100%;" cellspacing="0" cellpadding="0"  >
+            <tr>
+                <td valign="top" >
+                    <ui:include src="../include/leftMenu.xhtml" />							    		 
+                </td>
+            </tr>	    
+        </table>      		
+    </ui:define>	
 
 </ui:composition>

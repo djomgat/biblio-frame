@@ -3,13 +3,14 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:p="http://primefaces.org/ui"
-    template="/default-template/templates/editionViewTemplate.xhtml">
+    template="/default-template/templates/editionViewTemplate.xhtml"> 
 
     <ui:param name="viewController" value="#{courrierCrudeController}" />	
     <ui:define name="currentViewTitle" > Courrier Entrant </ui:define>		
-    <ui:define name="currentViewDefaultContent" >  	
+    <ui:define name="currentViewDefaultContent" >  
+
         <h:panelGrid width="100%" columns="2" >		
-            <h:panelGrid width="100%" columns="2" >
+            <h:panelGrid width="100%" columns="2" cellpadding="5" >
                 <p:outputLabel value="Objet" for="objet" />
                 <h:panelGroup>
                     <p:inputTextarea id="objet" value="#{wrapped.objetCourrier}" required="true"  />
@@ -20,22 +21,47 @@
                 <h:panelGroup>
                     <p:inputTextarea id="description" value="#{wrapped.descCourrier}" required="true"  />
                     <p:message  for="description" />
-                </h:panelGroup>                
-
+                </h:panelGroup> 
+                
             </h:panelGrid>
             
             <h:panelGrid width="100%" columns="2" >
-                <p:outputLabel value="Date Expedition" for="date_expedition" />
+                <p:outputLabel for="date_expedition" value="Date Expedition"  />
                 <h:panelGroup>
-                    <p:calendar id="date_expedition" value="#{wrapped.dateCourrier}" required="true" style="width:80%" />
+                    <p:inputMask id="date_expedition" value="#{wrapped.dateCourrier}" mask="99/99/9999" required="true" />
+                    <!-- <f:convertDateTime type="both" pattern="dd/mm/YYYY"/>  error parent holder-->
                     <p:message  for="date_expedition" />
                 </h:panelGroup>
-
+                <!-- cannot find public key for captcha  
+                <h:panelGroup> 
+                    <p:messages />  
+                    <p:captcha label="Captcha" language="tr" theme="white"/>  
+                    <p:commandButton value="Check" ajax="false" actionListener="#{captchaBean.submit}" /> 
+                </h:panelGroup>
+                -->
+                <!-- courrier does not have property pieces jointes, remettre #
+                <h:panelGroup>  
+                    <h:outputText value="Pièce(s) jointe(s): " />  
+                    <p:selectOneMenu value="{wrapped.pieceJointes}" effect="drop">  
+                        <f:selectItem itemLabel="Select One" itemValue="" />  
+                        <f:selectItems value="{wrapped.pieceJointes}" />  
+                    </p:selectOneMenu> 
+                </h:panelGroup> 
+                -->
+                
                 <p:outputLabel value="Mots clés" for="motCle" />
                 <h:panelGroup>
                     <p:inputText id="motCle" value="#{wrapped.motsCles}" style="width:80%" />
                     <p:message  for="motCle" />
                 </h:panelGroup>
+
+                <p:outputLabel value="Fichiers" for="upload" />
+                <h:panelGroup>
+                    <p:fileUpload fileUploadListener="#{fileUploadController.upload}" id="upload"
+                    allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="100000" />
+                    <p:message  for="upload" />
+                </h:panelGroup>                
+
             </h:panelGrid>                
                 
             <h:panelGrid width="100%" columns="2" >
@@ -45,7 +71,52 @@
                     <p:message  for="reference" />
                 </h:panelGroup>				
             </h:panelGrid>
+            <p:commandButton value="Reset" type="reset" />
+            <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()"/>
+            
+            <p:dialog widgetVar="dlg" modal="true" resizable="false" header="Values" showEffect="fade">
+                <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                    <h:outputText value="Date: " />
+                    <!-- <h:outputText id="dateValue" value="#{wrapped.dateCourrier}" /> -->
 
+                    <h:outputText value="Keys words: " />
+                    <h:outputText id="keyWordValue" value="#{wrapped.motsCles}"/>
+
+                    <h:outputText value="Objet: " />
+                    <h:outputText id="objetValue" value="#{wrapped.objetCourrier}" />
+
+                    <h:outputText value="Desc. courrier: " />
+                    <h:outputText id="descValue" value="#{wrapped.descCourrier}" />
+                </p:panelGrid>
+            </p:dialog>            
+        </h:panelGrid>
+        <h:panelGrid width="100%" columns="5">
+            <h:outputLink id="lnk" value="#">  
+               <p:printer target="dataTable" />  
+               <p:graphicImage value="#{request.contextPath}/resources/images/print.png" />  
+            </h:outputLink>
+            <h:commandLink>
+                <p:button value="Print" icon="ui-icon-print" />
+                <p:dataExporter type="xls" target="filingRpt"
+                    fileName="filings_report"  postProcessor="#{reportController.formatExcel}"/>
+            </h:commandLink>
+
+            <h:commandLink>
+                <p:graphicImage value="#{request.contextPath}/resources/images/ico_pdf.png" />
+                <p:dataExporter type="pdf" target="dataTable" fileName="export" pageOnly="true" />
+            </h:commandLink>
+            
+            <!--deprecated  {templateDir}/images/excel.png  -->
+            <h:commandLink>
+                <p:graphicImage value="#{request.contextPath}/resources/images/ico_excel2.png" />
+                <p:dataExporter type="xls" target="dataTable" fileName="export" pageOnly="true" />
+            </h:commandLink>
+
+            <h:commandLink>
+                <p:graphicImage value="#{request.contextPath}/resources/images/ico_excel_csv.png" />
+                <p:dataExporter type="csv" target="dataTable" fileName="export" pageOnly="true" />
+            </h:commandLink>
+            
         </h:panelGrid>
 
     </ui:define>					

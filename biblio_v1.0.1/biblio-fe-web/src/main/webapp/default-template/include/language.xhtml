@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:panelGrid columns="2">
+        <!--<h:outputText value="Language: " /> -->
+        <p:outputPanel style="float:left" >
+            <h:selectOneMenu  
+                title="#{localeCtl.displayLanguage}" 
+                value="#{localeCtl.selectedLanguage}"  >
+                <f:selectItems value="#{localeCtl.countriesInMap}" />
+                <p:ajax id="idy" event="change" />  <!-- update="login-form"  -->
+           </h:selectOneMenu>              
+        </p:outputPanel>
+         <!-- rendered="{shiroLoginController.loggedIn}"  -->
+                
+        <h:outputText value="Connecté comme: " />
+        <!-- <h:outputText value="{shiroLoginController.userLogin}" />  -->
+        <!--<h:outputText value="echoupe" />
+        
+        <h:outputText value=" " />
+        <h:outputText value="28 mars 2015 à 15:10:25" />
+        -->
+    </h:panelGrid>
+</ui:composition>

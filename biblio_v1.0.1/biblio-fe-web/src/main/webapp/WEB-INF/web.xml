@@ -11,6 +11,28 @@
     <listener>
         <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
     </listener>
+    
+    <!-- UploadFile filter configuration -->
+    <filter>
+        <filter-name>PrimeFaces FileUpload Filter</filter-name>
+        <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
+        <!-- taille max du fichier à uploader -->
+        <init-param>
+          <param-name>thresholdSize</param-name>
+          <param-value>51200</param-value>
+        </init-param>
+        <!-- répertoire de stockage sur le serveur -->
+        <init-param>
+          <param-name>uploadDirectory</param-name>
+          <param-value>C:\etc</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>PrimeFaces FileUpload Filter</filter-name>
+        <servlet-name>Faces Servlet</servlet-name>
+    </filter-mapping>
+    
+    <!-- Shiro Filter configuration -->
     <filter>
        <filter-name>shiroFilter</filter-name>
         <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
@@ -24,22 +46,30 @@
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
     
-        <!-- Spécifier l'emplacement du fichier de configuration de Shiro  -->
+    <!-- Spécifier l'emplacement du fichier de configuration de Shiro  -->
     <context-param>
         <param-name>shiroConfigLocations</param-name>
         <param-value>/WEB-INF/shiro.ini</param-value>
     </context-param>
     
     <session-config>
-        <!-- web.xml expects the session timeout in minutes: -->
+        <!-- web.xml expects the session timeout in minutes: Default: 30 -->
         <session-timeout>30</session-timeout>
     </session-config>
+    
+    <!-- Rediriger vers la page de connexion à l'expiration de la session  -->
+    <error-page>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+        <location>/index.html</location>
+    </error-page>
  
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    
+    <!-- JSF URL mapping  -->
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.jsf</url-pattern>

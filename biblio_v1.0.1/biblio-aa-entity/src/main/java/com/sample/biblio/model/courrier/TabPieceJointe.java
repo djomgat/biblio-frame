@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.sample.biblio.model.core.BiblioBaseEntity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -27,16 +29,22 @@ public class TabPieceJointe extends BiblioBaseEntity {
     @Size(min = 1, max = 20)
     @Column(name = "numero_piece_jointe")
     private String numeroPieceJointe;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "numero_courrier")
-    private String numeroCourrier;
+    
+    //@Basic(optional = false)
+    //@NotNull
+    //@Size(min = 1, max = 20)
+    //@Column(name = "numero_courrier")
+    //private String numeroCourrier;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "numero_ordre")
     private String numeroOrdre;
+    
+    @ManyToOne
+    @JoinColumn(name = "numero_courrier")
+    private TabCourrier courrier;
 
     public TabPieceJointe() {
     }
@@ -47,7 +55,7 @@ public class TabPieceJointe extends BiblioBaseEntity {
 
     public TabPieceJointe(String numeroPieceJointe, String numeroCourrier, String numeroOrdre) {
         this.numeroPieceJointe = numeroPieceJointe;
-        this.numeroCourrier = numeroCourrier;
+        //this.numeroCourrier = numeroCourrier;
         this.numeroOrdre = numeroOrdre;
     }
 
@@ -59,20 +67,20 @@ public class TabPieceJointe extends BiblioBaseEntity {
         this.numeroPieceJointe = numeroPieceJointe;
     }
 
-    public String getNumeroCourrier() {
-        return numeroCourrier;
-    }
-
-    public void setNumeroCourrier(String numeroCourrier) {
-        this.numeroCourrier = numeroCourrier;
-    }
-
     public String getNumeroOrdre() {
         return numeroOrdre;
     }
 
     public void setNumeroOrdre(String numeroOrdre) {
         this.numeroOrdre = numeroOrdre;
+    }
+
+    public TabCourrier getCourrier() {
+        return courrier;
+    }
+
+    public void setCourrier(TabCourrier courrier) {
+        this.courrier = courrier;
     }
     
 }

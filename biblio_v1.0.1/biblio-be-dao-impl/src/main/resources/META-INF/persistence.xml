@@ -23,6 +23,7 @@
     <class>com.sample.biblio.model.courrier.TabService</class>
     <class>com.sample.biblio.model.courrier.TabTypeCourrier</class>
     <class>com.sample.biblio.model.courrier.TabCompteurCourrier</class>
+    <class>com.sample.biblio.model.courrier.TabCourrierReponse</class>
     <!--     Module de sécurité  -->
     <class>com.sample.biblio.model.securite.TabMouchard</class>
     <class>com.sample.biblio.model.securite.Tabclass</class>

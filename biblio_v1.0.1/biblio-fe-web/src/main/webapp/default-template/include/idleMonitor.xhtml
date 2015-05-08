@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+    
+  <!-- TO-DO Supprimer le script par remplacement avec code java  -->
+ 
+<h:head>
+   <script type="text/javascript">
+      var TIME = 120; // in seconds
+      var countTimer = TIME;
+      var processTimer;
+      var timer_is_on = 0;
+      var redirectPage = "#{request.contextPath}/login/login";
+ 
+      var countDownDiv = "dialog-countdown";
+      var txtCountDown = null;
+      if (!txtCountDown)
+        txtCountDown = document.getElementById(countDownDiv);
+ 
+      function startIdleMonitor() {
+        countTimer = TIME;
+        txtCountDown.innerHTML = countTimer;
+        timeoutDialog.show();
+      }
+      function timedCount() {
+        txtCountDown.innerHTML = countTimer;
+        if (countTimer == 0) {
+            stopCount();
+            window.location.href = redirectPage;
+            return;
+        }
+        countTimer = countTimer - 1;
+        processTimer = setTimeout("timedCount()", 1000);
+      }
+      function doTimer() {
+        if (!timer_is_on) {
+            timer_is_on = 1;
+            timedCount();
+        }
+      }
+      function stopCount() {
+        clearTimeout(processTimer);
+        timer_is_on = 0;
+        keepAlive();
+      }
+   </script>
+</h:head>
+<h:body>
+    <h1>#{msg['session.timeout.idlemonitor.name']}</h1>
+ 
+    <h:form>
+        <p:growl id="msg" showDetail="true" sticky="true" />
+        <!-- If idle timeout then run 'idleDialog' ""idleDialog.show()"  ne marche pas!!! -->        
+        
+        <!-- "{IdleMonitorBean.userTimeout}" + "{msg['session.timeout.idlemonitor.clickOk']}" -->
+        <p:idleMonitor timeout="#{IdleMonitorBean.userTimeout}" 
+                       onidle="PF('idleDialog').show()" 
+                       onactive="PF('timeoutDialog').hide()" />
+
+        <p:confirmDialog id="confirmDialog"
+            message="#{msg['session.timeout.idlemonitor.message']}" 
+            header="#{msg['session.timeout.idlemonitor.header']}" 
+            severity="alert" widgetVar="idleDialog">
+
+            <p:commandButton id="confirm" update="msg"
+                value="#{msg['session.timeout.idlemonitor.ok']}"
+                oncomplete="PF('idleDialog').hide()"
+                actionListener="#{IdleMonitorBean.welcomeListener}" />
+
+            <p:commandButton id="Logout" update="msg" 
+                value="#{msg['session.timeout.idlemonitor.logMeOut']}" 
+                oncomplete="PF('idleDialog').hide)()"
+                actionListener="#{IdleMonitorBean.logoutListener}" />
+        </p:confirmDialog>
+
+    </h:form>
+ 
+</h:body>
+</html>

@@ -13,67 +13,81 @@
 </h:head>
 
 <h:body>
+    <!-- Activation du déboggage dans l'interface Primefaces  -->
+    <ui:debug hotkey="e" rendered="true" />    
+    
     <table id="layout-table" >
         <tr>
             <td id="layout-td" >
 		<h:form id="login-form" >
-                    <div id="message-container" >
-                        <p:messages  />			
-                    </div>										
                     <div id="login-container" >
 			<p:panel id="login-panel" header="#{msg['view.login.panel.header.label']}"  >
                             <p:focus />
                             <ui:param name="loginBean" value="#{shiroLoginController}" />
-                            <ui:param name="localeCtl" value="#{languageSwitcher}" />
+                            <ui:param name="localeCtl" value="#{languageController}" />
                             <h:panelGrid border="0" width="100%"  >
 
                             <h:panelGrid columns="2" rendered="true" >
                                 <h:selectOneMenu  title="#{localeCtl.displayLanguage}" 
                                                   value="#{localeCtl.selectedLanguage}"  >
-                                    <f:selectItem itemValue="fr" itemLabel="#{msg['locale.francais']}"/>
-                                    <f:selectItem itemValue="en" itemLabel="#{msg['locale.anglais']}"  />
+                                    <f:selectItems value="#{localeCtl.countriesInMap}" /> 
                                     <p:ajax id="idy" event="change" update="login-form"/>
-                                </h:selectOneMenu>
+                                </h:selectOneMenu>                                
                             </h:panelGrid>     
                                 
-                            <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r" >
+                            <h:panelGrid columns="2" width="100%" columnClasses="align-l, align-r" >
 				<p:outputLabel for="userlogin" value="#{msg['label.compte']}" />
-				<h:outputLink  value="javascript:void(0)" onclick="dlg.show()"> #{msg['view.login.label.compte-oublie']} </h:outputLink>  									
-                            </h:panelGrid>						
+				<h:outputLink  value="javascript:void(0)" 
+                                               onclick="dlg.show()">#{msg['view.login.label.compte-oublie']}
+                                </h:outputLink>  									
+                            </h:panelGrid>                                
                             <h:panelGroup>
-                                <p:inputText id="userlogin" value="#{loginBean.username}" required="true" style="width:100%" />
-                                <p:watermark for="userlogin" value="#{msg['view.login.watermark.compte']}" />							
+                                <p:inputText id="userlogin" value="#{loginBean.username}" 
+                                    required="true" requiredMessage="Please enter your username."
+                                    style="padding-left: 25px; " styleClass="user-icon"/>                                
+                                <p:watermark for="userlogin" value="#{msg['view.login.watermark.compte']}" />
                             </h:panelGroup>
                             <p:message for="userlogin" />
-                            <br/>
-                            <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r"  >
+                            
+                            <h:panelGrid columns="2" width="100%" columnClasses="align-l, align-r"  >
                                 <p:outputLabel for="userpassword" value="#{msg['label.mot-de-passe']}" />
-				<h:outputLink  value="javascript:void(0)" onclick="dlg.show()">#{msg['view.login.label.mot-de-passe-oublie']}</h:outputLink>  																	
-                            </h:panelGrid>													
+				<h:outputLink  value="javascript:void(0)" 
+                                               onclick="dlg.show()">#{msg['view.login.label.mot-de-passe-oublie']}
+                                </h:outputLink>  																	
+                            </h:panelGrid>                            
                             <h:panelGroup>
-                                <p:password id="userpassword" 	value="#{loginBean.password}"  	required="true" feedback="true" style="width:100%" />
-				<p:watermark for="userpassword" value="#{msg['view.login.watermark.mot-de-passe']}"  />							
+                                <p:password id="userpassword" value="#{loginBean.password}"  
+                                    required="true" feedback="true" styleClass="pass-icon"
+                                    style="padding-left: 25px; "/>
+				<p:watermark for="userpassword" value="#{msg['view.login.watermark.mot-de-passe']}" />
                             </h:panelGroup>
                             <p:message for="userpassword" />
                             
-                            <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r"  >
-                                <p:outputLabel value="#{msg['label.remember-me']}" />	
+                            <h:panelGrid columns="2" width="100%" columnClasses="align-r,align-l"  >
                                 <p:selectBooleanCheckbox value="#{loginBean.rememberMe}" />
+                                <p:outputLabel value="#{msg['label.remember-me']}" />
                             </h:panelGrid>                           
                             
                             <p:separator  />
 
                             <h:panelGrid columns="2" width="100%" columnClasses="align-l,align-r"  >
-                                <p:commandButton value="#{msg['view.login.buton.login.label']}" action="#{loginBean.login()}" update="login-form" />
-				<h:outputLink  value="javascript:void(0)" onclick="dlg.show()"> #{msg['view.login.label.pas-de-compte']} </h:outputLink>  																									
-                            </h:panelGrid>													
+                                <p:commandButton id="btnLogin" value="#{msg['view.login.buton.login.label']}" 
+                                    action="#{loginBean.login()}" update="login-form" icon="ui-icon-check" />                                
+				<h:outputLink  value="javascript:void(0)" 
+                                               onclick="dlg.show()"> #{msg['view.login.label.pas-de-compte']} 
+                                </h:outputLink>  																									
+                            </h:panelGrid>                            
 																											
                             </h:panelGrid>
-                            <p:dialog  widgetVar="dlg" header="#{msg['label.aide']}" width="400"  resizable="false" showEffect="clip" hideEffect="clip"   >
+                            <p:dialog  widgetVar="dlg" header="#{msg['label.aide']}" width="400"  
+                                       resizable="false" showEffect="clip" hideEffect="clip"   >
 				  ...
                             </p:dialog>						
 			</p:panel>
                     </div>
+                    
+                    <p:defaultCommand target="btnLogin" />
+                    <!-- <p:focus id="focusElt" for="userlogin"/>  -->
 		</h:form>						
             </td>
 	</tr>
